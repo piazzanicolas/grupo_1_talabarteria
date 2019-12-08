@@ -29,7 +29,7 @@ body,
 }
 
 .filtros-container {
-  width: 30%;
+  width: 20%;
   margin: 0;
 }
 
@@ -189,26 +189,29 @@ ol {
 }
 
 .login {
-  width: 30%;
+  width: 20%;
 }
 
 .product-list {
-  width: 40%;
+  width: 60%;
 }
 .product-container {
   float: left;
   overflow: hidden;
+  padding: 10px;
+
 }
 .product {
   width: 50% !important;
   border-radius: 15px;
   float: left;
+  padding: 10px;
 }
 .btn-cart {
   background-color: transparent;
   color: #0098d3;
   border: 1px solid #0098d3;
-  width: 100%;
+  width: 50%;
   border-radius: 50px;
 }
 .btn-cart:hover {
