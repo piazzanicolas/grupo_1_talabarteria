@@ -13,6 +13,14 @@ const controller = {
 		let html = readHTML('index');
 		res.send(html);
 	},
+	registro: (req, res) => {
+		let html = readHTML('registro');
+		res.send(html);
+	},
+	cargaProducto: (req, res) => {
+		let html = readHTML('carga');
+		res.send(html);
+	},
 };
 
 module.exports = controller
