@@ -21,6 +21,10 @@ const controller = {
 		let html = readHTML('carga');
 		res.send(html);
 	},
+	detalle: (req, res) => {
+		let html = readHTML('detalle');
+		res.send(html);
+	},
 };
 
 module.exports = controller
