@@ -11,7 +11,21 @@
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "inquirer": "^7.0.0",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.1"
-  }
+  },
+  "description": "Descripcion: Market de una talabarteria Nuestro sitio comercializar�a productos de cuero como billeteras, cinturones, carteras y bolsos. La audiencia objetivo ser�an las personas que buscan productos de alta calidad, realizados con un material noble como es el cuero que tiene una gran importancia en las tradiciones de nuestro pa�s.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nicz265/grupo_1_talabarteria.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nicz265/grupo_1_talabarteria/issues"
+  },
+  "homepage": "https://github.com/Nicz265/grupo_1_talabarteria#readme"
 }
