@@ -1,0 +1,23 @@
+body{
+   color:black;
+}
+.producto{
+    float:left;
+
+}
+
+img{
+max-width: 250px;
+   max-height: 500px;
+   float:left;
+}
+
+button{
+    max-width: 100px;
+}
+
+.descripcion{
+    width:80%;
+    height: 100px;
+    border: 1px solid black;
+}
