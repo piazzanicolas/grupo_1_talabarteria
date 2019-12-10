@@ -1,12 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: sans-serif;
+.row{
+  margin-bottom: 1%;
 }
 
-h1{
-    text-align: center;
+.col-2{
+  text-align: right;
 }

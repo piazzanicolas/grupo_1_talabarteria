@@ -3,61 +3,148 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Registro</title>
-    <link rel="stylesheet" href="/css/registro.css">
+  <title>Registro</title>
     <link rel="stylesheet" href=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css integrity="sha384ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/registro.css">
+    <script src="https://kit.fontawesome.com/e71094d6fb.js"></script>
 </head>
 <body>
+    <!-- Titulo -->
     <h1>Registro de nuevo usuario</h1>
+
+    <!-- Formulario -->
     <form action=”validar.php” method=”POST” class='container'> 
-        <p class='row'>
-            <label for=”nombre” class='col-1'> Nombre </label>
-            <input type=”text” name=”nombre” id=”nombre” class='col-11'>
-        </p>
-        <p class='row'>
-            <label for=”apellido” class='col-1'> Apellido </label>
-            <input type=”text” name=”apellido” id=”apellido” class='col-11'>
-        </p>
-        <p class='row'>
-            <label for=”email” class='col-1'> E-mail </label>
-            <input type=”email” name=”email” id=”email” class='col-11'>
-        </p>
-        <p class='row'>
-            <label for=”calle” class='col-1'> Calle </label>
-            <input type=”text” name=”calle” id=”calle” class='col-11'>
-        </p>
-        <p class='row'>
-            <label for=”calleNumero” class='col-1'> Numero </label>
-            <input type=”number” name=”calleNumero” id=”calleNumero” class='col-4'>
-            <label for='piso'class='col-2'> Piso. Departamento </label>
-            <input type='text' name='piso' id='piso' class='col-5'>
-        </p>
-        <p class='row'>
-            <label for='localidad' class='col-1'> Localidad </label>
-            <input type='text' name='localidad' id='localidad' class='col-11'>
-        </p>
-        <p class='row'>
-            <label for='provincia' class='col-1'> Provincia </label>
-            <input type='text' name='provincia' id='provincia' class='col-11'>
-        </p>
-        <p class='row'>
-            <label for='pais' class='col-1'> País </label>
-            <input type='text' name='pais' id='pais' class='col-11'>
-        </p>
-        <p class='row'>
-            <label for='postal' class='col-2'> Cód. Postal </label>
-            <input type='text' name='postal' id='postal' class='col-10'>
-        </p>
-        <p class='row'>
-            <label for='telefono' class='col-1'> Teléfono </label>
-            <input type='number' name='telefono' id='telefono' class='col-11'>
-        </p>
-        <p class='row'>
-            <label for='nacimiento' class='col-2'> Fecha de nacimiento </label>
-            <input type='text' name='nacimiento' id='nacimiento' class='col-10'>
-        </p>
-            <button type=”submit”> Enviar </button >
+
+        <!-- Nombre -->
+        <div class='row'>
+            <div class="col-2">
+              <label for=”nombre” class=''> Nombre </label>
+            </div>
+            <div class="col-3">
+              <input type=”text” name=”nombre” id=”nombre” class='form-control' placeholder="Juan">
+            </div>
+        </div>
+
+        <!-- Apellido -->
+        <div class='row'>
+            <div class="col-2">
+              <label for=”apellido” class=''> Apellido </label>
+            </div>
+            <div class="col-3">
+              <input type=”text” name=”apellido” id=”apellido” class='form-control' placeholder="Perez">
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class='row'>
+            <div class="col-2">
+              <label for=”email” class=''> E-mail </label>
+            </div>
+            <div class="col-3">
+              <input type=”email” name=”email” id=”email” class='form-control'   placeholder="ejemplo@ejemplo.com">
+            </div>
+        </div>
+
+        <!-- Calle -->
+        <div class='row'>
+            <div class="col-2">
+              <label for=”calle” class=''> Calle </label>
+            </div>
+            <div class="col-3">
+              <input type=”text” name=”calle” id=”calle” class='form-control' placeholder="Lima">
+            </div>
+        </div>
+
+        <!-- Numero de Calle -->
+        <div class='row'>
+            <div class="col-2">
+              <label for=”calleNumero” class=''> Numero </label>
+            </div>
+            <div class="col-3">
+              <input type=”number” name=”calleNumero” id=”calleNumero” class='form-control' placeholder="1234">
+            </div>
+        </div>
+
+        <!-- Piso. Departamento -->
+        <div class='row'>
+            <div class="col-2">
+              <label for='piso'class=''> Piso. Departamento </label>
+            </div>
+            <div class="col-3">
+              <input type='text' name='piso' id='piso' class='form-control' placeholder="4B">
+            </div>
+        </div>
+
+        <!-- Localidad -->
+        <div class='row'>
+            <div class="col-2">
+              <label for='localidad' class=''> Localidad </label>
+            </div>
+            <div class="col-3">
+              <input type='text' name='localidad' id='localidad' class='form-control' placeholder="Capital Federal">
+            </div>
+        </div>
+
+        <!-- Provincia -->
+        <div class='row'>
+            <div class="col-2">
+              <label for='provincia' class=''> Provincia </label>
+            </div>
+            <div class="col-3">
+              <input type='text' name='provincia' id='provincia' class='form-control' placeholder="Buenos Aires">
+            </div>
+        </div>
+
+        <!-- Pais -->
+        <div class='row'>
+            <div class="col-2">
+              <label for='pais' class=''> País </label>
+            </div>
+            <div class="col-3">
+              <input type='text' name='pais' id='pais' class='form-control' placeholder="Argentina">
+            </div>
+        </div>
+
+        <!-- Código Postal -->
+        <div class='row'>
+            <div class="col-2">
+              <label for='postal' class=''> Cód. Postal </label>
+            </div>
+            <div class="col-3">
+              <input type='text' name='postal' id='postal' class='form-control' placeholder="1101">
+            </div>
+        </div>
+
+        <!-- Teléfono -->
+        <div class='row'>
+            <div class="col-2">
+              <label for='telefono' class=''> Teléfono </label>
+            </div>
+            <div class="col-3">
+              <input type='tel' name='telefono' id='telefono' class='form-control' placeholder="1112345678">
+            </div>
+        </div>
+
+        <!-- Fecha de nacimiento -->
+        <div class='row'>
+          <div class="col-2">
+            <label for='nacimiento' class=''> Fecha de nacimiento </label>
+          </div>
+          <div class="col-3">
+              <input type='date' name='nacimiento' id='nacimiento' placeholder="01/01/2000" class="form-control">
+          </div>
+        </div>
+
+        <!-- Boton -->
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-3 text-right">
+              <button type=”submit” class='btn btn-success'> Enviar </button >
+          </div>
+        </div>
+       
     </form>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
