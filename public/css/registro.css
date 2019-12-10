@@ -1,13 +1,22 @@
-@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
-
 * {
   box-sizing: border-box;
 }
 
+.titulo{
+  text-align: center;
+}
 .row{
   margin-bottom: 1%;
 }
 
 .col-2{
   text-align: right;
+  position: relative;
+  padding-right: 0;
+}
+
+label{
+  position: absolute;
+  right: 0px;
+  bottom: -5%;
 }
