@@ -11,3 +11,9 @@ label{
 #descripcion{
   top: 0px;
 }
+
+footer{
+  background-color: black;
+  color: white;
+  font-size: small;
+}
