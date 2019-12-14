@@ -4,224 +4,221 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro</title>
-    <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css integrity="sha384ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/registro.css">
     <script src="https://kit.fontawesome.com/e71094d6fb.js"></script>
 </head>
 <body>
-    <header class="main-header">
-        <!-- Logo -->
-        <div class="logo">
-          <a href="/index">
-            <img
-              src="https://via.placeholder.com/300x50"
-              alt="Logo El Palenque"
-            />
-          </a>
-        </div>
-        <!-- Buscador -->
-        <div class="buscador">
-          <form>
-            <input type="text" name="search" placeholder="Ando buscando..." />
-            <input type="submit" name="submit" value="Buscar" class="btn" />
-          </form>
-        </div>
-  
-        <!-- Carrito -->
-        <div class="cart-container">
-          <button class="btn btn-secondary cart" type="button">
-            <img src="/images/cart.png" alt="Carrito" />
-          </button>
-          <div class="cart-products">
-              <div class="cart-product">
-                  <img src="https://via.placeholder.com/20" alt="Producto1"  />
-                  <div class="cart-product-info">
-                      <span class="cantidad">1</span>
-                      <p>Producto1</p>
-                      <p>$50,00</p>
-                      <p class="cambiar-cantidad">
-                          <button>-</button>
-                          <button>+</button>
-                      </p>
-                      <p class="cart-product-delete">
-                          <button>Eliminar</button>
-                      </p>
-                  </div>
+  <header>
+    <div class="d-flex justify-content-between">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="/">
+          <img
+            src="https://via.placeholder.com/300x50"
+            alt="Logo El Palenque"
+          />
+        </a>
+      </div>
+      <!-- Buscador -->
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Ando buscando..." aria-label="Search">
+        <button class="btn btn-light my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+      <!-- Carrito -->
+      <div class="cart-container">
+      <button class="btn btn-secondary cart" type="button">
+        <img src="/images/cart.png" alt="Carrito" />
+      </button>
+      <div class="cart-products">
+          <div class="cart-product">
+              <img src="https://via.placeholder.com/20" alt="Producto1"  />
+              <div class="cart-product-info">
+                  <span class="cantidad">1</span>
+                  <p>Producto1</p>
+                  <p>$50,00</p>
+                  <p class="cambiar-cantidad">
+                      <button>-</button>
+                      <button>+</button>
+                  </p>
+                  <p class="cart-product-delete">
+                      <button>Eliminar</button>
+                  </p>
               </div>
-  
           </div>
-        </div>
-      </header>
-  
-      <nav class="container nav-menu">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="/index">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Talabartería</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Marroquinería</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Platería</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Vestimenta</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Calzado</a>
-          </li>
-        </ul>
-      </nav>
-
-    <!-- Titulo -->
-    <div class="titulo">
-    <h1>Registro de nuevo usuario</h1> <br>
+      </div>
+      </div>
     </div>
+    <!-- Barra navegación -->
+    <ul class="row">
+      <li class="col-12 col-md-6 col-lg-2 text-center">
+        <a class="nav-link" href="/">INICIO</a>
+      </li>
+      <li class="col-12 col-md-6 col-lg-2 text-center">
+        <a class="nav-link" href="#">TALABARTERÍA</a>
+      </li>
+      <li class="col-12 col-md-6 col-lg-2 text-center">
+        <a class="nav-link" href="#">MARROQUINERÍA</a>
+      </li>
+      <li class="col-12 col-md-6 col-lg-2 text-center">
+        <a class="nav-link" href="#">PLATERÍA</a>
+      </li>
+      <li class="col-12 col-md-6 col-lg-2 text-center">
+        <a class="nav-link" href="#">VESTIMENTA</a>
+      </li>
+      <li class="col-12 col-md-6 col-lg-2 text-center">
+        <a class="nav-link" href="#">CALZADO</a>
+      </li>
+    </ul>
+  </header>
 
+    <br>
+    <!-- Titulo -->
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1>Registro de nuevo usuario</h1>
+      </div>
+    </div>
+    <br>
     <!-- Formulario -->
     <form action=”validar.php” method=”POST” class='container'> 
 
         <!-- Nombre -->
         <div class='row'>
-            <div class="col-3"></div>
-            <div class="col-2">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
               <label for=”nombre” class=''> Nombre </label>
             </div>
-            <div class="col-3">
+            <div class="col-9 col-lg-3">
               <input type=”text” name=”nombre” id=”nombre” class='form-control' placeholder="Juan">
             </div>
         </div>
-
+        <br>
         <!-- Apellido -->
         <div class='row'>
-            <div class="col-3"></div>
-            <div class="col-2">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
               <label for=”apellido” class=''> Apellido </label>
             </div>
-            <div class="col-3">
+            <div class="col-9 col-lg-3">
               <input type=”text” name=”apellido” id=”apellido” class='form-control' placeholder="Perez">
             </div>
         </div>
-
+        <br>
         <!-- Email -->
         <div class='row'>
-            <div class="col-3"></div>
-            <div class="col-2">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
               <label for=”email” class=''> E-mail </label>
             </div>
-            <div class="col-3">
+            <div class="col-9 col-lg-3">
               <input type=”email” name=”email” id=”email” class='form-control'   placeholder="ejemplo@ejemplo.com">
             </div>
         </div>
-
+        <br>
         <!-- Calle -->
         <div class='row'>
-            <div class="col-3"></div>
-            <div class="col-2">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
               <label for=”calle” class=''> Calle </label>
             </div>
-            <div class="col-3">
+            <div class="col-9 col-lg-3">
               <input type=”text” name=”calle” id=”calle” class='form-control' placeholder="Lima">
             </div>
         </div>
-
+        <br>
         <!-- Numero de Calle -->
         <div class='row'>
-            <div class="col-3"></div>
-            <div class="col-2">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
               <label for=”calleNumero” class=''> Numero </label>
             </div>
-            <div class="col-3">
+            <div class="col-9 col-lg-3">
               <input type=”number” name=”calleNumero” id=”calleNumero” class='form-control' placeholder="1234">
             </div>
         </div>
-
+        <br>
         <!-- Piso. Departamento -->
         <div class='row'>
-            <div class="col-3"></div>
-            <div class="col-2">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2 text-right">
               <label for='piso'class=''> Piso. Departamento </label>
             </div>
-            <div class="col-3">
+            <div class="col-9 col-lg-3">
               <input type='text' name='piso' id='piso' class='form-control' placeholder="4B">
             </div>
         </div>
-
+        <br>
         <!-- Localidad -->
         <div class='row'>
-            <div class="col-3"></div>
-            <div class="col-2">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
               <label for='localidad' class=''> Localidad </label>
             </div>
-            <div class="col-3">
+            <div class="col-9 col-lg-3">
               <input type='text' name='localidad' id='localidad' class='form-control' placeholder="Capital Federal">
             </div>
         </div>
-
+        <br>
         <!-- Provincia -->
         <div class='row'>
-            <div class="col-3"></div>
-            <div class="col-2">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
               <label for='provincia' class=''> Provincia </label>
             </div>
-            <div class="col-3">
+            <div class="col-9 col-lg-3">
               <input type='text' name='provincia' id='provincia' class='form-control' placeholder="Buenos Aires">
             </div>
         </div>
-
+        <br>
         <!-- Pais -->
         <div class='row'>
-            <div class="col-3"></div>
-            <div class="col-2">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
               <label for='pais' class=''> País </label>
             </div>
-            <div class="col-3">
+            <div class="col-9 col-lg-3">
               <input type='text' name='pais' id='pais' class='form-control' placeholder="Argentina">
             </div>
         </div>
-
+        <br>
         <!-- Código Postal -->
         <div class='row'>
-            <div class="col-3"></div>
-            <div class="col-2">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2 text-right">
               <label for='postal' class=''> Cód. Postal </label>
             </div>
-            <div class="col-3">
+            <div class="col-9 col-lg-3">
               <input type='text' name='postal' id='postal' class='form-control' placeholder="1101">
             </div>
         </div>
-
+        <br>
         <!-- Teléfono -->
         <div class='row'>
-            <div class="col-3"></div>
-            <div class="col-2">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
               <label for='telefono' class=''> Teléfono </label>
             </div>
-            <div class="col-3">
-              <input type='tel' name='telefono' id='telefono' class='form-control' placeholder="1112345678">
+            <div class="col-9 col-lg-3">
+              <input type='tel' name='telefono' id='telefono' class='form-control is-valid' placeholder="1112345678">
             </div>
         </div>
-
+        <br>
         <!-- Fecha de nacimiento -->
         <div class='row'>
-          <div class="col-3"></div>
-          <div class="col-2">
+          <div class="col-0 col-lg-3"></div>
+          <div class="col-3 col-lg-2 text-right">
             <label for='nacimiento' class=''> Fecha de nacimiento </label>
           </div>
-          <div class="col-3">
-              <input type='date' name='nacimiento' id='nacimiento' placeholder="01/01/2000" class="form-control">
+          <div class="col-9 col-lg-3">
+              <input type='date' name='nacimiento' id='nacimiento' placeholder="01/01/2000" class="form-control is-invalid">
           </div>
         </div>
-
+        <br>
         <!-- Boton -->
         <div class="row">
-          <div class="col-3"></div>
-          <div class="col-2"></div>
-          <div class="col-3 text-right">
+          <div class="col-12 col-lg-8 text-right">
               <button type=”submit” class='btn btn-success'> Enviar </button >
           </div>
         </div>
