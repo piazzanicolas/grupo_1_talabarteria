@@ -4,27 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Grupo 1 - Talabartería</title>
-
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/index.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/e71094d6fb.js"></script>
+
   </head>
   <body>
+  
+  <!--  Encabezado-->
+  
     <header class="main-header">
+      
       <!-- Logo -->
       <div class="logo">
-        <a href="/index">
+        <a href="/">
           <img
             src="https://via.placeholder.com/300x50"
             alt="Logo El Palenque"
           />
         </a>
       </div>
+
       <!-- Buscador -->
       <div class="buscador">
         <form>
@@ -35,10 +38,10 @@
 
       <!-- Carrito -->
       <div class="cart-container">
-        <button class="btn btn-secondary cart" type="button">
+        <button class="btn btn-secondary cart"  type="button" data-toggle="collapse" data-target="#show-cart">
           <img src="/images/cart.png" alt="Carrito" />
         </button>
-        <div class="cart-products">
+        <div class="cart-products collapse" id="show-cart"><!-- hidden-->
             <div class="cart-product">
                 <img src="https://via.placeholder.com/20" alt="Producto1"  />
                 <div class="cart-product-info">
@@ -56,13 +59,22 @@
             </div>
 
         </div>
+      
       </div>
+  
     </header>
 
-    <nav class="container nav-menu">
-      <ul class="navbar-nav">
+    <!--  Navbar -->
+    
+      <nav class="navbar navbar-custom navbar-expand-lg navbar-dark">
+       
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-toggler" aria-controls="nav-toggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="nav-toggler">
+      <ul class="navbar-nav w-100 justify-content-around">
         <li class="nav-item active">
-          <a class="nav-link" href="/index">Inicio</a>
+          <a class="nav-link" href="/">Inicio</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Talabartería</a>
@@ -80,14 +92,22 @@
           <a class="nav-link" href="#">Calzado</a>
         </li>
       </ul>
-    </nav>
+    </div>
+ 
+
+    </nav><!-- Fin Navbar -->
+   
+
+
+
 
     <!-- Carousel-->
     <div id="carousel-promociones" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner list-promociones">
+      
         <div
           class="carousel-item"
-          style="background-image: url('https://via.placeholder.com/1200x80')"
+          style="background-image: url('https://via.placeholder.com/1000x40')"
         ></div>
         <a
           class="carousel-control-prev"
@@ -110,9 +130,10 @@
       </div>
     </div><!-- Fin Carousel-->
 
-    <div class="container col-12 central">
+  
+    <div class="col-3 central">
     <!-- Filtros -->
-        <div class="container filtros-container">
+        <div class=" filtros-container">
         <div class="row">
         <div class="col-3 filtros">
           <div class="container titulo-filtros">
@@ -153,7 +174,7 @@
     </div>
 
     <!-- Product List -->
-    <div class="container product-list">
+    <div class="product-list">
         <div class="products">
             <div class="product-container col-6">
                 
@@ -223,5 +244,6 @@
     </aside>
   </div><!-- Fin Central-->
 
+  
 </body>
 </html>
