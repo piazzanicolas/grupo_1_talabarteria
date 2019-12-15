@@ -3,61 +3,239 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Registro</title>
-    <link rel="stylesheet" href="/css/registro.css">
+  <title>Registro</title>
     <link rel="stylesheet" href=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css integrity="sha384ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/registro.css">
+    <script src="https://kit.fontawesome.com/e71094d6fb.js"></script>
 </head>
 <body>
-    <h1>Registro de nuevo usuario</h1>
+  <header>
+    <div class="d-flex justify-content-between">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="/">
+          <img
+            src="https://via.placeholder.com/300x50"
+            alt="Logo El Palenque"
+          />
+        </a>
+      </div>
+      <!-- Buscador -->
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Ando buscando..." aria-label="Search">
+        <button class="btn btn-light my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+      <!-- Carrito -->
+      <div class="cart-container">
+      <button class="btn btn-secondary cart" type="button">
+        <img src="/images/cart.png" alt="Carrito" />
+      </button>
+      <div class="cart-products">
+          <div class="cart-product">
+              <img src="https://via.placeholder.com/20" alt="Producto1"  />
+              <div class="cart-product-info">
+                  <span class="cantidad">1</span>
+                  <p>Producto1</p>
+                  <p>$50,00</p>
+                  <p class="cambiar-cantidad">
+                      <button>-</button>
+                      <button>+</button>
+                  </p>
+                  <p class="cart-product-delete">
+                      <button>Eliminar</button>
+                  </p>
+              </div>
+          </div>
+      </div>
+      </div>
+    </div>
+    <!-- Barra navegación -->
+    <ul class="row">
+      <li class="col-12 col-md-6 col-lg-2 text-center">
+        <a class="nav-link" href="/">INICIO</a>
+      </li>
+      <li class="col-12 col-md-6 col-lg-2 text-center">
+        <a class="nav-link" href="#">TALABARTERÍA</a>
+      </li>
+      <li class="col-12 col-md-6 col-lg-2 text-center">
+        <a class="nav-link" href="#">MARROQUINERÍA</a>
+      </li>
+      <li class="col-12 col-md-6 col-lg-2 text-center">
+        <a class="nav-link" href="#">PLATERÍA</a>
+      </li>
+      <li class="col-12 col-md-6 col-lg-2 text-center">
+        <a class="nav-link" href="#">VESTIMENTA</a>
+      </li>
+      <li class="col-12 col-md-6 col-lg-2 text-center">
+        <a class="nav-link" href="#">CALZADO</a>
+      </li>
+    </ul>
+  </header>
+
+    <br>
+    <!-- Titulo -->
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1>Registro de nuevo usuario</h1>
+      </div>
+    </div>
+    <br>
+    <!-- Formulario -->
     <form action=”validar.php” method=”POST” class='container'> 
-        <p class='row'>
-            <label for=”nombre” class='col-1'> Nombre </label>
-            <input type=”text” name=”nombre” id=”nombre” class='col-11'>
-        </p>
-        <p class='row'>
-            <label for=”apellido” class='col-1'> Apellido </label>
-            <input type=”text” name=”apellido” id=”apellido” class='col-11'>
-        </p>
-        <p class='row'>
-            <label for=”email” class='col-1'> E-mail </label>
-            <input type=”email” name=”email” id=”email” class='col-11'>
-        </p>
-        <p class='row'>
-            <label for=”calle” class='col-1'> Calle </label>
-            <input type=”text” name=”calle” id=”calle” class='col-11'>
-        </p>
-        <p class='row'>
-            <label for=”calleNumero” class='col-1'> Numero </label>
-            <input type=”number” name=”calleNumero” id=”calleNumero” class='col-4'>
-            <label for='piso'class='col-2'> Piso. Departamento </label>
-            <input type='text' name='piso' id='piso' class='col-5'>
-        </p>
-        <p class='row'>
-            <label for='localidad' class='col-1'> Localidad </label>
-            <input type='text' name='localidad' id='localidad' class='col-11'>
-        </p>
-        <p class='row'>
-            <label for='provincia' class='col-1'> Provincia </label>
-            <input type='text' name='provincia' id='provincia' class='col-11'>
-        </p>
-        <p class='row'>
-            <label for='pais' class='col-1'> País </label>
-            <input type='text' name='pais' id='pais' class='col-11'>
-        </p>
-        <p class='row'>
-            <label for='postal' class='col-2'> Cód. Postal </label>
-            <input type='text' name='postal' id='postal' class='col-10'>
-        </p>
-        <p class='row'>
-            <label for='telefono' class='col-1'> Teléfono </label>
-            <input type='number' name='telefono' id='telefono' class='col-11'>
-        </p>
-        <p class='row'>
-            <label for='nacimiento' class='col-2'> Fecha de nacimiento </label>
-            <input type='text' name='nacimiento' id='nacimiento' class='col-10'>
-        </p>
-            <button type=”submit”> Enviar </button >
+
+        <!-- Nombre -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+              <label for=”nombre” class=''> Nombre </label>
+            </div>
+            <div class="col-9 col-lg-3">
+              <input type=”text” name=”nombre” id=”nombre” class='form-control' placeholder="Juan">
+            </div>
+        </div>
+        <br>
+        <!-- Apellido -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+              <label for=”apellido” class=''> Apellido </label>
+            </div>
+            <div class="col-9 col-lg-3">
+              <input type=”text” name=”apellido” id=”apellido” class='form-control' placeholder="Perez">
+            </div>
+        </div>
+        <br>
+        <!-- Email -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+              <label for=”email” class=''> E-mail </label>
+            </div>
+            <div class="col-9 col-lg-3">
+              <input type=”email” name=”email” id=”email” class='form-control'   placeholder="ejemplo@ejemplo.com">
+            </div>
+        </div>
+        <br>
+        <!-- Calle -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+              <label for=”calle” class=''> Calle </label>
+            </div>
+            <div class="col-9 col-lg-3">
+              <input type=”text” name=”calle” id=”calle” class='form-control' placeholder="Lima">
+            </div>
+        </div>
+        <br>
+        <!-- Numero de Calle -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+              <label for=”calleNumero” class=''> Numero </label>
+            </div>
+            <div class="col-9 col-lg-3">
+              <input type=”number” name=”calleNumero” id=”calleNumero” class='form-control' placeholder="1234">
+            </div>
+        </div>
+        <br>
+        <!-- Piso. Departamento -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2 text-right">
+              <label for='piso'class=''> Piso. Departamento </label>
+            </div>
+            <div class="col-9 col-lg-3">
+              <input type='text' name='piso' id='piso' class='form-control' placeholder="4B">
+            </div>
+        </div>
+        <br>
+        <!-- Localidad -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+              <label for='localidad' class=''> Localidad </label>
+            </div>
+            <div class="col-9 col-lg-3">
+              <input type='text' name='localidad' id='localidad' class='form-control' placeholder="Capital Federal">
+            </div>
+        </div>
+        <br>
+        <!-- Provincia -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+              <label for='provincia' class=''> Provincia </label>
+            </div>
+            <div class="col-9 col-lg-3">
+              <input type='text' name='provincia' id='provincia' class='form-control' placeholder="Buenos Aires">
+            </div>
+        </div>
+        <br>
+        <!-- Pais -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+              <label for='pais' class=''> País </label>
+            </div>
+            <div class="col-9 col-lg-3">
+              <input type='text' name='pais' id='pais' class='form-control' placeholder="Argentina">
+            </div>
+        </div>
+        <br>
+        <!-- Código Postal -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2 text-right">
+              <label for='postal' class=''> Cód. Postal </label>
+            </div>
+            <div class="col-9 col-lg-3">
+              <input type='text' name='postal' id='postal' class='form-control' placeholder="1101">
+            </div>
+        </div>
+        <br>
+        <!-- Teléfono -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+              <label for='telefono' class=''> Teléfono </label>
+            </div>
+            <div class="col-9 col-lg-3">
+              <input type='tel' name='telefono' id='telefono' class='form-control is-valid' placeholder="1112345678">
+            </div>
+        </div>
+        <br>
+        <!-- Fecha de nacimiento -->
+        <div class='row'>
+          <div class="col-0 col-lg-3"></div>
+          <div class="col-3 col-lg-2 text-right">
+            <label for='nacimiento' class=''> Fecha de nacimiento </label>
+          </div>
+          <div class="col-9 col-lg-3">
+              <input type='date' name='nacimiento' id='nacimiento' placeholder="01/01/2000" class="form-control is-invalid">
+          </div>
+        </div>
+        <br>
+        <!-- Boton -->
+        <div class="row">
+          <div class="col-12 col-lg-8 text-right">
+              <button type=”submit” class='btn btn-success'> Enviar </button >
+          </div>
+        </div>
+       
     </form>
+    <br>
+    <footer>
+      <br>
+      <div class="row">
+        <p class="col-12 text-center">
+          Copyright © 2019 Talabartería El Palenque. Todos los Derechos Reservados.
+        </p>
+        <p class="col-12 text-center">
+          El uso de este sitio web implica la aceptación de los Términos y Condiciones y de las Políticas de Privacidad de Talabartería El Palenque. Las fotos son a modo ilustrativo. La venta de cualquiera de los productos publicados está sujeta a la verificación de stock. Los precios online para los productos presentados/publicados en www.elpalenque.com.ar son válidos exclusivamente para la compra vía internet en la página antes mencionada.
+        </p>
+      </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

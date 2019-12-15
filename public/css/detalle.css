@@ -1,0 +1,21 @@
+
+
+.imgprod{
+float: left;
+    margin:10px;
+}
+
+.producto{
+color:black;    
+float: left;
+width:50%;
+padding:5px;}
+
+.descripcion{
+    width:80%;
+    height: 100px;
+    border: 1px solid black;
+    float:left;
+    overflow: hidden;
+    margin:10px;
+}

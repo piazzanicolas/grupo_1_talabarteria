@@ -1,12 +1,19 @@
-* {
-    box-sizing: border-box;
+header{
+  background-color: black;
 }
 
-body {
-  margin: 0;
-  font-family: sans-serif;
+label{
+  position: absolute;
+  right: 0px;
+  bottom: -5%;
 }
 
-h1{
-    text-align: center;
+#descripcion{
+  top: 0px;
+}
+
+footer{
+  background-color: black;
+  color: white;
+  font-size: small;
 }

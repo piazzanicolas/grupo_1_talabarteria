@@ -3,39 +3,184 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Carga Producto</title>
-    <link rel="stylesheet" href="/css/carga.css">
+    <title>Carga de productos</title>
     <link rel="stylesheet" href=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css integrity="sha384ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/registro.css">
+    <script src="https://kit.fontawesome.com/e71094d6fb.js"></script>
 </head>
 <body>
-    <h1>Carga de productos</h1>
+    <header>
+        <div class="d-flex justify-content-between">
+          <!-- Logo -->
+          <div class="logo">
+            <a href="/">
+              <img
+                src="https://via.placeholder.com/300x50"
+                alt="Logo El Palenque"
+              />
+            </a>
+          </div>
+          <!-- Buscador -->
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Ando buscando..." aria-label="Search">
+            <button class="btn btn-light my-2 my-sm-0" type="submit">Buscar</button>
+          </form>
+          <!-- Carrito -->
+          <div class="cart-container">
+          <button class="btn btn-secondary cart" type="button">
+            <img src="/images/cart.png" alt="Carrito" />
+          </button>
+          <div class="cart-products">
+              <div class="cart-product">
+                  <img src="https://via.placeholder.com/20" alt="Producto1"  />
+                  <div class="cart-product-info">
+                      <span class="cantidad">1</span>
+                      <p>Producto1</p>
+                      <p>$50,00</p>
+                      <p class="cambiar-cantidad">
+                          <button>-</button>
+                          <button>+</button>
+                      </p>
+                      <p class="cart-product-delete">
+                          <button>Eliminar</button>
+                      </p>
+                  </div>
+              </div>
+          </div>
+          </div>
+        </div>
+        <!-- Barra navegación -->
+        <ul class="row">
+          <li class="col-12 col-md-6 col-lg-2 text-center">
+            <a class="nav-link" href="/">INICIO</a>
+          </li>
+          <li class="col-12 col-md-6 col-lg-2 text-center">
+            <a class="nav-link" href="#">TALABARTERÍA</a>
+          </li>
+          <li class="col-12 col-md-6 col-lg-2 text-center">
+            <a class="nav-link" href="#">MARROQUINERÍA</a>
+          </li>
+          <li class="col-12 col-md-6 col-lg-2 text-center">
+            <a class="nav-link" href="#">PLATERÍA</a>
+          </li>
+          <li class="col-12 col-md-6 col-lg-2 text-center">
+            <a class="nav-link" href="#">VESTIMENTA</a>
+          </li>
+          <li class="col-12 col-md-6 col-lg-2 text-center">
+            <a class="nav-link" href="#">CALZADO</a>
+          </li>
+        </ul>
+      </header>
+      
+      <br>
+      <!-- Titulo -->
+      <div class="row">
+        <div class="col-12 text-center">
+          <h1>Carga de productos</h1>
+        </div>
+      </div>
+      <br>
+    <!-- Formulario -->
     <form action=”validar.php” method=”POST” class='container'> 
-        <p class='row'>
-            <label for=”nombre” class='col-2'> Nombre </label>
-            <input type=”text” name=”nombre” id=”nombre” class='col-10'>
-        </p>
-        <p class='row'>
-            <label for=”categoria” class='col-2'> Categoria </label>
-            <input type=”text” name=”categoria” id=”categoria” class='col-10'>
-        </p>
-        <p class='row'>
-            <label for=”precio” class='col-2'> Precio </label>
-            <input type=”number” name=”precio” id=”precio” class='col-10'>
-        </p>
-        <p class='row'>
-            <label for=”stockIni” class='col-2'> Stock Inicial </label>
-            <input type=”number” name=”stockIni” id=”stockIni” class='col-10'>
-        </p>
-        <p class='row'>
-            <label for='stockRepo' class='col-2'> Stock Reposición </label>
-            <input type='text' name='stockRepo' id='stockRepo' class='col-10'>
-        </p>
-        <p class='row'>
-            <label for='descripcion' class='col-2'> Descripción </label>
-            <textarea name=”descripcion” class='col-10'> </textarea>
-        </p>
-            <button type=”submit”> Agregar </button >
+
+        <!-- Nombre -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+                <label for=”nombre” class=''> Nombre </label>
+            </div>
+            <div class="col-9 col-lg-3">
+                <input type=”text” name=”nombre” id=”nombre” class='form-control' placeholder="Producto">
+            </div>
+        </div>
+        <br>
+        <!-- Categoria -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+                 <label for=”categoria” class=''> Categoria </label>
+            </div>
+            <div class="col-9 col-lg-3">
+                <input type=”text” name=”categoria” id=”categoria” class='form-control is-invalid' placeholder="Calzado">
+            </div>
+        </div>
+        <br>
+        <!-- Precio -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+                <label for=”precio” class=''> Precio </label>
+            </div>
+            <div class="col-9 col-lg-3">
+                <input type=”number” name=”precio” id=”precio” class='form-control is-valid' placeholder="100">
+            </div>
+        </div>
+        <br>
+        <!-- Stock inicial -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+                <label for=”stockIni” class=''> Stock inicial </label>
+            </div>
+            <div class="col-9 col-lg-3">
+                <input type=”number” name=”stockIni” id=”stockIni” class='form-control' placeholder="1">
+            </div>
+        </div>
+        <br>
+        <!-- Stock reposicion -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+                <label for=”stockRepo” class=''> Stock reposición </label>
+            </div>
+            <div class="col-9 col-lg-3">
+                <input type=”number” name=”stockRepo” id=”stockRepo” class='form-control' placeholder="0">
+            </div>
+        </div>
+        <br>
+        <!-- Descripción -->
+        <div class='row'>
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+                <label for=”descripcion” id='descripcion'> Descripción </label>
+            </div>
+            <div class="col-9 col-lg-3">
+                <textarea name=”descripcion” class='form-control'></textarea>
+            </div>
+        </div>
+        <br>
+        <!-- Imagen -->
+        <div class="row">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+            <label for="image">Imagen</label>
+            </div>
+            <div class="col-9 col-lg-5">
+            <input type="file" class="form-control-file" id="image">
+            </div>
+          </div>
+        <br>
+        <!-- Boton -->
+        <div class="row">
+            <div class="col-12 col-lg-8 text-right">
+                <button type=”submit” class='btn btn-success'> Enviar </button >
+            </div>
+        </div>
     </form>
+    <br>
+    <footer>
+      <br>
+      <div class="row">
+        <p class="col-12 text-center">
+          Copyright © 2019 Talabartería El Palenque. Todos los Derechos Reservados.
+        </p>
+        <p class="col-12 text-center">
+          El uso de este sitio web implica la aceptación de los Términos y Condiciones y de las Políticas de Privacidad de Talabartería El Palenque. Las fotos son a modo ilustrativo. La venta de cualquiera de los productos publicados está sujeta a la verificación de stock. Los precios online para los productos presentados/publicados en www.elpalenque.com.ar son válidos exclusivamente para la compra vía internet en la página antes mencionada.
+        </p>
+      </div>
+
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
