@@ -1,6 +1,6 @@
 Descripcion: Market de una talabarteria
-Nuestro sitio comercializaría productos de cuero como billeteras, cinturones, carteras y bolsos.
-La audiencia objetivo serían las personas que buscan productos de alta calidad, realizados con un material noble como es el cuero que tiene una gran importancia en las tradiciones de nuestro país.
+Nuestro sitio comercializarï¿½a productos de cuero como billeteras, cinturones, carteras y bolsos.
+La audiencia objetivo serï¿½an las personas que buscan productos de alta calidad, realizados con un material noble como es el cuero que tiene una gran importancia en las tradiciones de nuestro paï¿½s.
 
 
 
@@ -12,3 +12,6 @@ https://la-fusta.com.ar
 
 Sitio de referencia como Ecommerce:
 https://mercadolibre.com.ar
+
+Trello:
+https://trello.com/b/YY3HOiiV/e-commerce
