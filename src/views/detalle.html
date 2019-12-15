@@ -5,27 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detalle del producto</title>
 
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css integrity="sha384ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detalle.css">
     <script src="https://kit.fontawesome.com/e71094d6fb.js"></script>
   </head>
   <body>
+    <!--  Encabezado-->
+  
     <header class="main-header">
+      
       <!-- Logo -->
       <div class="logo">
-        <a href="/index">
+        <a href="/">
           <img
             src="https://via.placeholder.com/300x50"
             alt="Logo El Palenque"
           />
         </a>
       </div>
+
       <!-- Buscador -->
       <div class="buscador">
         <form>
@@ -36,10 +35,10 @@
 
       <!-- Carrito -->
       <div class="cart-container">
-        <button class="btn btn-secondary cart" type="button">
+        <button class="btn btn-secondary cart"  type="button" data-toggle="collapse" data-target="#show-cart">
           <img src="/images/cart.png" alt="Carrito" />
         </button>
-        <div class="cart-products">
+        <div class="cart-products collapse" id="show-cart"><!-- hidden-->
             <div class="cart-product">
                 <img src="https://via.placeholder.com/20" alt="Producto1"  />
                 <div class="cart-product-info">
@@ -57,13 +56,22 @@
             </div>
 
         </div>
+      
       </div>
+  
     </header>
 
-    <nav class="container nav-menu">
-      <ul class="navbar-nav">
+    <!--  Navbar -->
+    
+      <nav class="navbar navbar-custom navbar-expand-lg navbar-dark">
+       
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-toggler" aria-controls="nav-toggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="nav-toggler">
+      <ul class="navbar-nav w-100 justify-content-around">
         <li class="nav-item active">
-          <a class="nav-link" href="/index">Inicio</a>
+          <a class="nav-link" href="/">Inicio</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Talabartería</a>
@@ -81,22 +89,46 @@
           <a class="nav-link" href="#">Calzado</a>
         </li>
       </ul>
+    </div>
+ 
+
     </nav>
+    <!-- Fin Navbar -->
 
 
     <img src="https://via.placeholder.com/250x500" alt="Imagen del producto" class="imgprod">
-    
-<div class="producto">
-<h1> Nombre del producto</h1> <br>
-<h5> Codigo del producto </h5><br>  
-<h5> Descripción</h5> <br>
-<h1> $000.000</h1> <br>
-<img src="https://via.placeholder.com/250x100" alt="">
-<h5> Cantidad</h5> <br>
-<button>Comprar</button>
-</div>
+<div class="row">
+  <div class="producto">
+  <h1> Nombre del producto</h1> <br>
+  <h5> Codigo del producto </h5><br>  
+  <h5> Descripción</h5> <br>
+  <h1> $000.000</h1> <br>
+  <img src="https://via.placeholder.com/250x100" alt="">
+  <h5> Cantidad</h5> <br>
+  <button>Comprar</button>
+  </div>
 
-<div class="descripcion">Caracteristicas</div>
+  <div class="descripcion">Caracteristicas</div>
+  </div>
 
+  
+ <!-- Footer -->
+ <br>
+ <footer>
+   <br>
+   <div class="row">
+     <p class="col-12 text-center">
+       Copyright © 2019 Talabartería El Palenque. Todos los Derechos Reservados.
+     </p>
+     <p class="col-12 text-center">
+       El uso de este sitio web implica la aceptación de los Términos y Condiciones y de las Políticas de Privacidad de Talabartería El Palenque. Las fotos son a modo ilustrativo. La venta de cualquiera de los productos publicados está sujeta a la verificación de stock. Los precios online para los productos presentados/publicados en www.elpalenque.com.ar son válidos exclusivamente para la compra vía internet en la página antes mencionada.
+     </p>
+   </div>
+
+ </footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
