@@ -11,7 +11,10 @@
 </head>
 <body>
   <header>
-    <div class="d-flex justify-content-between">
+    <!--  Encabezado-->
+  
+    <header class="main-header">
+      
       <!-- Logo -->
       <div class="logo">
         <a href="/">
@@ -21,58 +24,75 @@
           />
         </a>
       </div>
+
       <!-- Buscador -->
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Ando buscando..." aria-label="Search">
-        <button class="btn btn-light my-2 my-sm-0" type="submit">Buscar</button>
-      </form>
+      <div class="buscador">
+        <form>
+          <input type="text" name="search" placeholder="Ando buscando..." />
+          <input type="submit" name="submit" value="Buscar" class="btn" />
+        </form>
+      </div>
+
       <!-- Carrito -->
       <div class="cart-container">
-      <button class="btn btn-secondary cart" type="button">
-        <img src="/images/cart.png" alt="Carrito" />
-      </button>
-      <div class="cart-products">
-          <div class="cart-product">
-              <img src="https://via.placeholder.com/20" alt="Producto1"  />
-              <div class="cart-product-info">
-                  <span class="cantidad">1</span>
-                  <p>Producto1</p>
-                  <p>$50,00</p>
-                  <p class="cambiar-cantidad">
-                      <button>-</button>
-                      <button>+</button>
-                  </p>
-                  <p class="cart-product-delete">
-                      <button>Eliminar</button>
-                  </p>
-              </div>
-          </div>
-      </div>
-      </div>
-    </div>
-    <!-- Barra navegación -->
-    <ul class="row">
-      <li class="col-12 col-md-6 col-lg-2 text-center">
-        <a class="nav-link" href="/">INICIO</a>
-      </li>
-      <li class="col-12 col-md-6 col-lg-2 text-center">
-        <a class="nav-link" href="#">TALABARTERÍA</a>
-      </li>
-      <li class="col-12 col-md-6 col-lg-2 text-center">
-        <a class="nav-link" href="#">MARROQUINERÍA</a>
-      </li>
-      <li class="col-12 col-md-6 col-lg-2 text-center">
-        <a class="nav-link" href="#">PLATERÍA</a>
-      </li>
-      <li class="col-12 col-md-6 col-lg-2 text-center">
-        <a class="nav-link" href="#">VESTIMENTA</a>
-      </li>
-      <li class="col-12 col-md-6 col-lg-2 text-center">
-        <a class="nav-link" href="#">CALZADO</a>
-      </li>
-    </ul>
-  </header>
+        <button class="btn btn-secondary cart"  type="button" data-toggle="collapse" data-target="#show-cart">
+          <img src="/images/cart.png" alt="Carrito" />
+        </button>
+        <div class="cart-products collapse" id="show-cart"><!-- hidden-->
+            <div class="cart-product">
+                <img src="https://via.placeholder.com/20" alt="Producto1"  />
+                <div class="cart-product-info">
+                    <span class="cantidad">1</span>
+                    <p>Producto1</p>
+                    <p>$50,00</p>
+                    <p class="cambiar-cantidad">
+                        <button>-</button>
+                        <button>+</button>
+                    </p>
+                    <p class="cart-product-delete">
+                        <button>Eliminar</button>
+                    </p>
+                </div>
+            </div>
 
+        </div>
+      
+      </div>
+  
+    </header>
+
+    <!--  Navbar -->
+    
+      <nav class="navbar navbar-custom navbar-expand-lg navbar-dark">
+       
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-toggler" aria-controls="nav-toggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="nav-toggler">
+      <ul class="navbar-nav w-100 justify-content-around">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Talabartería</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Marroquinería</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Platería</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Vestimenta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Calzado</a>
+        </li>
+      </ul>
+    </div>
+ 
+
+    </nav><!-- Fin Navbar -->
     <br>
     <!-- Titulo -->
     <div class="row">
@@ -225,6 +245,9 @@
        
     </form>
     <br>
+
+
+    <!-- Footer -->
     <footer>
       <br>
       <div class="row">
