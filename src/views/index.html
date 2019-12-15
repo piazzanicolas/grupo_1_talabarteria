@@ -18,21 +18,18 @@
   
     <header class="main-header">
       
-      <!-- Logo -->
-      <div class="logo">
-        <a href="/">
-          <img
-            src="https://via.placeholder.com/300x50"
-            alt="Logo El Palenque"
-          />
-        </a>
-      </div>
+    <!-- Logo -->
+
+      <a class="navbar-brand logo" href="/">El Palenque</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></ span>
+      </button>
 
       <!-- Buscador -->
       <div class="buscador">
         <form>
           <input type="text" name="search" placeholder="Ando buscando..." />
-          <input type="submit" name="submit" value="Buscar" class="btn" />
+          <input type="submit" name="submit" value="Buscar" class="btn btn-secondary" />
         </form>
       </div>
 
@@ -73,8 +70,14 @@
         </button>
     <div class="collapse navbar-collapse" id="nav-toggler">
       <ul class="navbar-nav w-100 justify-content-around">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Inicio</a>
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" 
+          href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Inicio
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/carga">Cargar producto</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Talabartería</a>
@@ -180,7 +183,9 @@
           <div class="row">
                 <!-- Producto -->
                 <div class="card product">
+                    <a href="/detalle">
                     <img src="https://via.placeholder.com/50" class="card-img-top" alt="Producto1"/>
+                    </a>
                     <div class="card-body">
                         <h5 class="card-title">Silla de Montar</h5>
                         <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur laborum fuga mollitia ab optio corporis amet, voluptatibus veniam, inventore doloremque nesciunt impedit cum ratione, neque architecto assumenda odio! Debitis, officiis.</p>
@@ -193,7 +198,9 @@
 
                 <!-- Producto -->
                 <div class="card product">
+                  <a href="/detalle">
                   <img src="https://via.placeholder.com/50" class="card-img-top" alt="Producto1"/>
+                  </a>
                   <div class="card-body">
                       <h5 class="card-title">Silla de Montar</h5>
                       <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur laborum fuga mollitia ab optio corporis amet, voluptatibus veniam, inventore doloremque nesciunt impedit cum ratione, neque architecto assumenda odio! Debitis, officiis.</p>
@@ -206,7 +213,9 @@
 
               <!-- Producto -->
               <div class="card product">
+                <a href="/detalle">
                 <img src="https://via.placeholder.com/50" class="card-img-top" alt="Producto1"/>
+                </a>
                 <div class="card-body">
                     <h5 class="card-title">Silla de Montar</h5>
                     <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur laborum fuga mollitia ab optio corporis amet, voluptatibus veniam, inventore doloremque nesciunt impedit cum ratione, neque architecto assumenda odio! Debitis, officiis.</p>
@@ -219,7 +228,9 @@
 
             <!-- Producto -->
             <div class="card product">
+              <a href="/detalle">
               <img src="https://via.placeholder.com/50" class="card-img-top" alt="Producto1"/>
+              </a>
               <div class="card-body">
                   <h5 class="card-title">Silla de Montar</h5>
                   <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur laborum fuga mollitia ab optio corporis amet, voluptatibus veniam, inventore doloremque nesciunt impedit cum ratione, neque architecto assumenda odio! Debitis, officiis.</p>
@@ -277,6 +288,18 @@
   </div>
   <!-- Fin Central-->
 
+  <!-- Footer -->
+  <footer>
+    <br>
+    <div class="row">
+      <p class="col-12 text-center">
+        Copyright © 2019 Talabartería El Palenque. Todos los Derechos Reservados.
+      </p>
+      <p class="col-12 text-center">
+        El uso de este sitio web implica la aceptación de los Términos y Condiciones y de las Políticas de Privacidad de Talabartería El Palenque. Las fotos son a modo ilustrativo. La venta de cualquiera de los productos publicados está sujeta a la verificación de stock. Los precios online para los productos presentados/publicados en www.elpalenque.com.ar son válidos exclusivamente para la compra vía internet en la página antes mencionada.
+      </p>
+    </div>
+  </footer>
   
 </body>
 </html>

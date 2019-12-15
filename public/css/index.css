@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Montez&display=swap');
 
 * {
   box-sizing: border-box;
@@ -19,6 +19,15 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+
+.logo {
+  padding: 5px 20px;
+  font-family: 'Montez', cursive;
+  font-weight: bold;
+  font-size: 4rem;
+  background-color: #232020;
+  color: #fafafa;
 }
 
 /* Carrito */
@@ -239,4 +248,12 @@ a {
 
 .login {
   background-color: #dedef0;
+}
+
+/* Footer */
+
+footer{
+  background-color: black;
+  color: white;
+  font-size: small;
 }
