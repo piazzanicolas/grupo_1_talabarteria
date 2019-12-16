@@ -19,6 +19,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  
 }
 
 .logo {
@@ -236,10 +237,10 @@ a {
 
 /* Login */
 
-.signin {
+/* .signin {
   position: relative;
   left: 10px;
-}
+} */
 
 #forgot {
   text-align: center;
@@ -256,4 +257,5 @@ footer{
   background-color: black;
   color: white;
   font-size: small;
+  
 }
