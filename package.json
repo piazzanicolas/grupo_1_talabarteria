@@ -27,5 +27,6 @@
   "bugs": {
     "url": "https://github.com/Nicz265/grupo_1_talabarteria/issues"
   },
-  "homepage": "https://github.com/Nicz265/grupo_1_talabarteria#readme"
+  "homepage": "https://github.com/Nicz265/grupo_1_talabarteria#readme",
+  "devDependencies": {}
 }
