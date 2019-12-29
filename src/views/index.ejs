@@ -1,0 +1,140 @@
+<%- include('partials/header')  %>
+
+<!-- Carousel-->
+<div id="carousel-promociones" class="carousel slide" data-ride="carousel" data-pause="hover">
+        <div class="carousel-inner list-promociones">
+          <div class="carousel-item active">
+            <h2>ESTA ES LA PROMO #1</h2>
+            <!-- <img src="..." class="d-block w-100" alt="..."> -->
+            <em>oferta del mes</em>
+          </div>
+          <div class="carousel-item">
+              <h2>ESTA ES LA PROMO #2</h2>
+              <!-- <img src="..." class="d-block w-100" alt="..."> -->
+              <em>oferta del mes</em>
+          </div>
+          <div class="carousel-item">
+              <h2>ESTA ES LA PROMO #3</h2>
+              <!-- <img src="..." class="d-block w-100" alt="..."> -->
+              <em>oferta del mes</em>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carousel-promociones" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-promociones" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+</div>
+ <!-- Fin Carousel-->
+
+ <!-- Filtros -->
+ <div class="container">
+   <div class="row">
+        <div class="filtros-container col-2">
+          <div class="titulo-filtros">
+            <p>Filtrar por:</p>
+          </div>
+          <div class="filtro">
+            <p>Categoría</p>
+            <div class="caja-filtro">
+             <input type="checkbox" id="talabarteria" name="categoria"/>
+             <label for="talabarteria">Talabartería</label><br>
+             <input type="checkbox" id="marroquineria" name="categoria"/>
+              <label for="marroquineria">Marroquinería</label><br>
+            </div>
+          </div>
+          <div class="filtro">
+            <p>Precio</p>
+            <div class="caja-filtro">
+                <input type="radio" id="rango1" name="rango" />
+                <label for="rango1">$0-$1.000</label><br>
+                <input type="radio" id="rango2" name="rango" />
+                <label for="rango2">$1.000-$5.000</label><br>
+               
+
+            </div>
+          </div>
+          <div class="filtro">
+            <p>Marca</p>
+            <div class="caja-filtro">
+                <input type="checkbox" id="mustad" name="marca"/>
+                <label for="mustad">Mustad</label><br>
+                <input type="checkbox" id="lamartina" name="marca"/>
+                 <label for="lamartina">La Martina</label><br>
+              
+            </div>
+          </div>
+        </div>
+
+<!-- Product List -->
+<div class="product-container col-sm-3 col-lg-7">
+        <div class="row">
+                <!-- Producto -->
+                <% productos.forEach(producto => { %>
+                <% const {nombre, descripcion, precio, imagen} = producto; %>
+                <div class="card product">
+                    <a href="/detalle">
+                    <img src="/images/<%= imagen %>" class="card-img-top" alt="<%= nombre %>"/>
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= nombre %></h5>
+                        <p class="card-text"><%= descripcion %></p>
+                        <p class="card-text"><%= new Intl.NumberFormat("es-ES", {style: "currency", currency: "USD"}).format(precio) %> / Unidad</p>
+                        <button type="button" class="btn btn-primary btn-cart" >
+                        Añadir al carrito
+                        </button>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+</div>
+
+    <!-- Login-->
+    <aside class="col-3 mt-5 login">
+
+       
+            <h3>Ingresar</h3>
+          
+            <div class="row">
+              
+                <div class="card signin">
+                  <div class="card-body">
+          
+                    <form class= "action="/" method="POST">
+                      <div class="col-12 form-group">
+                        <label for="email" class="login-datos">Email</label>
+                        <input type="email" class="form-control" name="username">
+                      </div>
+                      <div class="col-12 form-group">
+                        <label for="password"class="login-datos">Clave</label>
+                        <input type="password" class="form-control" name="password">
+                      </div>
+                      <button type="submit" class="btn btn-primary" class="btn-login" >Ingresar</button>
+                    </form>
+          
+                  </div>
+                </div>
+            
+            </div>
+
+            <div id="forgot">
+              <a href="#" class="olvido">¿Olvidó su clave?</a>
+            </div>
+
+            <div class="registro text-center">
+            <a class="btn btn-primary" href="/registro" role="button" class="btn-login">Registrarse</a>
+            </div>
+            <br>
+            <div class="registro text-center">
+              <a class="btn btn-primary" href="/carga" role="button" class="btn-login">Carga de producto</a>
+              </div>
+    </aside>
+  
+   </div>
+  </div>
+  <!-- Fin Central-->
+
+  <%- include('partials/footer') %>
