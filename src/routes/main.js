@@ -9,6 +9,6 @@ const mainController = require('../controllers/mainController');
 router.get('/', mainController.root);
 router.get('/registro', mainController.registro);
 router.get('/carga', mainController.cargaProducto);
-router.get('/detalle', mainController.detalle);
+router.get('/detalle/:id', mainController.detalle);
 
 module.exports = router;

@@ -74,15 +74,15 @@
         <div class="row">
                 <!-- Producto -->
                 <% productos.forEach(producto => { %>
-                <% const {nombre, descripcion, precio, imagen} = producto; %>
+                <% const {id, nombre, descripcion, precio, imagen} = producto; %>
                 <div class="card product">
-                    <a href="/detalle">
+                    <a href="/detalle/<%=id%>">
                     <img src="/images/<%= imagen %>" class="card-img-top" alt="<%= nombre %>"/>
                     </a>
                     <div class="card-body">
                         <h5 class="card-title"><%= nombre %></h5>
                         <p class="card-text"><%= descripcion %></p>
-                        <p class="card-text"><%= new Intl.NumberFormat("es-ES", {style: "currency", currency: "USD"}).format(precio) %> / Unidad</p>
+                        <p class="card-text">$<%= precio %> / Unidad</p>
                         <button type="button" class="btn btn-primary btn-cart" >
                         Añadir al carrito
                         </button>

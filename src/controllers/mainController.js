@@ -19,16 +19,15 @@ const controller = {
 		res.render('index', {productos});
 	},
 	registro: (req, res) => {
-		// let html = readHTML('registro');
 		res.render('registro');
 	},
 	cargaProducto: (req, res) => {
-		// let html = readHTML('carga');
 		res.render('carga');
 	},
 	detalle: (req, res) => {
-		// let html = readHTML('detalle');
-		res.render('detalle');
+		let id = req.params.id;
+		producto = getProductos().filter(prod => prod.id == id)[0];
+		res.render('detalle', {producto});
 	},
 };
 
