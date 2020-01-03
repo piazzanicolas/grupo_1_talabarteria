@@ -287,3 +287,16 @@ footer{
   .btn-primary:hover{
     color:#005B49;
   }
+
+
+
+/* HTML REGISTRO */
+.label-registro{
+    position: absolute;
+    right: 0px;
+    bottom: -5%;
+  }
+
+#descripcion{
+    top: 0px;
+  }
