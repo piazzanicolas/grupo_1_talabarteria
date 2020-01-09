@@ -76,7 +76,7 @@
                 <% productos.forEach(producto => { %>
                 <% const {id, nombre, descripcion, precio, imagen} = producto; %>
                 <div class="card product">
-                    <a href="/detalle/<%=id%>">
+                    <a href="products/detalle/<%=id%>">
                     <img src="/images/<%= imagen %>" class="card-img-top" alt="<%= nombre %>"/>
                     </a>
                     <div class="card-body">
@@ -103,7 +103,7 @@
                 <div class="card signin">
                   <div class="card-body">
           
-                    <form class= "action="/" method="POST">
+                    <form action="/" method="POST">
                       <div class="col-12 form-group">
                         <label for="email" class="login-datos">Email</label>
                         <input type="email" class="form-control" name="username">
@@ -125,12 +125,9 @@
             </div>
 
             <div class="registro text-center">
-            <a class="btn btn-primary" href="/registro" role="button" class="btn-login">Registrarse</a>
+            <a class="btn btn-primary" href="/user/registro" role="button" class="btn-login">Registrarse</a>
             </div>
-            <br>
-            <div class="registro text-center">
-              <a class="btn btn-primary" href="/carga" role="button" class="btn-login">Carga de producto</a>
-              </div>
+            
     </aside>
   
    </div>
