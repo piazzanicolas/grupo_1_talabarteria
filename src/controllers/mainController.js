@@ -18,17 +18,17 @@ const controller = {
 		const productos = getProductos();
 		res.render('index', {productos});
 	},
-	registro: (req, res) => {
-		res.render('registro');
-	},
-	cargaProducto: (req, res) => {
-		res.render('carga');
-	},
-	detalle: (req, res) => {
-		let id = req.params.id;
-		producto = getProductos().filter(prod => prod.id == id)[0];
-		res.render('detalle', {producto});
-	},
+	// registro: (req, res) => {
+	// 	res.render('registro');
+	// },
+	// cargaProducto: (req, res) => {
+	// 	res.render('carga');
+	// },
+	// detalle: (req, res) => {
+	// 	let id = req.params.id;
+	// 	producto = getProductos().filter(prod => prod.id == id)[0];
+	// 	res.render('detalle', {producto});
+	// },
 };
 
 module.exports = controller

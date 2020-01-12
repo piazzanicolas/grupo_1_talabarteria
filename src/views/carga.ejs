@@ -10,16 +10,16 @@
       </div>
       <br>
     <!-- Formulario -->
-    <form action=”validar.php” method=”POST” class='container'> 
+    <form action='/products/carga' method='POST'> 
 
         <!-- Nombre -->
         <div class='row'>
             <div class="col-0 col-lg-3"></div>
             <div class="col-3 col-lg-2">
-                <label for=”nombre” class='label-registro'> Nombre </label>
+                <label for='nombre' class='label-registro'> Nombre </label>
             </div>
             <div class="col-9 col-lg-3">
-                <input type=”text” name=”nombre” id=”nombre” class='form-control' placeholder="Producto">
+                <input type='text' name='nombre' id='nombre' class='form-control'>
             </div>
         </div>
         <br>
@@ -27,10 +27,10 @@
         <div class='row'>
             <div class="col-0 col-lg-3"></div>
             <div class="col-3 col-lg-2">
-                 <label for=”categoria” class='label-registro'> Categoria </label>
+                 <label for='categoria' class='label-registro'> Categoria </label>
             </div>
             <div class="col-9 col-lg-3">
-                <input type=”text” name=”categoria” id=”categoria” class='form-control is-invalid' placeholder="Calzado">
+                <input type='text' name='categoria' id='categoria' class='form-control'>
             </div>
         </div>
         <br>
@@ -38,26 +38,26 @@
         <div class='row'>
             <div class="col-0 col-lg-3"></div>
             <div class="col-3 col-lg-2">
-                <label for=”precio” class='label-registro'> Precio </label>
+                <label for='precio' class='label-registro'> Precio </label>
             </div>
             <div class="col-9 col-lg-3">
-                <input type=”number” name=”precio” id=”precio” class='form-control is-valid' placeholder="100">
+                <input type='number' name='precio' id='precio' class='form-control'>
             </div>
         </div>
         <br>
-        <!-- Stock inicial -->
+        <!-- Color -->
         <div class='row'>
             <div class="col-0 col-lg-3"></div>
             <div class="col-3 col-lg-2">
-                <label for=”stockIni” class='label-registro'> Stock inicial </label>
+                <label for='color' class='label-registro'> Color </label>
             </div>
             <div class="col-9 col-lg-3">
-                <input type=”number” name=”stockIni” id=”stockIni” class='form-control' placeholder="1">
+                <input type='text' name='color' id='color' class='form-control'>
             </div>
         </div>
         <br>
         <!-- Stock reposicion -->
-        <div class='row'>
+        <!-- <div class='row'>
             <div class="col-0 col-lg-3"></div>
             <div class="col-3 col-lg-2">
                 <label for=”stockRepo” class='label-registro'> Stock reposición </label>
@@ -65,16 +65,16 @@
             <div class="col-9 col-lg-3">
                 <input type=”number” name=”stockRepo” id=”stockRepo” class='form-control' placeholder="0">
             </div>
-        </div>
-        <br>
+        </div> -->
+        <!-- <br> -->
         <!-- Descripción -->
         <div class='row'>
             <div class="col-0 col-lg-3"></div>
             <div class="col-3 col-lg-2">
-                <label for=”descripcion” class='label-registro' id='descripcion'> Descripción </label>
+                <label for='descripcion' class='label-registro' id='descripcion'> Descripción </label>
             </div>
             <div class="col-9 col-lg-3">
-                <textarea name=”descripcion” class='form-control'></textarea>
+                <input type='textarea' name='descripcion' class='form-control'></input>
             </div>
         </div>
         <br>
@@ -82,17 +82,17 @@
         <div class="row">
             <div class="col-0 col-lg-3"></div>
             <div class="col-3 col-lg-2">
-            <label for="image" class="label-registro">Imagen</label>
+            <label for='image' class='label-registro'>Imagen</label>
             </div>
             <div class="col-9 col-lg-5">
-            <input type="file" class="form-control-file" id="image">
+            <input type='file' class='form-control-file' id='image' enctype='multipart/form-data'>
             </div>
           </div>
         <br>
         <!-- Boton -->
         <div class="row">
             <div class="col-12 col-lg-8 text-right">
-                <button type=”submit” class='btn btn-success'> Enviar </button >
+                <button type='submit' class='btn btn-success'> Enviar </button >
             </div>
         </div>
     </form>
