@@ -15,8 +15,10 @@
     "inquirer": "^7.0.0",
     "method-override": "^3.0.0",
     "morgan": "~1.9.1",
+    "multer": "^1.4.2",
     "node-fetch": "^2.6.0",
-    "nodemon": "^2.0.1"
+    "nodemon": "^2.0.1",
+    "sweetalert2": "^9.5.4"
   },
   "description": "Descripcion: Market de una talabarteria Nuestro sitio comercializar�a productos de cuero como billeteras, cinturones, carteras y bolsos. La audiencia objetivo ser�an las personas que buscan productos de alta calidad, realizados con un material noble como es el cuero que tiene una gran importancia en las tradiciones de nuestro pa�s.",
   "main": "index.js",

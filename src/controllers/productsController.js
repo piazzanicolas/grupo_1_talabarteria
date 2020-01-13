@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const swal = require('sweetalert2');
 
 const getProductos =  () => {
 	const url = path.join(__dirname, `/../db/dbProductos.json`);
@@ -9,6 +10,15 @@ const getProductos =  () => {
 const saveProductos = (productos) => {
 	const url = path.join(__dirname, `/../db/dbProductos.json`);
 	fs.writeFileSync(url, JSON.stringify(productos, null, ' '));
+}
+
+const generateId = () => {
+	let products = getProductos();
+	if (products.length == 0) {
+		return 1;
+	}
+	let lastProduct = products.pop();
+	return lastProduct.id + 1;
 }
 
 const controller = {
@@ -23,15 +33,15 @@ const controller = {
 	listado: (req, res) => {
 
 	},
-	guardar: (req, res) => {
+	guardar: (req, res, next) => {
 		let productos = getProductos();
 
 		let producto = {
-			id: productos.length + 1,
+			id: generateId(),
 			nombre: req.body.nombre,
 			descripcion: req.body.descripcion,
 			precio: req.body.precio,
-			imagen: null,
+			imagen: req.file.filename,
 			categoria: req.body.categoria,
 			color: req.body.color,
 		}
@@ -41,7 +51,8 @@ const controller = {
 			producto,
 		];
 		saveProductos(productos);
-		res.status(200).redirect('/products/carga');
+		res.status(200).redirect('/');
+		
 	},
 	editar: (req, res) => {
 

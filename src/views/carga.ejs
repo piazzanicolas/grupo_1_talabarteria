@@ -10,7 +10,7 @@
       </div>
       <br>
     <!-- Formulario -->
-    <form action='/products/carga' method='POST'> 
+    <form action='/products/carga' method='POST' enctype='multipart/form-data'> 
 
         <!-- Nombre -->
         <div class='row'>
@@ -85,7 +85,7 @@
             <label for='image' class='label-registro'>Imagen</label>
             </div>
             <div class="col-9 col-lg-5">
-            <input type='file' class='form-control-file' id='image' enctype='multipart/form-data'>
+            <input type='file' class='form-control-file' name='image'>
             </div>
           </div>
         <br>

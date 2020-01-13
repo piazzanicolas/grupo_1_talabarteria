@@ -36,11 +36,11 @@
   "color": "negro"
  },
  {
-  "id": 5,
-  "nombre": "Mate",
-  "descripcion": "Mate artesanal.",
-  "precio": "499",
-  "imagen": null,
+  "id": 6,
+  "nombre": "Matecito",
+  "descripcion": "Muy bueno.",
+  "precio": "990",
+  "imagen": "image-1578872826109.jpg",
   "categoria": "Platería",
   "color": "Gris"
  }
