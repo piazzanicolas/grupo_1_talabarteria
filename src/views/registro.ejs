@@ -9,7 +9,7 @@
     </div>
     <br>
     <!-- Formulario -->
-    <form action=”validar.php” method=”POST” class='container'> 
+    <form action='/user/registro' method='POST' class='container'> 
 
         <!-- Nombre -->
         <div class='row'>
@@ -18,7 +18,7 @@
               <label for=”nombre” class='label-registro'> Nombre </label>
             </div>
             <div class="col-9 col-lg-3">
-              <input type=”text” name=”nombre” id=”nombre” class='form-control' placeholder="Juan">
+              <input type=”text” name='usuario_nombre' id=”nombre” class='form-control' placeholder="Juan">
             </div>
         </div>
         <br>
@@ -29,7 +29,7 @@
               <label for=”apellido” class='label-registro'> Apellido </label>
             </div>
             <div class="col-9 col-lg-3">
-              <input type=”text” name=”apellido” id=”apellido” class='form-control' placeholder="Perez">
+              <input type=”text” name='usuario_apellido' id=”apellido” class='form-control' placeholder="Perez">
             </div>
         </div>
         <br>
@@ -40,7 +40,7 @@
               <label for=”email” class='label-registro'> E-mail </label>
             </div>
             <div class="col-9 col-lg-3">
-              <input type=”email” name=”email” id=”email” class='form-control'   placeholder="ejemplo@ejemplo.com">
+              <input type=”email” name='usuario_email' id=”email” class='form-control'   placeholder="ejemplo@ejemplo.com">
             </div>
         </div>
         <br>
@@ -51,7 +51,7 @@
               <label for=”calle” class='label-registro'> Calle </label>
             </div>
             <div class="col-9 col-lg-3">
-              <input type=”text” name=”calle” id=”calle” class='form-control' placeholder="Lima">
+              <input type=”text” name='usuario_calle' id=”calle” class='form-control' placeholder="Lima">
             </div>
         </div>
         <br>
@@ -62,7 +62,7 @@
               <label for=”calleNumero” class='label-registro'> Numero </label>
             </div>
             <div class="col-9 col-lg-3">
-              <input type=”number” name=”calleNumero” id=”calleNumero” class='form-control' placeholder="1234">
+              <input type=”number” name='usuario_calleNumero' id=”calleNumero” class='form-control' placeholder="1234">
             </div>
         </div>
         <br>
@@ -73,7 +73,7 @@
               <label for='piso'class='label-registro'> Piso. Departamento </label>
             </div>
             <div class="col-9 col-lg-3">
-              <input type='text' name='piso' id='piso' class='form-control' placeholder="4B">
+              <input type='text' name='usuario_piso' id='piso' class='form-control' placeholder="4B">
             </div>
         </div>
         <br>
@@ -84,7 +84,7 @@
               <label for='localidad' class='label-registro'> Localidad </label>
             </div>
             <div class="col-9 col-lg-3">
-              <input type='text' name='localidad' id='localidad' class='form-control' placeholder="Capital Federal">
+              <input type='text' name='usuario_localidad' id='localidad' class='form-control' placeholder="Capital Federal">
             </div>
         </div>
         <br>
@@ -95,7 +95,7 @@
               <label for='provincia' class='label-registro'> Provincia </label>
             </div>
             <div class="col-9 col-lg-3">
-              <input type='text' name='provincia' id='provincia' class='form-control' placeholder="Buenos Aires">
+              <input type='text' name='usuario_provincia' id='provincia' class='form-control' placeholder="Buenos Aires">
             </div>
         </div>
         <br>
@@ -106,7 +106,7 @@
               <label for='pais' class='label-registro'> País </label>
             </div>
             <div class="col-9 col-lg-3">
-              <input type='text' name='pais' id='pais' class='form-control' placeholder="Argentina">
+              <input type='text' name='usuario_pais' id='pais' class='form-control' placeholder="Argentina">
             </div>
         </div>
         <br>
@@ -117,7 +117,7 @@
               <label for='postal' class='label-registro'> Cód. Postal </label>
             </div>
             <div class="col-9 col-lg-3">
-              <input type='text' name='postal' id='postal' class='form-control' placeholder="1101">
+              <input type='text' name='usuario_postal' id='postal' class='form-control' placeholder="1101">
             </div>
         </div>
         <br>
@@ -128,7 +128,7 @@
               <label for='telefono' class='label-registro'> Teléfono </label>
             </div>
             <div class="col-9 col-lg-3">
-              <input type='tel' name='telefono' id='telefono' class='form-control is-valid' placeholder="1112345678">
+              <input type='tel' name='usuario_telefono' id='telefono' class='form-control is-valid' placeholder="1112345678">
             </div>
         </div>
         <br>
@@ -139,7 +139,7 @@
             <label for='nacimiento' class='label-registro'> Fecha de nacimiento </label>
           </div>
           <div class="col-9 col-lg-3">
-              <input type='date' name='nacimiento' id='nacimiento' placeholder="01/01/2000" class="form-control is-invalid">
+              <input type='date' name='usuario_nacimiento' id='nacimiento' placeholder="01/01/2000" class="form-control is-invalid">
           </div>
         </div>
         <br>

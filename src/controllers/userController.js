@@ -7,18 +7,45 @@ const path = require('path');
 // 	let htmlFile = fs.readFileSync(filePath, 'utf-8');
 // 	return htmlFile;
 // }
+const url = path.join(__dirname, `/../db/dbUsuarios.json`);
 
-const getUsuarios =  () => {
-	const url = path.join(__dirname, `/../db/dbUsuarios.json`);
-	return JSON.parse(fs.readFileSync(url, {encoding: 'utf-8'}));
+function readJSON () {
+	let dataJSON = fs.readFileSync(url, 'utf-8');
+	let arrayUsers;
+	if (dataJSON == '') {
+		arrayUsers = [];
+	} else {
+		arrayUsers = JSON.parse(dataJSON);
+	}
+	return arrayUsers;
+}
+
+function storeUser (dataFromUserToSave) {
+	let allUsers = readJSON();
+	allUsers.push(dataFromUserToSave);
+	fs.writeFileSync(url, JSON.stringify(allUsers, null, ' '));
+}
+
+function generateUserId () {
+	let allUsers = readJSON();
+	return allUsers == '' ? 1 : allUsers.pop().usuario_id + 1;
 }
 
 const controller = {
 	
-	registro: (req, res) => {
+	registroForm: (req, res) => {
 		res.render('registro');
 	},
-	
+
+	saveUser: (req,res,next) => {
+		res.send('Usuario guardado');
+		let dataFromUser = {
+			usuario_id: generateUserId(),
+			...req.body,
+		};
+		storeUser(dataFromUser);
+		res.redirect('/');
+	}
 };
 
 module.exports = controller
