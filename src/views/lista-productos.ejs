@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+
+<div class="card border-primary mb-3">
+    <div class="card-body text-primary">
+      <h5 class="card-title">Listado de Productos</h5>
+  
+      <div class="my-2 text-left">
+        <a class="btn btn-rounded btn-primary" role="button" href="/products/carga/">Crear Producto</a>
+      </div>
+  
+      <table class="table table-bordered table-striped">  
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>imagen</th>
+            <th>nombre</th>
+            <th>descripción</th>
+            <th>precio</th>
+            <th>categoría</th>
+            <th>color</th>
+            <th>
+                editar
+            </th>
+          </tr>
+        </thead>
+  
+        <tbody>
+            <% productos.forEach( producto => { %>
+            <% const {id,nombre,descripcion,precio,imagen,categoria,color} = producto;  %>
+          <tr>
+            <td><%= id %></td>
+            <td>
+                <img src="/images/<%=imagen%>" alt="<%= nombre %>" width="100">
+            </td>
+            <td><%= nombre %></td>
+            <td><%= descripcion %></td>
+            <td><%= precio %></td>
+            <td><%= categoria %></td>
+            <td><%= color %></td>
+            <td>
+                <a href="/products/<%= id %>/edit" role="button" name="edit" class="btn btn-secondary btn-block">editar</button>
+                <a href="#" role="button" name="delete" class="btn btn-danger btn-block">borrar</button>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <%- include('partials/footer') %>

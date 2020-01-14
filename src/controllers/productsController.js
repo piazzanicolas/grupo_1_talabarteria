@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const swal = require('sweetalert2');
 
 const getProductos =  () => {
 	const url = path.join(__dirname, `/../db/dbProductos.json`);
@@ -31,7 +30,8 @@ const controller = {
 		res.render('detalle', {producto});
 	},
 	listado: (req, res) => {
-
+		let productos = getProductos();
+		res.render('lista-productos', {productos});
 	},
 	guardar: (req, res, next) => {
 		let productos = getProductos();
@@ -51,14 +51,17 @@ const controller = {
 			producto,
 		];
 		saveProductos(productos);
-		res.status(200).redirect('/');
+		return res.status(200).redirect('/');
 		
 	},
 	editar: (req, res) => {
-
+		let producto = getProductos().find( prod => prod.id == req.params.id );
+		res.render('editar-producto', {producto});
 	},
 	guardarCambios: (req, res) => {
-
+		let producto = getProductos().find( prod => prod.id == req.params.id );
+		producto.imagen = req.file.filename || producto.imagen;
+		res.json(producto)
 	},
 	borrar: (req, res) => {
 

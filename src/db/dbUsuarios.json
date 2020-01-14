@@ -1,0 +1,17 @@
+[
+ {
+  "usuario_id": 1,
+  "usuario_nombre": "aaslksa",
+  "usuario_apellido": "lkl",
+  "usuario_email": "1@23.com",
+  "usuario_calle": "fsñs",
+  "usuario_calleNumero": "1222",
+  "usuario_piso": "fff",
+  "usuario_localidad": "ffs",
+  "usuario_provincia": "fsf",
+  "usuario_pais": "sfs",
+  "usuario_postal": "11",
+  "usuario_telefono": "",
+  "usuario_nacimiento": "2020-01-14"
+ }
+]
