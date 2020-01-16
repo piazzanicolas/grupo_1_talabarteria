@@ -35,6 +35,9 @@ const controller = {
 	},
 	guardar: (req, res, next) => {
 		let productos = getProductos();
+		if (productos == '' ){
+			productos = []
+		}
 
 		let producto = {
 			id: generateId(),
@@ -58,13 +61,31 @@ const controller = {
 		let producto = getProductos().find( prod => prod.id == req.params.id );
 		res.render('editar-producto', {producto});
 	},
-	guardarCambios: (req, res) => {
+	editarCambios: (req, res) => {	
 		let producto = getProductos().find( prod => prod.id == req.params.id );
-		producto.imagen = req.file.filename || producto.imagen;
-		res.json(producto)
-	},
-	borrar: (req, res) => {
+		producto.imagen = req.file ? req.file.filename : producto.imagen;
+		producto.nombre = req.body.nombre;
+		producto.descripcion =  req.body.descripcion;
+		producto.precio =  req.body.precio;
+		producto.categoria =  req.body.categoria;
+		producto.color =  req.body.color;
 
+		 		
+		let todos = getProductos();
+		let pos = todos.findIndex(prod => prod.id == producto.id)
+		todos[pos] = producto;
+		saveProductos(todos);
+		
+		res.redirect('/products')
+
+	}, 
+	borrar: (req, res) => {
+		let todos = getProductos()
+		let producto = getProductos().find( prod => prod.id == req.params.id );
+		let pos = todos.findIndex(prod => prod.id == producto.id);
+		todos.splice(pos,1);
+		saveProductos(todos);
+		res.redirect('/products')
 	}
 };
 

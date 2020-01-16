@@ -2,8 +2,8 @@
  {
   "id": 1,
   "nombre": "Cartera azul",
-  "descripcion": "Nuestra línea de bolsos urbanos, con caída, versátiles, amplios, livianos y funcionales",
-  "precio": 7490,
+  "descripcion": " Nuestra línea de bolsos urbanos, con caída, versátiles, amplios, livianos y funcionales ",
+  "precio": "7490",
   "imagen": "image--030.jpg",
   "categoria": "marroquineria",
   "color": "azul"

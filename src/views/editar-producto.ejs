@@ -12,7 +12,7 @@
     <!-- Formulario -->
       <% const {id,nombre,descripcion,precio,imagen,categoria,color} = producto %>
 
-    <form action='/products/<%= id %>' method='?_method=PUT' enctype='multipart/form-data'> 
+    <form action="/products/<%= id %>/edit?_method=PUT" method="POST" enctype="multipart/form-data"> 
 
         <!-- Nombre -->
         <div class='row'>
@@ -64,7 +64,7 @@
                 <label for='descripcion' class='label-registro' id='descripcion'> Descripción </label>
             </div>
             <div class="col-9 col-lg-3">
-                <input type='textarea' name='descripcion' class='form-control' value='<%=descripcion%>'></input>
+                <textarea name='descripcion' class='form-control'> <%=descripcion%> </textarea>
             </div>
         </div>
         <br>

@@ -74,7 +74,7 @@
         <div class="row">
                 <!-- Producto -->
                 <% productos.forEach(producto => { %>
-                <% const {id, nombre, descripcion, precio, imagen} = producto; %>
+                <% const  {id,nombre,descripcion,precio,imagen,categoria,color} = producto; %>
                 <div class="card product">
                     <a href="products/detalle/<%=id%>">
                     <img src="/images/<%= imagen %>" class="card-img-top" alt="<%= nombre %>"/>
