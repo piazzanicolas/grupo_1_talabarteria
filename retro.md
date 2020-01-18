@@ -8,7 +8,7 @@ Comunicar las desiciones individuales que tomamos.
 Revisar el código de el otro para comprenderlo, buscar como optimizarlo y unificar estilos.
 
 4. Hacer menos
-
+-
 
 5. Dejar de hacer
 Esperar a que un compañero termine su parte para comenzar la siguiente.

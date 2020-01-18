@@ -5,8 +5,8 @@
   "descripcion": " Nuestra línea de bolsos urbanos, con caída, versátiles, amplios, livianos y funcionales ",
   "precio": "7490",
   "imagen": "image--030.jpg",
-  "categoria": "marroquineria",
-  "color": "azul"
+  "categoria": "Marroquineria",
+  "color": "Azul"
  },
  {
   "id": 2,
@@ -14,8 +14,8 @@
   "descripcion": "rediseñamos la línea tradicional de bolsos icónicos como el baúl, el bolso vtote, la mochila, la bandolera",
   "precio": 7990,
   "imagen": "image--034.jpg",
-  "categoria": "marroquineria",
-  "color": "carmesi"
+  "categoria": "Marroquineria",
+  "color": "Carmesi"
  },
  {
   "id": 3,
@@ -23,8 +23,8 @@
   "descripcion": "la colección posee una línea de cinturones con estética vintage, de cueros rústicos especialmente elegidos, herrajes con baños gastados y terminaciones típicas del estilo",
   "precio": 3990,
   "imagen": "image--002.jpg",
-  "categoria": "marroquineria",
-  "color": "marron"
+  "categoria": "Marroquineria",
+  "color": "Marron"
  },
  {
   "id": 4,
@@ -32,8 +32,8 @@
   "descripcion": "Nos actualizamos con las corrientes del diseño minimalista para la realización de nuevos productos, simples, funcionales y tecnológicos.",
   "precio": 3490,
   "imagen": "image--004.jpg",
-  "categoria": "marroquineria",
-  "color": "negro"
+  "categoria": "Marroquineria",
+  "color": "Negro"
  },
  {
   "id": 6,
