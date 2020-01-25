@@ -300,3 +300,45 @@ footer{
 #descripcion{
     top: 0px;
   }
+
+  /* LISTA PRODUCTOS */
+thead tr {
+  text-align: center;
+}
+
+.fa-trash-o {
+background-color: palevioletred; 
+color: black;
+}
+
+.fa-pencil-square-o {
+background-color: dodgerblue; 
+color: black;
+}
+
+.edit-button{
+  background-color: dodgerblue;
+  margin-bottom: 10px;
+}
+
+.edit-button:hover {
+  background-color: lightseagreen;
+  border: 1px solid #FEFBEC;
+}
+.edit-button:active {
+  background-color:blue;
+  border: 1px solid #FEFBEC;
+}
+
+.delete-button{
+  background-color: palevioletred;
+}
+
+.delete-button:hover {
+  background-color: tomato;
+  border: 1px solid #FEFBEC;
+}
+.delete-button:active {
+  background-color: red;
+  border: 1px solid #FEFBEC;
+}

@@ -54,7 +54,7 @@ const controller = {
 			producto,
 		];
 		saveProductos(productos);
-		return res.status(200).redirect('/');
+		return res.status(201).redirect('/');
 		
 	},
 	editar: (req, res) => {
@@ -76,7 +76,7 @@ const controller = {
 		todos[pos] = producto;
 		saveProductos(todos);
 		
-		res.redirect('/products')
+		return res.redirect('/products')
 
 	}, 
 	borrar: (req, res) => {
@@ -85,7 +85,7 @@ const controller = {
 		let pos = todos.findIndex(prod => prod.id == producto.id);
 		todos.splice(pos,1);
 		saveProductos(todos);
-		res.redirect('/products')
+		return res.redirect('/products');
 	}
 };
 

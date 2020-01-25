@@ -36,12 +36,12 @@
   "color": "Negro"
  },
  {
-  "id": 6,
-  "nombre": "Matecito",
-  "descripcion": "Muy bueno.",
-  "precio": "990",
-  "imagen": "image-1578872826109.jpg",
-  "categoria": "Platería",
-  "color": "Gris"
+  "id": 5,
+  "nombre": "Mate",
+  "descripcion": "un buen matecio",
+  "precio": 334,
+  "imagen": "image-1579978305847.jpg",
+  "categoria": "Talabarteria",
+  "color": "Negro"
  }
 ]

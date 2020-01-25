@@ -6,6 +6,8 @@ const logger = require('morgan');
 const path = require('path');
 const multer = require('multer');
 const methodOverride = require('method-override');
+const session = require('express-session');
+const userCookieMiddleware = require('./middlewares/userCookieMiddleware');
 
 // ************ express() - (don't touch) ************
 const app = express();
@@ -17,6 +19,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(methodOverride('_method'));
+app.use(session({
+  secret: 'GRUPO 1',
+  resave: false,
+  saveUninitialized: true
+}))
 
 
 // ************ Template Engine - (don't touch) ************
