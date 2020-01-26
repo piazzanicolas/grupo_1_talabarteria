@@ -4,7 +4,6 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
-const multer = require('multer');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const userCookieMiddleware = require('./middlewares/userCookieMiddleware');
@@ -23,7 +22,8 @@ app.use(session({
   secret: 'GRUPO 1',
   resave: false,
   saveUninitialized: true
-}))
+}));
+app.use(userCookieMiddleware);
 
 
 // ************ Template Engine - (don't touch) ************

@@ -1,51 +1,90 @@
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require('bcrypt');
 
-// ************ Function to Read an HTML File ************
-// function readHTML (fileName) {
-// 	let filePath = path.join(__dirname, `/../views/${fileName}.html`);
-// 	let htmlFile = fs.readFileSync(filePath, 'utf-8');
-// 	return htmlFile;
-// }
-const url = path.join(__dirname, `/../db/dbUsuarios.json`);
+const usersPath = path.join(__dirname, `/../db/dbUsuarios.json`);
 
-function readJSON () {
-	let dataJSON = fs.readFileSync(url, 'utf-8');
-	let arrayUsers;
-	if (dataJSON == '') {
-		arrayUsers = [];
-	} else {
-		arrayUsers = JSON.parse(dataJSON);
-	}
+
+// Helper Functions
+function getUsuarios () {
+	let usersDataFile = fs.readFileSync(usersPath, 'utf-8');
+	let arrayUsers = usersDataFile == '' ? [] : JSON.parse(usersDataFile);
 	return arrayUsers;
 }
 
 function storeUser (dataFromUserToSave) {
-	let allUsers = readJSON();
+	let allUsers = getUsuarios();
+	dataFromUserToSave = {
+		id: generateUserId(),
+		...dataFromUserToSave
+	};
 	allUsers.push(dataFromUserToSave);
-	fs.writeFileSync(url, JSON.stringify(allUsers, null, ' '));
+	fs.writeFileSync(usersPath, JSON.stringify(allUsers, null, ' '));
+	return dataFromUserToSave;
 }
 
 function generateUserId () {
-	let allUsers = readJSON();
-	return allUsers == '' ? 1 : allUsers.pop().usuario_id + 1;
+	let allUsers = getUsuarios();
+	return allUsers == '' ? 1 : allUsers.pop().id + 1;
 }
 
+function getUserByEmail(email){
+	let users = getUsuarios();
+	let userByEmail = users.find( user => user.email == email );
+	return userByEmail;
+}
+
+function getUserById(id){
+	let users = getUsuarios();
+	let userById = users.find( user => user.id == id);
+	return userById;
+}
+
+// Controller Methods
 const controller = {
-	
 	registroForm: (req, res) => {
 		res.render('registro');
 	},
 
-	saveUser: (req,res,next) => {
-		res.send('Usuario guardado');
-		let dataFromUser = {
-			usuario_id: generateUserId(),
-			...req.body,
-		};
-		storeUser(dataFromUser);
-		res.redirect('/');
+	saveUser: (req,res) => {
+		req.body.password = bcrypt.hashSync(req.body.password, 11);
+		delete req.body.re_password;
+		req.body.avatar = req.file.filename;
+		let user = storeUser(req.body);
+		req.session.userId = user.id;
+		res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
+		return res.redirect('/user/profile');
+	},
+	login: (req, res) => {
+		return res.redirect('/');
+	},
+	processLogin: (req, res) => {
+		let user = getUserByEmail(req.body.email);
+		if (user != undefined) {
+			if (bcrypt.compareSync(req.body.password, user.password)){
+				req.session.userId = user.id;
+				if (req.body.remember_user){
+					res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
+				}
+				return res.redirect('user/profile');
+			} else {
+				res.send('Alguno de los datos es incorrecto.');
+			}
+
+		} else {
+			res.send('Alguno de los datos es incorrecto.')
+		}
+	},
+	profile: (req, res) => {
+		let userLogged = getUserById(req.session.userId);
+		res.render('profile', { userLogged });
+	},
+	logout: (req, res) => {
+		req.session.destroy();
+		res.cookie('userCookie',null,{ maxAge: -1 });
+		return res.redirect('/');
 	}
+
 };
 
 module.exports = controller
