@@ -83,5 +83,22 @@
   "email": "5@a.com",
   "password": "$2b$11$tUhc0VILo.VlYoHsOH7M4OZAIviGc0TUgwrEPOpCzUSa7hFWrCB/a",
   "avatar": "avatar-1580067574538.jpg"
+ },
+ {
+  "id": 6,
+  "nombre": "julian",
+  "apellido": "asdasd",
+  "calle": "sadasd",
+  "calleNumero": "asdasd",
+  "piso": "asdasd",
+  "localidad": "asdasd",
+  "provincia": "asdasd",
+  "pais": "asdasd",
+  "postal": "asdasd",
+  "telefono": "asdasd",
+  "nacimiento": "",
+  "email": "sdasd",
+  "password": "$2b$11$WKVTPFsxi6iicvoeQfcsf.5YYL7aL6s3aJcr8x5R3VCdP9F0DVopu",
+  "avatar": "avatar-1580333418338.jpg"
  }
 ]
