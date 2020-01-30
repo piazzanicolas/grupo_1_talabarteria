@@ -11,128 +11,138 @@
     <!-- Formulario -->
     <form action="/user/registro" method="POST" enctype="multipart/form-data" class="container"> 
 
-        <!-- Nombre -->
+      <div class="row">
+        <h2>Datos inicio de sesión</h2>
+      </div>  
+
+      <br>
+
+      <div class="row">
+        <!-- Email -->
+        <div class="col-3 col-lg-1">
+          <label for=”email” class="label-registro"> E-mail: </label>
+        </div>
+        <div class="col-9 col-lg-3">
+          <input type=”email” name="email" id=”email” class="form-control">
+        </div>
+        <!--  Password-->
+        <div class="col-3 col-lg-1">
+          <label for="password" class="label-registro"> Constraseña: </label>
+        </div>
+        <div class="col-9 col-lg-2">
+          <input type="password" name="password" id="password" class="form-control">
+        </div>
+        <div class="invalid-feedback">
+        </div>
+        <!-- Repetir Password-->
+        <div class="col-3 col-lg-2">
+          <label for="re_password" class="label-registro"> Repetir Contraseña: </label>
+        </div>
+        <div class="col-9 col-lg-2">
+          <input type="password" name="re_password" id="re_password" class="form-control">
+        </div>
+        <div class="invalid-feedback">
+        </div>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="row">
+        <h2>Información personal</h2>
+      </div>  
+
+      <br>
+
         <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-              <label for=”nombre” class="label-registro"> Nombre </label>
+          <!-- Nombre -->
+            <div class="col-3 col-lg-1">
+              <label for=”nombre” class="label-registro"> Nombre: </label>
             </div>
-            <div class="col-9 col-lg-3">
+            <div class="col-9 col-lg-4">
               <input type=”text” name="nombre" id=”nombre” class="form-control">
             </div>
-        </div>
-        <br>
-        <!-- Apellido -->
-        <div class="row">
-            <div class="col-0 col-lg-3"></div>
+            <!-- Apellido -->
             <div class="col-3 col-lg-2">
-              <label for=”apellido” class="label-registro"> Apellido </label>
+              <label for=”apellido” class="label-registro"> Apellido: </label>
             </div>
-            <div class="col-9 col-lg-3">
+            <div class="col-9 col-lg-4">
               <input type=”text” name="apellido" id=”apellido” class="form-control">
             </div>
         </div>
+
         <br>
-        
-        <!-- Calle -->
+      
         <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-              <label for=”calle” class="label-registro"> Calle </label>
+          <!-- Teléfono -->
+          <div class="col-3 col-lg-1">
+            <label for="telefono" class="label-registro"> Teléfono: </label>
+          </div>
+          <div class="col-9 col-lg-4">
+            <input type="tel" name="telefono" id="telefono" class="form-control">
+          </div>
+          <!-- Fecha de nacimiento -->
+          <div class="col-3 col-lg-2">
+          <label for="nacimiento" class="label-registro"> Fecha de nacimiento: </label>
+        </div>
+        <div class="col-9 col-lg-4">
+            <input type="date" name="nacimiento" id="nacimiento" class="form-control">
+        </div>
+      </div>
+
+      <br>
+
+        <div class="row">
+          <!-- Calle -->
+            <div class="col-3 col-lg-1">
+              <label for=”calle” class="label-registro"> Calle: </label>
             </div>
-            <div class="col-9 col-lg-3">
+            <div class="col-9 col-lg-2">
               <input type=”text” name="calle" id=”calle” class="form-control">
             </div>
-        </div>
-        <br>
-        <!-- Numero de Calle -->
-        <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-              <label for=”calleNumero” class="label-registro"> Numero </label>
+            <!-- Numero de Calle -->
+            <div class="col-3 col-lg-1">
+              <label for=”calleNumero” class="label-registro"> Numero: </label>
             </div>
-            <div class="col-9 col-lg-3">
+            <div class="col-9 col-lg-2">
               <input type=”number” name="calleNumero" id=”calleNumero” class="form-control">
             </div>
-        </div>
-        <br>
-        <!-- Piso. Departamento -->
-        <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2 text-right">
-              <label for="piso"class="label-registro"> Piso. Departamento </label>
+            <!-- Piso. Departamento -->
+            <div class="col-3 col-lg-2">
+              <label for="piso"class="label-registro"> Piso-Departamento: </label>
             </div>
             <div class="col-9 col-lg-3">
               <input type="text" name="piso" id="piso" class="form-control">
             </div>
         </div>
         <br>
-        <!-- Localidad -->
+        
         <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-              <label for="localidad" class="label-registro"> Localidad </label>
+          <!-- Código Postal -->
+          <div class="col-3 col-lg-1">
+            <label for="postal" class="label-registro"> CP: </label>
+          </div>
+          <div class="col-9 col-lg-2">
+            <input type="text" name="postal" id="postal" class="form-control">
+          </div>
+            <!-- Provincia -->
+            <div class="col-3 col-lg-1">
+              <label for="provincia" class="label-registro"> Provincia: </label>
             </div>
-            <div class="col-9 col-lg-3">
-              <input type="text" name="localidad" id="localidad" class="form-control">
-            </div>
-        </div>
-        <br>
-        <!-- Provincia -->
-        <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-              <label for="provincia" class="label-registro"> Provincia </label>
-            </div>
-            <div class="col-9 col-lg-3">
+            <div class="col-9 col-lg-2">
               <input type="text" name="provincia" id="provincia" class="form-control">
             </div>
-        </div>
-        <br>
-        <!-- Pais -->
-        <div class="row">
-            <div class="col-0 col-lg-3"></div>
+            <!-- Pais -->
             <div class="col-3 col-lg-2">
-              <label for="pais" class="label-registro"> País </label>
+              <label for="pais" class="label-registro"> País: </label>
             </div>
             <div class="col-9 col-lg-3">
               <input type="text" name="pais" id="pais" class="form-control">
             </div>
         </div>
+
         <br>
-        <!-- Código Postal -->
-        <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2 text-right">
-              <label for="postal" class="label-registro"> Cód. Postal </label>
-            </div>
-            <div class="col-9 col-lg-3">
-              <input type="text" name="postal" id="postal" class="form-control">
-            </div>
-        </div>
-        <br>
-        <!-- Teléfono -->
-        <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-              <label for="telefono" class="label-registro"> Teléfono </label>
-            </div>
-            <div class="col-9 col-lg-3">
-              <input type="tel" name="telefono" id="telefono" class="form-control">
-            </div>
-        </div>
-        <br>
-        <!-- Fecha de nacimiento -->
-        <div class="row">
-          <div class="col-0 col-lg-3"></div>
-          <div class="col-3 col-lg-2 text-right">
-            <label for="nacimiento" class="label-registro"> Fecha de nacimiento </label>
-          </div>
-          <div class="col-9 col-lg-3">
-              <input type="date" name="nacimiento" id="nacimiento" class="form-control">
-          </div>
-        </div>
-        <br>
+
         <!-- Imagen -->
         <div class="row">
           <div class="col-0 col-lg-3"></div>
@@ -143,54 +153,18 @@
           <input type="file" class="form-control-file" name="avatar">
           </div>
         </div>
-      <br>
-      <!-- Email -->
-      <div class="row">
-        <div class="col-0 col-lg-3"></div>
-        <div class="col-3 col-lg-2">
-          <label for=”email” class="label-registro"> E-mail </label>
-        </div>
-        <div class="col-9 col-lg-3">
-          <input type=”email” name="email" id=”email” class="form-control">
-        </div>
-      </div>
-      <br>
-      <!--  Password-->
-      <div class="row">
-        <div class="col-0 col-lg-3"></div>
-        <div class="col-3 col-lg-2">
-          <label for="password" class="label-registro"> Password: </label>
-        </div>
-        <div class="col-9 col-lg-3">
-          <input type="password" name="password" id="password" class="form-control">
-        </div>
-        <div class="invalid-feedback">
-        </div>
-      </div>
-      <br>
-      <!-- Repetir Password-->
-      <div class="row">
-        <div class="col-0 col-lg-3"></div>
-        <div class="col-3 col-lg-2">
-          <label for="re_password" class="label-registro"> Repetir Password: </label>
-        </div>
-        <div class="col-9 col-lg-3">
-          <input type="password" name="re_password" id="re_password" class="form-control">
-        </div>
-        <div class="invalid-feedback">
-        </div>
-      </div>
-      <br>
 
+      <br>
     
         <!-- Boton -->
         <div class="row">
-          <div class="col-12 col-lg-8 text-right">
+          <div class="col-12 col-lg-6 text-right">
               <button type=”submit” class="btn btn-success"> Enviar </button >
           </div>
         </div>
        
     </form>
+
     <br>
     </div>
 
