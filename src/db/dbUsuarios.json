@@ -100,5 +100,21 @@
   "email": "sdasd",
   "password": "$2b$11$WKVTPFsxi6iicvoeQfcsf.5YYL7aL6s3aJcr8x5R3VCdP9F0DVopu",
   "avatar": "avatar-1580333418338.jpg"
+ },
+ {
+  "id": 7,
+  "email": "lucas",
+  "password": "$2b$11$OM5Ae/B6oSNdWhdJYFTPbe0qSx0exahfu0FRl1W7.vEUk9G41Vnh6",
+  "nombre": "asdasd",
+  "apellido": "asdasd",
+  "telefono": "asdasd",
+  "nacimiento": "2020-02-13",
+  "calle": "asdasd",
+  "calleNumero": "asdasd",
+  "piso": "asdasd",
+  "postal": "asdasd",
+  "provincia": "asdasd",
+  "pais": "asdasd",
+  "avatar": "avatar-1580593376504.jpg"
  }
 ]

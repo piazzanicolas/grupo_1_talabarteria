@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const {validationResult} = require('express-validator');
 
 const usersPath = path.join(__dirname, `/../db/dbUsuarios.json`);
 
@@ -47,13 +48,28 @@ const controller = {
 	},
 
 	saveUser: (req,res) => {
-		req.body.password = bcrypt.hashSync(req.body.password, 11);
-		delete req.body.re_password;
-		req.body.avatar = req.file.filename;
-		let user = storeUser(req.body);
-		req.session.userId = user.id;
-		res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
-		return res.redirect('/user/profile');
+
+		const hasErrorGetMessage = (field, errorsView) => {
+			for (const oneError of errorsView) {
+				if (oneError.param == field) {
+					return oneError.msg;
+				}
+			}
+			return false;
+		}
+
+		let errorsResult = validationResult(req);
+		if (!errorsResult.isEmpty()){
+			return res.render('registro', {errors: errorsResult.array(), hasErrorGetMessage: hasErrorGetMessage, OldData: req.body});
+		} else {
+			req.body.password = bcrypt.hashSync(req.body.password, 11);
+			delete req.body.re_password;
+			req.body.avatar = req.file.filename;
+			let user = storeUser(req.body);
+			req.session.userId = user.id;
+			res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
+			return res.redirect('/user/profile');
+		}
 	},
 	login: (req, res) => {
 		return res.redirect('/');
