@@ -116,5 +116,21 @@
   "provincia": "asdasd",
   "pais": "asdasd",
   "avatar": "avatar-1580593376504.jpg"
+ },
+ {
+  "id": 8,
+  "email": "10@y.com",
+  "password": "$2b$11$BWqr1o.I14Pj5ap7LecAdeHNTzJJV90NEkZwFiYyTtWLqlqHqW6S6",
+  "nombre": "juan",
+  "apellido": "perez",
+  "telefono": "11",
+  "nacimiento": "1980-01-01",
+  "calle": "Peru",
+  "calleNumero": "345",
+  "piso": "1",
+  "postal": "111",
+  "provincia": "cff",
+  "pais": "Arg",
+  "avatar": "avatar-1580669780107.png"
  }
 ]

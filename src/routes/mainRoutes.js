@@ -7,7 +7,7 @@ const mainController = require('../controllers/mainController');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 
 /* GET - home page. */
-router.get('/', guestMiddleware , mainController.root);
+router.get('/', mainController.root);
 
 
 module.exports = router;

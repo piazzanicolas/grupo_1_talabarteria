@@ -95,38 +95,17 @@
     <!-- Login-->
     <aside class="col-3 mt-5 login">
 
-       
-            <h3>Ingresar</h3>
-          
-            <div class="row">
-              
-                <div class="card signin">
-                  <div class="card-body">
-          
-                    <form action="/" method="POST">
-                      <div class="col-12 form-group">
-                        <label for="email" class="login-datos">Email</label>
-                        <input type="email" class="form-control" name="username">
-                      </div>
-                      <div class="col-12 form-group">
-                        <label for="password"class="login-datos">Clave</label>
-                        <input type="password" class="form-control" name="password">
-                      </div>
-                      <button type="submit" class="btn btn-primary" class="btn-login" >Ingresar</button>
-                    </form>
-          
-                  </div>
-                </div>
-            
-            </div>
+      <% if ( locals.isLogged ) { %>
+        
+        <a href="/user/logout" >
+          <span style="color: white; text-align: center;">Salir</span>
+        </a>
 
-            <div id="forgot">
-              <a href="#" class="olvido">¿Olvidó su clave?</a>
-            </div>
+        <% } else { %>
 
-            <div class="registro text-center">
-            <a class="btn btn-primary" href="/user/registro" role="button" class="btn-login">Registrarse</a>
-            </div>
+       <%- include('partials/login') %>
+
+      <% } %>
             
     </aside>
   

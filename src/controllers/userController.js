@@ -63,6 +63,7 @@ const controller = {
 			return res.render('registro', {errors: errorsResult.array(), hasErrorGetMessage: hasErrorGetMessage, OldData: req.body});
 		} else {
 			req.body.password = bcrypt.hashSync(req.body.password, 11);
+			delete req.body.password;
 			delete req.body.re_password;
 			req.body.avatar = req.file.filename;
 			let user = storeUser(req.body);
@@ -78,11 +79,12 @@ const controller = {
 		let user = getUserByEmail(req.body.email);
 		if (user != undefined) {
 			if (bcrypt.compareSync(req.body.password, user.password)){
+				delete user.password;
 				req.session.userId = user.id;
 				if (req.body.remember_user){
 					res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
 				}
-				return res.redirect('user/profile');
+				return res.redirect('/user/profile');
 			} else {
 				res.send('Alguno de los datos es incorrecto.');
 			}
