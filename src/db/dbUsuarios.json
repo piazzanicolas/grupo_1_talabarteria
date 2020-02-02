@@ -103,18 +103,18 @@
  },
  {
   "id": 7,
-  "email": "lucas",
-  "password": "$2b$11$OM5Ae/B6oSNdWhdJYFTPbe0qSx0exahfu0FRl1W7.vEUk9G41Vnh6",
-  "nombre": "asdasd",
-  "apellido": "asdasd",
-  "telefono": "asdasd",
-  "nacimiento": "2020-02-13",
-  "calle": "asdasd",
-  "calleNumero": "asdasd",
-  "piso": "asdasd",
-  "postal": "asdasd",
-  "provincia": "asdasd",
-  "pais": "asdasd",
-  "avatar": "avatar-1580593376504.jpg"
+  "email": "piazza_nicolas@hotmail.com",
+  "password": "$2b$11$WffJbdErBqoKDmxjn/XkG.JgmpK1m5hW3NeHs/qKWvt7UnoQV8K6i",
+  "nombre": "a",
+  "apellido": "a",
+  "telefono": "a",
+  "nacimiento": "2019-10-08",
+  "calle": "a",
+  "calleNumero": "a",
+  "piso": "a",
+  "postal": "a",
+  "provincia": "a",
+  "pais": "a",
+  "avatar": "avatar-1580675738263.jpg"
  }
 ]

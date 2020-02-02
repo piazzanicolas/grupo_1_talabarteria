@@ -82,7 +82,7 @@ const controller = {
 				if (req.body.remember_user){
 					res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
 				}
-				return res.redirect('user/profile');
+				return res.redirect('/user/profile');
 			} else {
 				res.send('Alguno de los datos es incorrecto.');
 			}
