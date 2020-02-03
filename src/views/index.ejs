@@ -95,16 +95,54 @@
     <!-- Login-->
     <aside class="col-3 mt-5 login">
 
-      <% if (typeof locals.user !== 'undefined' ) { %>
-        
-        <a href="/user/logout" >
-          <span style="color: white; text-align: center;">Salir</span>
-        </a>
-
-        <% } else { %>
-
-       <%- include('partials/login') %>
-
+      <% if ( locals.isLogged ) { %>
+        <br>
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-8">
+            <a class="btn btn-primary" href="/user/profile" role="button" class="btn-login">Perfil</a>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-9">
+            <a class="btn btn-danger" href="/user/logout" role="button" class="btn-login">Cerrar Sesión</a>
+          </div>
+        </div>
+      <% } else { %>
+        <h3>Ingresar</h3>
+          
+          <div class="row">
+            <div class="card signin">
+              <div class="card-body">
+          
+                <form action="/user/login" method="POST">
+                  <div class="col-12 form-group">
+                    <label for="email" class="login-datos">Email</label>
+                    <input type="email" class="form-control" name="email">
+                  </div>
+                  <div class="col-12 form-group">
+                    <label for="password"class="login-datos">Clave</label>
+                    <input type="password" class="form-control" name="password">
+                  </div>
+                    <div class="col-12 form-group">
+                      <label>
+                        <input type="checkbox" name="remember">
+                        Recordarme
+                      </label>
+                    </div>
+                      <button type="submit" class="btn btn-primary" class="btn-login" >Ingresar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div id="forgot">
+            <a href="#" class="olvido">¿Olvidó su clave?</a>
+          </div>
+          <div class="registro text-center">
+            <a class="btn btn-primary" href="/user/registro" role="button" class="btn-login">Registrarse</a>
+          </div>
       <% } %>
             
     </aside>

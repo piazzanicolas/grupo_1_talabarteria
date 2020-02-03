@@ -100,5 +100,21 @@
   "email": "sdasd",
   "password": "$2b$11$WKVTPFsxi6iicvoeQfcsf.5YYL7aL6s3aJcr8x5R3VCdP9F0DVopu",
   "avatar": "avatar-1580333418338.jpg"
+ },
+ {
+  "id": 7,
+  "email": "piazza_nicolas@hotmail.com",
+  "password": "$2b$11$7y8wsql/zx2Z1RWOYtaI.OpaQDxG14CZV5GpabRfEQJmI68eTF7ga",
+  "nombre": "a",
+  "apellido": "a",
+  "telefono": "a",
+  "nacimiento": "2020-02-02",
+  "calle": "a",
+  "calleNumero": "a",
+  "piso": "a",
+  "postal": "a",
+  "provincia": "a",
+  "pais": "a",
+  "avatar": "avatar-1580765344340.png"
  }
 ]

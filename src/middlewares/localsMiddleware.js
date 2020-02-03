@@ -1,8 +1,12 @@
 function localsMiddleware (req, res, next) {
+	res.locals.isLogged = false;
 
-    // res.locals.mensajes = req.flash();
-    res.locals.user = req.session.user ? req.session.user : undefined;
-    next();
+	if (req.session.user != undefined) {
+		res.locals.isLogged = true;
+		res.locals.user = req.session.user;
+	}
+	
+	next();
 }
 
 module.exports = localsMiddleware;
