@@ -82,7 +82,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= nombre %></h5>
                         <p class="card-text"><%= descripcion %></p>
-                        <p class="card-text">$<%= precio %> / Unidad</p>
+                        <p class="card-text">$<%= toThousand(precio) %> / Unidad</p>
                         <button type="button" class="btn btn-primary btn-cart" >
                         Añadir al carrito
                         </button>
@@ -95,7 +95,7 @@
     <!-- Login-->
     <aside class="col-3 mt-5 login">
 
-      <% if ( locals.isLogged ) { %>
+      <% if (typeof locals.user !== 'undefined' ) { %>
         
         <a href="/user/logout" >
           <span style="color: white; text-align: center;">Salir</span>

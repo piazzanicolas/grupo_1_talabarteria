@@ -63,11 +63,12 @@ const controller = {
 			return res.render('registro', {errors: errorsResult.array(), hasErrorGetMessage: hasErrorGetMessage, OldData: req.body});
 		} else {
 			req.body.password = bcrypt.hashSync(req.body.password, 11);
-			delete req.body.password;
 			delete req.body.re_password;
 			req.body.avatar = req.file.filename;
 			let user = storeUser(req.body);
-			req.session.userId = user.id;
+			
+			req.session.user = user;
+			res.locals.user = user;
 			res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
 			return res.redirect('/user/profile');
 		}
@@ -79,8 +80,9 @@ const controller = {
 		let user = getUserByEmail(req.body.email);
 		if (user != undefined) {
 			if (bcrypt.compareSync(req.body.password, user.password)){
-				delete user.password;
-				req.session.userId = user.id;
+				
+				req.session.user = user;
+				res.locals.user = user;
 				if (req.body.remember_user){
 					res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
 				}
@@ -94,11 +96,13 @@ const controller = {
 		}
 	},
 	profile: (req, res) => {
-		let userLogged = getUserById(req.session.userId);
+		let userLogged = getUserById(req.session.user.id);
+		res.locals.user = req.session.user;
 		res.render('profile', { userLogged });
 	},
 	logout: (req, res) => {
 		req.session.destroy();
+		res.locals.user = undefined;
 		res.cookie('userCookie',null,{ maxAge: -1 });
 		return res.redirect('/');
 	}

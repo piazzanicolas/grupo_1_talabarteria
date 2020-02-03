@@ -100,37 +100,5 @@
   "email": "sdasd",
   "password": "$2b$11$WKVTPFsxi6iicvoeQfcsf.5YYL7aL6s3aJcr8x5R3VCdP9F0DVopu",
   "avatar": "avatar-1580333418338.jpg"
- },
- {
-  "id": 7,
-  "email": "lucas",
-  "password": "$2b$11$OM5Ae/B6oSNdWhdJYFTPbe0qSx0exahfu0FRl1W7.vEUk9G41Vnh6",
-  "nombre": "asdasd",
-  "apellido": "asdasd",
-  "telefono": "asdasd",
-  "nacimiento": "2020-02-13",
-  "calle": "asdasd",
-  "calleNumero": "asdasd",
-  "piso": "asdasd",
-  "postal": "asdasd",
-  "provincia": "asdasd",
-  "pais": "asdasd",
-  "avatar": "avatar-1580593376504.jpg"
- },
- {
-  "id": 8,
-  "email": "10@y.com",
-  "password": "$2b$11$BWqr1o.I14Pj5ap7LecAdeHNTzJJV90NEkZwFiYyTtWLqlqHqW6S6",
-  "nombre": "juan",
-  "apellido": "perez",
-  "telefono": "11",
-  "nacimiento": "1980-01-01",
-  "calle": "Peru",
-  "calleNumero": "345",
-  "piso": "1",
-  "postal": "111",
-  "provincia": "cff",
-  "pais": "Arg",
-  "avatar": "avatar-1580669780107.png"
  }
 ]

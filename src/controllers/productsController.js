@@ -1,6 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
+const toThousand = function (n) {
+	return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+};
+
 const getProductos =  () => {
 	const url = path.join(__dirname, `/../db/dbProductos.json`);
 	return JSON.parse(fs.readFileSync(url, {encoding: 'utf-8'}));
@@ -27,11 +31,11 @@ const controller = {
 	detalle: (req, res) => {
 		let id = req.params.id;
 		producto = getProductos().filter(prod => prod.id == id)[0];
-		res.render('detalle', {producto});
+		res.render('detalle', {producto, toThousand});
 	},
 	listado: (req, res) => {
 		let productos = getProductos();
-		res.render('lista-productos', {productos});
+		res.render('lista-productos', {productos, toThousand});
 	},
 	guardar: (req, res, next) => {
 		let productos = getProductos();
@@ -54,12 +58,12 @@ const controller = {
 			producto,
 		];
 		saveProductos(productos);
-		return res.status(201).redirect('/');
+		return res.status(201).redirect('/', {toThousand});
 		
 	},
 	editar: (req, res) => {
 		let producto = getProductos().find( prod => prod.id == req.params.id );
-		res.render('editar-producto', {producto});
+		res.render('editar-producto', {producto, toThousand});
 	},
 	editarCambios: (req, res) => {	
 		let producto = getProductos().find( prod => prod.id == req.params.id );
@@ -69,14 +73,13 @@ const controller = {
 		producto.precio =  req.body.precio;
 		producto.categoria =  req.body.categoria;
 		producto.color =  req.body.color;
-
-		 		
+	
 		let todos = getProductos();
 		let pos = todos.findIndex(prod => prod.id == producto.id)
 		todos[pos] = producto;
 		saveProductos(todos);
 		
-		return res.redirect('/products')
+		return res.redirect('/products', {toThousand})
 
 	}, 
 	borrar: (req, res) => {
@@ -85,8 +88,8 @@ const controller = {
 		let pos = todos.findIndex(prod => prod.id == producto.id);
 		todos.splice(pos,1);
 		saveProductos(todos);
-		return res.redirect('/products');
+		return res.redirect('/products', {toThousand});
 	}
 };
 
-module.exports = controller
+module.exports = controller;

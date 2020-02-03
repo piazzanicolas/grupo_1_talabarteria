@@ -10,7 +10,7 @@
     <h1><%= nombre %></h1> <br>
     <h5>Cód: <%= id %></h5><br>  
     <h5><%= descripcion %></h5> <br>
-    <h1>$<%= precio %></h1> <br>
+    <h1>$<%= toThousand(precio) %></h1> <br>
     <figure class="medios-de-pago">
       <img src="/images/medios-de-pago.png" alt="Medios de Pago" width=300 height="auto">
     </figure>
