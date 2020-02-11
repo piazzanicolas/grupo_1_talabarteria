@@ -30,83 +30,23 @@
 </div>
  <!-- Fin Carousel-->
 
- <!-- Filtros -->
+
  <div class="container">
    <div class="row">
-        <div class="filtros-container col-4 col-md-4 col-lg-2">
-          <div class="titulo-filtros">
-            <p>Filtrar por:</p>
-          </div>
-          <div class="filtro">
-            <p>Categoría</p>
-            <div class="caja-filtro">
-             <input type="checkbox" id="talabarteria" name="categoria"/>
-             <label for="talabarteria">Talabartería</label><br>
-             <input type="checkbox" id="marroquineria" name="categoria"/>
-              <label for="marroquineria">Marroquinería</label><br>
-            </div>
-          </div>
-          <div class="filtro">
-            <p>Precio</p>
-            <div class="caja-filtro">
-                <input type="radio" id="rango1" name="rango" />
-                <label for="rango1">$0-$1.000</label><br>
-                <input type="radio" id="rango2" name="rango" />
-                <label for="rango2">$1.000-$5.000</label><br>
-               
-
-            </div>
-          </div>
-          <div class="filtro">
-            <p>Marca</p>
-            <div class="caja-filtro">
-                <input type="checkbox" id="mustad" name="marca"/>
-                <label for="mustad">Mustad</label><br>
-                <input type="checkbox" id="lamartina" name="marca"/>
-                 <label for="lamartina">La Martina</label><br>
-              
-            </div>
-          </div>
-        </div>
-
-<!-- Product List -->
-<div class="product-container col-8 col-md-4 col-lg-8">
-        <div class="row">
-                <!-- Producto -->
-                <% productos.forEach(producto => { %>
-                <% const  {id,nombre,descripcion,precio,imagen,categoria,color} = producto; %>
-                <div class="card product">
-                    <a href="products/detalle/<%=id%>">
-                    <img src="/images/<%= imagen %>" class="card-img-top" alt="<%= nombre %>"/>
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title"><%= nombre %></h5>
-                        <p class="card-text"><%= descripcion %></p>
-                        <p class="card-text">$<%= toThousand(precio) %> / Unidad</p>
-                        <button type="button" class="btn btn-primary btn-cart" >
-                        Añadir al carrito
-                        </button>
-                    </div>
-                </div>
-                <% }) %>
-        </div>
-</div>
-
     <!-- Login-->
-    <aside class="col-4 col-md-4 col-lg-2 mt-4 login">
-
+    <aside class="col-sm-12 col-md-3 col-lg-3 mt-4 login">
       <% if ( locals.isLogged ) { %>
         <br>
         <div class="row">
           <div class="col-4"></div>
-          <div class="col-8">
+          <div class="col-4">
             <a class="btn btn-primary" href="/user/profile" role="button" class="btn-login">Perfil</a>
           </div>
         </div>
         <br>
         <div class="row">
           <div class="col-3"></div>
-          <div class="col-9">
+          <div class="col-6">
             <a class="btn btn-danger" href="/user/logout" role="button" class="btn-login">Cerrar Sesión</a>
           </div>
         </div>
@@ -146,7 +86,66 @@
       <% } %>
             
     </aside>
-  
+
+<!-- Product List -->
+<div class="product-container col-sm-12 col-md-6 col-lg-7">
+        <div class="row">
+                <!-- Producto -->
+                <% productos.forEach(producto => { %>
+                <% const  {id,nombre,descripcion,precio,imagen,categoria,color} = producto; %>
+                <div class="card product">
+                    <a href="products/detalle/<%=id%>">
+                    <img src="/images/<%= imagen %>" class="card-img-top" alt="<%= nombre %>"/>
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= nombre %></h5>
+                        <p class="card-text"><%= descripcion %></p>
+                        <p class="card-text">$<%= toThousand(precio) %> / Unidad</p>
+                        <button type="button" class="btn btn-primary btn-cart" >
+                        Añadir al carrito
+                        </button>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+</div>
+      
+      <!-- Filtros -->
+      <div class="filtros-container col-sm-12 col-md-3 col-lg-2">
+        <div class="titulo-filtros">
+          <p>Filtrar por:</p>
+        </div>
+        <div class="filtro">
+          <p>Categoría</p>
+          <div class="caja-filtro">
+          <input type="checkbox" id="talabarteria" name="categoria"/>
+          <label for="talabarteria">Talabartería</label><br>
+          <input type="checkbox" id="marroquineria" name="categoria"/>
+            <label for="marroquineria">Marroquinería</label><br>
+          </div>
+        </div>
+        <div class="filtro">
+          <p>Precio</p>
+          <div class="caja-filtro">
+              <input type="radio" id="rango1" name="rango" />
+              <label for="rango1">$0-$1.000</label><br>
+              <input type="radio" id="rango2" name="rango" />
+              <label for="rango2">$1.000-$5.000</label><br>
+            
+
+          </div>
+        </div>
+        <div class="filtro">
+          <p>Marca</p>
+          <div class="caja-filtro">
+              <input type="checkbox" id="mustad" name="marca"/>
+              <label for="mustad">Mustad</label><br>
+              <input type="checkbox" id="lamartina" name="marca"/>
+              <label for="lamartina">La Martina</label><br>
+            
+          </div>
+        </div>
+      </div>
    </div>
   </div>
   <!-- Fin Central-->
