@@ -1,5 +1,5 @@
 <%- include('partials/header') %>
-      
+
       <br>
       <!-- Titulo -->
       <div class="container">
@@ -16,10 +16,10 @@
         <div class="row">
             <div class="col-0 col-lg-3"></div>
             <div class="col-3 col-lg-2">
-                <label for="nombre" class="label-registro"> Nombre </label>
+                <label for="name" class="label-registro"> Nombre </label>
             </div>
             <div class="col-9 col-lg-3">
-                <input type="text" name="nombre" id="nombre" class="form-control">
+                <input type="text" name="name" id="name" class="form-control">
             </div>
         </div>
         <br>
@@ -27,10 +27,14 @@
         <div class="row">
             <div class="col-0 col-lg-3"></div>
             <div class="col-3 col-lg-2">
-                 <label for="categoria" class="label-registro"> Categoría </label>
+                 <label for="category_id" class="label-registro"> Categoría </label>
             </div>
             <div class="col-9 col-lg-3">
-                <input type="text" name="categoria" id="categoria" class="form-control">
+                <select name="category_id" class="form-control">
+                    <% categories.forEach(category => { %>
+                        <option value="<%= category.id %>"><%= category.name %></option>
+                    <% }) %>
+                </select>
             </div>
         </div>
         <br>
@@ -38,10 +42,36 @@
         <div class="row">
             <div class="col-0 col-lg-3"></div>
             <div class="col-3 col-lg-2">
-                <label for="precio" class="label-registro"> Precio </label>
+                <label for="price" class="label-registro"> Precio </label>
             </div>
             <div class="col-9 col-lg-3">
-                <input type="number" name="precio" id="precio" class="form-control">
+                <input type="number" name="price" id="price" class="form-control">
+            </div>
+        </div>
+        <br>
+        <!-- Marca -->
+        <div class="row">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+                <label for="brand" class="label-registro"> Marca </label>
+            </div>
+            <div class="col-9 col-lg-3">
+                <select name="brand_id" class="form-control">
+                    <% brands.forEach(brand => { %>
+                        <option value="<%= brand.id %>"><%= brand.name %></option>
+                    <% }) %>
+                </select>
+            </div>
+        </div>
+        <br>
+        <!-- Descripcion -->
+        <div class="row">
+            <div class="col-0 col-lg-3"></div>
+            <div class="col-3 col-lg-2">
+                <label for="description" class="label-registro" id="description"> Descripción </label>
+            </div>
+            <div class="col-9 col-lg-3">
+                <input type="textarea" name="description" class="form-control"></input>
             </div>
         </div>
         <br>
@@ -52,17 +82,11 @@
                 <label for="color" class="label-registro"> Color </label>
             </div>
             <div class="col-9 col-lg-3">
-                <input type="text" name="color" id="color" class="form-control">
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-                <label for="descripcion" class="label-registro" id="descripcion"> Descripción </label>
-            </div>
-            <div class="col-9 col-lg-3">
-                <input type="textarea" name="descripcion" class="form-control"></input>
+                <select name="color" class="form-control">
+                    <% colors.forEach(color => { %>
+                        <option value="<%= color.id %>"><%= color.name %></option>
+                    <% }) %>
+                </select>
             </div>
         </div>
         <br>

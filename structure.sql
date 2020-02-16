@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-02-2020 a las 14:54:50
+-- Tiempo de generación: 16-02-2020 a las 21:05:38
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -23,22 +23,23 @@ SET time_zone = "+00:00";
 DROP DATABASE IF EXISTS grupo1;
 CREATE DATABASE grupo1;
 USE grupo1;
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `brand`
+-- Estructura de tabla para la tabla `brands`
 --
 
-CREATE TABLE `brand` (
+CREATE TABLE `brands` (
   `id` int(11) NOT NULL,
   `name` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `brand`
+-- Volcado de datos para la tabla `brands`
 --
 
-INSERT INTO `brand` (`id`, `name`) VALUES
+INSERT INTO `brands` (`id`, `name`) VALUES
 (1, 'La Martina'),
 (2, 'Mustad');
 
@@ -475,9 +476,9 @@ INSERT INTO `user_permission` (`id`, `user_id`, `permission_id`) VALUES
 --
 
 --
--- Indices de la tabla `brand`
+-- Indices de la tabla `brands`
 --
-ALTER TABLE `brand`
+ALTER TABLE `brands`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -541,9 +542,9 @@ ALTER TABLE `user_permission`
 --
 
 --
--- AUTO_INCREMENT de la tabla `brand`
+-- AUTO_INCREMENT de la tabla `brands`
 --
-ALTER TABLE `brand`
+ALTER TABLE `brands`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -580,7 +581,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -609,7 +610,7 @@ ALTER TABLE `color_product`
 -- Filtros para la tabla `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `fk_brand_product` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_brand_product` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_category_product` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
