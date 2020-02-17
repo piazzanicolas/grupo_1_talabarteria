@@ -66,7 +66,10 @@ const controller = {
 	},
 	guardar: (req, res, next) => {
 		Products
-			.create(req.body)
+			.create({
+				...req.body, 
+				image: req.file.filename
+			})
 			.then (product => {
 				product.addColors(req.body.color);
 				res.redirect('/')
@@ -96,7 +99,10 @@ const controller = {
 	},
 	editarCambios: (req, res) => {	
 		Products
-			.update(req.body, {
+			.update({
+				...req.body, 
+				image: req.file.filename
+			},{
 				where: {
 					id: req.params.id
 				},
