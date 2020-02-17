@@ -11,7 +11,15 @@
     <h5><%= product.description %></h5> <br>
     <h5>Marca: <%= product.brand.name %></h5> <br>
     <h5>Categoría: <%= product.category.name %></h5> <br>
-    <h5>Color: <%= product.colors[0].name %></h5> <br>
+    <h5>Colores:</h5>
+    <% product.colors.forEach(color => { %>
+      <ul>
+          <li>
+              <%= color.name %>
+          </li>
+      </ul>
+    <% }) %>
+    <br>
     <h1>$<%= product.price %></h1> <br>
     <figure class="medios-de-pago">
       <img src="/images/medios-de-pago.png" alt="Medios de Pago" width=300 height="auto">

@@ -82,7 +82,7 @@
                 <label for="color" class="label-registro"> Color </label>
             </div>
             <div class="col-9 col-lg-3">
-                <select name="color" class="form-control">
+                <select name="color" class="form-control" multiple>
                     <% colors.forEach(color => { %>
                         <option value="<%= color.id %>"><%= color.name %></option>
                     <% }) %>

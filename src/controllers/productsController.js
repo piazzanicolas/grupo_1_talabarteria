@@ -74,25 +74,39 @@ const controller = {
 			.catch(error => res.send(error));	
 	},
 	editar: (req, res) => {
-		let producto = getProductos().find( prod => prod.id == req.params.id );
-		res.render('editar-producto', {producto, toThousand});
+		Products
+			.findByPk(req.params.id)
+			.then (product => {
+				Categories
+					.findAll()
+					.then (categories => {
+						Brands
+							.findAll()
+							.then (brands => {
+								Colors
+									.findAll()
+									.then (colors => res.render('editar-producto', {product, categories, brands, colors}) )
+									.catch(error => res.send(error));
+							})
+							.catch(error => res.send(error));
+					})
+					.catch(error => res.send(error));
+				})
+			.catch(error => res.send(error));
 	},
 	editarCambios: (req, res) => {	
-		let producto = getProductos().find( prod => prod.id == req.params.id );
-		producto.imagen = req.file ? req.file.filename : producto.imagen;
-		producto.nombre = req.body.nombre;
-		producto.descripcion =  req.body.descripcion;
-		producto.precio =  req.body.precio;
-		producto.categoria =  req.body.categoria;
-		producto.color =  req.body.color;
-	
-		let todos = getProductos();
-		let pos = todos.findIndex(prod => prod.id == producto.id)
-		todos[pos] = producto;
-		saveProductos(todos);
-		
-		return res.redirect('/products', {toThousand})
-
+		Products
+			.update(req.body, {
+				where: {
+					id: req.params.id
+				},
+				include: ['colors']
+			})
+			.then(product => {
+				product.removeColors(product.colors);
+				product.addColors(req.body.color);
+				return res.redirect('/products')})
+			.catch(error => res.send(error));
 	}, 
 	borrar: (req, res) => {
 		Products
@@ -102,7 +116,7 @@ const controller = {
 			.then (product => {
 				product.removeColors(product.colors);
 				product.destroy();
-				return res.redirect('/');
+				return res.redirect('/products');
 		})
 			.catch(error => res.send(error));
 	}

@@ -34,7 +34,11 @@
             <td><%= product.description %></td>
             <td><%= product.price %></td>
             <td><%= product.category.name %></td>
-            <td><%= product.colors[0].name %></td>
+            <td>
+              <% product.colors.forEach(color => { %>
+                <%= color.name %>
+              <% }) %>
+            </td>
             <td><%= product.brand.name %></td>
             <td style="text-align: center;">
           
