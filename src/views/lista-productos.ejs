@@ -18,32 +18,37 @@
             <th>Precio</th>
             <th>Categoría</th>
             <th>Color</th>
+            <th>Marca</th>
             <th>Acción</th>
           </tr>
         </thead>
   
         <tbody>
-            <% productos.forEach( producto => { %>
-            <% const {id,nombre,descripcion,precio,imagen,categoria,color} = producto;  %>
+            <% products.forEach( product => { %>
           <tr>
-            <td><%= id %></td>
+            <td><%= product.id %></td>
             <td>
-                <img src="/images/<%=imagen%>" alt="<%= nombre %>" width="100">
+                <img src="/images/<%= product.image %>" alt="<%= product.name %>" width="100">
             </td>
-            <td><%= nombre %></td>
-            <td><%= descripcion %></td>
-            <td><%= precio %></td>
-            <td><%= categoria %></td>
-            <td><%= color %></td>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td><%= product.price %></td>
+            <td><%= product.category.name %></td>
+            <td>
+              <% product.colors.forEach(color => { %>
+                <%= color.name %>
+              <% }) %>
+            </td>
+            <td><%= product.brand.name %></td>
             <td style="text-align: center;">
           
-                <form action="/products/<%= id %>/edit">
+                <form action="/products/<%= product.id %>/edit">
                   <button class="btn btn-block edit-button">
                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                   </button>  
                 </form> 
                 
-                <form action="/products/<%= id %>/delete?_method=DELETE" method="POST">
+                <form action="/products/<%= product.id %>/delete?_method=DELETE" method="POST">
                   <button class="btn btn-block delete-button" type="submit" 
                     onclick="return confirm('¿Está seguro que quiere eliminar el producto?');">
                   <i class="fa fa-trash-o" aria-hidden="true"></i>

@@ -1,5 +1,10 @@
 const fs = require('fs');
 const path = require('path');
+const db = require('../database/models');
+const Products = db.products;
+const Categories = db.categories;
+const Brands = db.brands;
+const Colors = db.colors;
 
 const toThousand = function (n) {
 	return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -26,69 +31,94 @@ const generateId = () => {
 
 const controller = {
 	cargaProducto: (req, res) => {
-		res.render('carga');
+		Categories
+			.findAll()
+			.then(categories => {
+				Brands
+					.findAll()
+					.then(brands => {
+						Colors
+							.findAll()
+							.then(colors => {
+								return res.render('carga', {categories, brands, colors});
+							})
+							.catch(error => res.send(error));	
+					})
+					.catch(error => res.send(error));			
+		})
+			.catch(error => res.send(error));
 	},
 	detalle: (req, res) => {
-		let id = req.params.id;
-		producto = getProductos().filter(prod => prod.id == id)[0];
-		res.render('detalle', {producto, toThousand});
+		Products
+			.findByPk(req.params.id,{
+				include: ['brand', 'category','colors']
+			})
+			.then (product => res.render('detalle', {product}))
+			.catch(error => res.send(error));
 	},
 	listado: (req, res) => {
-		let productos = getProductos();
-		res.render('lista-productos', {productos, toThousand});
+		Products
+			.findAll({
+				include: ['brand', 'category','colors']
+			})
+			.then (products => res.render('lista-productos', {products}))
+			.catch(error => res.send(error));
 	},
 	guardar: (req, res, next) => {
-		let productos = getProductos();
-		if (productos == '' ){
-			productos = []
-		}
-
-		let producto = {
-			id: generateId(),
-			nombre: req.body.nombre,
-			descripcion: req.body.descripcion,
-			precio: req.body.precio,
-			imagen: req.file.filename,
-			categoria: req.body.categoria,
-			color: req.body.color,
-		}
-
-		productos = [
-			...productos,
-			producto,
-		];
-		saveProductos(productos);
-		return res.status(201).redirect('/', {toThousand});
-		
+		Products
+			.create(req.body)
+			.then (product => {
+				product.addColors(req.body.color);
+				res.redirect('/')
+			})
+			.catch(error => res.send(error));	
 	},
 	editar: (req, res) => {
-		let producto = getProductos().find( prod => prod.id == req.params.id );
-		res.render('editar-producto', {producto, toThousand});
+		Products
+			.findByPk(req.params.id)
+			.then (product => {
+				Categories
+					.findAll()
+					.then (categories => {
+						Brands
+							.findAll()
+							.then (brands => {
+								Colors
+									.findAll()
+									.then (colors => res.render('editar-producto', {product, categories, brands, colors}) )
+									.catch(error => res.send(error));
+							})
+							.catch(error => res.send(error));
+					})
+					.catch(error => res.send(error));
+				})
+			.catch(error => res.send(error));
 	},
 	editarCambios: (req, res) => {	
-		let producto = getProductos().find( prod => prod.id == req.params.id );
-		producto.imagen = req.file ? req.file.filename : producto.imagen;
-		producto.nombre = req.body.nombre;
-		producto.descripcion =  req.body.descripcion;
-		producto.precio =  req.body.precio;
-		producto.categoria =  req.body.categoria;
-		producto.color =  req.body.color;
-	
-		let todos = getProductos();
-		let pos = todos.findIndex(prod => prod.id == producto.id)
-		todos[pos] = producto;
-		saveProductos(todos);
-		
-		return res.redirect('/products', {toThousand})
-
+		Products
+			.update(req.body, {
+				where: {
+					id: req.params.id
+				},
+				include: ['colors']
+			})
+			.then(product => {
+				product.removeColors(product.colors);
+				product.addColors(req.body.color);
+				return res.redirect('/products')})
+			.catch(error => res.send(error));
 	}, 
 	borrar: (req, res) => {
-		let todos = getProductos()
-		let producto = getProductos().find( prod => prod.id == req.params.id );
-		let pos = todos.findIndex(prod => prod.id == producto.id);
-		todos.splice(pos,1);
-		saveProductos(todos);
-		return res.redirect('/products', {toThousand});
+		Products
+			.findByPk(req.params.id, {
+				include: ['colors']
+			})
+			.then (product => {
+				product.removeColors(product.colors);
+				product.destroy();
+				return res.redirect('/products');
+		})
+			.catch(error => res.send(error));
 	}
 };
 

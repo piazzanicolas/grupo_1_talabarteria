@@ -1,20 +1,29 @@
 <%- include('partials/header') %>
 
 <div class="container detalle">
-  <% const {id, nombre, descripcion, precio, imagen} = producto %>
   <div class="row">
     <figure class="product-img col-4">
-      <img src="/images/<%= imagen %>" alt="Imagen del producto" width="100%">
+      <img src="/images/<%= product.image %>" alt="Imagen del producto" width="100%">
     </figure>
   <div class="producto col-6">
-    <h1><%= nombre %></h1> <br>
-    <h5>Cód: <%= id %></h5><br>  
-    <h5><%= descripcion %></h5> <br>
-    <h1>$<%= toThousand(precio) %></h1> <br>
+    <h1><%= product.name %></h1> <br>
+    <h5>Cód: <%= product.id %></h5><br>  
+    <h5><%= product.description %></h5> <br>
+    <h5>Marca: <%= product.brand.name %></h5> <br>
+    <h5>Categoría: <%= product.category.name %></h5> <br>
+    <h5>Colores:</h5>
+    <% product.colors.forEach(color => { %>
+      <ul>
+          <li>
+              <%= color.name %>
+          </li>
+      </ul>
+    <% }) %>
+    <br>
+    <h1>$<%= product.price %></h1> <br>
     <figure class="medios-de-pago">
       <img src="/images/medios-de-pago.png" alt="Medios de Pago" width=300 height="auto">
     </figure>
-    <h5> Cantidad</h5> <br>
     <button class="btn btn-primary">Comprar</button>
     
   </div>

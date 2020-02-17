@@ -91,18 +91,17 @@
 <div class="product-container col-sm-12 col-md-6 col-lg-7">
         <div class="row">
                 <!-- Producto -->
-                <% productos.forEach(producto => { %>
-                <% const  {id,nombre,descripcion,precio,imagen,categoria,color} = producto; %>
+                <% products.forEach(product => { %>
                 <div class="card product">
-                    <a href="products/detalle/<%=id%>">
-                    <img src="/images/<%= imagen %>" class="card-img-top" alt="<%= nombre %>"/>
+                    <a href="products/detalle/<%=product.id%>">
+                      <img src="/images/<%= product.image %>" class="card-img-top" alt="<%= product.name %>"/>
                     </a>
                     <div class="card-body">
-                        <h5 class="card-title"><%= nombre %></h5>
-                        <p class="card-text"><%= descripcion %></p>
-                        <p class="card-text">$<%= toThousand(precio) %> / Unidad</p>
+                        <h5 class="card-title"><%= product.name %></h5>
+                        <p class="card-text"><%= product.description %></p>
+                        <p class="card-text">$<%= product.price %> / Unidad</p>
                         <button type="button" class="btn btn-primary btn-cart" >
-                        Añadir al carrito
+                          Añadir al carrito
                         </button>
                     </div>
                 </div>

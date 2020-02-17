@@ -5,7 +5,7 @@
 -- Servidor: localhost
 -- Tiempo de generación: 17-02-2020 a las 01:57:19
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.2.26
+-- Versión de PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -20,7 +20,28 @@ SET time_zone = "+00:00";
 
 --
 -- Base de datos: `grupo1`
+DROP DATABASE IF EXISTS grupo1;
+CREATE DATABASE grupo1;
+USE grupo1;
+
+-- --------------------------------------------------------
+
 --
+-- Estructura de tabla para la tabla `brands`
+--
+
+CREATE TABLE `brands` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `brands`
+--
+
+INSERT INTO `brands` (`id`, `name`) VALUES
+(1, 'La Martina'),
+(2, 'Mustad');
 
 -- --------------------------------------------------------
 
@@ -381,19 +402,20 @@ CREATE TABLE `products` (
   `description` longtext DEFAULT NULL,
   `image` longtext DEFAULT NULL,
   `price` decimal(8,2) NOT NULL,
-  `category_id` int(11) DEFAULT NULL
+  `category_id` int(11) NOT NULL,
+  `brand_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `image`, `price`, `category_id`) VALUES
-(1, 'Cartera', 'Nuestra línea de bolsos urbanos, con caída, versátiles, amplios, livianos y funcionales', 'image--030.jpg', '7490.00', 1),
-(2, 'Bolso', 'Rediseñamos la línea tradicional de bolsos icónicos como el baúl, el bolso vtote, la mochila, la bandolera', 'image--034.jpg', '7990.00', 1),
-(3, 'Cinturón rústico', 'La colección posee una línea de cinturones con estética vintage, de cueros rústicos especialmente elegidos, herrajes con baños gastados y terminaciones típicas del estilo', 'image--002.jpg', '3990.00', 1),
-(4, 'Cinturón', 'Nos actualizamos con las corrientes del diseño minimalista para la realización de nuevos productos, simples, funcionales y tecnológicos', 'image--004.jpg', '3490.00', 1),
-(5, 'Mate', 'Un buen matecito', 'image-1579978305847.jpg', '334.00', 2);
+INSERT INTO `products` (`id`, `name`, `description`, `image`, `price`, `category_id`, `brand_id`) VALUES
+(1, 'Cartera', 'Nuestra línea de bolsos urbanos, con caída, versátiles, amplios, livianos y funcionales', 'image--030.jpg', '7490.00', 1, 1),
+(2, 'Bolso', 'Rediseñamos la línea tradicional de bolsos icónicos como el baúl, el bolso vtote, la mochila, la bandolera', 'image--034.jpg', '7990.00', 1, 1),
+(3, 'Cinturón rústico', 'La colección posee una línea de cinturones con estética vintage, de cueros rústicos especialmente elegidos, herrajes con baños gastados y terminaciones típicas del estilo', 'image--002.jpg', '3990.00', 1, 1),
+(4, 'Cinturón', 'Nos actualizamos con las corrientes del diseño minimalista para la realización de nuevos productos, simples, funcionales y tecnológicos', 'image--004.jpg', '3490.00', 1, 1),
+(5, 'Mate', 'Un buen matecito', 'image-1579978305847.jpg', '334.00', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -455,6 +477,12 @@ INSERT INTO `user_permission` (`id`, `user_id`, `permission_id`) VALUES
 --
 
 --
+-- Indices de la tabla `brands`
+--
+ALTER TABLE `brands`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `categories`
 --
 ALTER TABLE `categories`
@@ -491,7 +519,8 @@ ALTER TABLE `permissions`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_category_product` (`category_id`);
+  ADD KEY `fk_category_product` (`category_id`),
+  ADD KEY `fk_brand_product` (`brand_id`);
 
 --
 -- Indices de la tabla `users`
@@ -512,6 +541,12 @@ ALTER TABLE `user_permission`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `brands`
+--
+ALTER TABLE `brands`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `categories`
@@ -547,7 +582,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -576,6 +611,7 @@ ALTER TABLE `color_product`
 -- Filtros para la tabla `products`
 --
 ALTER TABLE `products`
+  ADD CONSTRAINT `fk_brand_product` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_category_product` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
