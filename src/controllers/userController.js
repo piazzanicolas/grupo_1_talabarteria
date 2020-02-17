@@ -2,6 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
+const db = require('../database/models/');
+const Users = db.users;
+const Countries = db.countries;
+
 
 const usersPath = path.join(__dirname, `/../db/dbUsuarios.json`);
 
@@ -44,7 +48,15 @@ function getUserById(id){
 // Controller Methods
 const controller = {
 	registroForm: (req, res) => {
-		res.render('registro');
+		Countries.findAll()
+			.then(countries => {
+				return res.render('registro', {
+					countries
+				}
+				);
+			})
+			.catch(error => res.send(error));
+
 	},
 
 	saveUser: (req,res) => {
@@ -65,14 +77,23 @@ const controller = {
 			req.body.password = bcrypt.hashSync(req.body.password, 11);
 			delete req.body.re_password;
 			req.body.avatar = req.file.filename;
-			let user = storeUser(req.body);
+			req.body.isActive = true;
+			//let user = storeUser(req.body);
 			
-			req.session.user = user;
-			res.locals.user = user;
-			res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
-			return res.redirect('/user/profile');
-		}
-	},
+			req.session.user = req.body;
+			res.locals.user = req.body;
+			res.cookie('userCookie', req.body.id, { maxAge: 60000 * 60 });
+			
+			Users.create(req.body)
+				.then(user => {
+					return res.redirect('/user/profile');
+
+				})
+				.catch(error => res.send(error));
+
+		
+		}}
+	,
 	login: (req, res) => {
 		return res.redirect('/');
 	},
@@ -96,9 +117,17 @@ const controller = {
 		}
 	},
 	profile: (req, res) => {
-		let userLogged = getUserById(req.session.user.id);
+		//let userLogged = getUserById(req.session.user.id);
 		res.locals.user = req.session.user;
-		res.render('profile', { userLogged });
+		Users
+			.findByPk(req.session.user.id, {
+				include: ['country']
+			})
+			.then(user => {
+				return res.render('profile', { userLogged: user });
+			})
+			.catch(error => res.send(error));
+
 	},
 	logout: (req, res) => {
 		req.session.destroy();

@@ -86,16 +86,16 @@
           <div class="col-md-6">
             <div class='form-group'>
               <label for=”nombre”> Nombre </label>
-              <input type=”text” name="nombre" id=”nombre” class="form-control 
+              <input type=”text” name="firstName" id=”nombre” class="form-control 
               <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                <%= hasErrorGetMessage('nombre',errors) ? 'is-invalid' : null %> 
+                <%= hasErrorGetMessage('firstName',errors) ? 'is-invalid' : null %> 
               <% } %>
               "
-              value="<%= typeof OldData !== 'undefined' ? OldData.nombre : null %>"
+              value="<%= typeof OldData !== 'undefined' ? OldData.firstName : null %>"
             >
             <i class='invalid-feedback'>
               <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                <%= hasErrorGetMessage('nombre',errors) ? hasErrorGetMessage('nombre',errors) : null %> 
+                <%= hasErrorGetMessage('firstName',errors) ? hasErrorGetMessage('firstName',errors) : null %> 
               <% } %>
             </i>
             </div>
@@ -104,16 +104,16 @@
             <div class="col-md-6">
               <div class='form-group'>
                 <label for=”apellido”> Apellido </label>
-                <input type=”text” name="apellido" id=”apellido” class="form-control 
+                <input type=”text” name="lastName" id=”apellido” class="form-control 
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                  <%= hasErrorGetMessage('apellido',errors) ? 'is-invalid' : null %> 
+                  <%= hasErrorGetMessage('lastName',errors) ? 'is-invalid' : null %> 
                 <% } %>
                 "
-                value="<%= typeof OldData !== 'undefined' ? OldData.apellido : null %>"
+                value="<%= typeof OldData !== 'undefined' ? OldData.lastName : null %>"
                 >
               <i class='invalid-feedback'>
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                  <%= hasErrorGetMessage('apellido',errors) ? hasErrorGetMessage('apellido',errors) : null %> 
+                  <%= hasErrorGetMessage('lastName',errors) ? hasErrorGetMessage('lastName',errors) : null %> 
                 <% } %>
               </i>
               </div>
@@ -127,16 +127,16 @@
           <div class="col-md-6">
             <div class='form-group'>
               <label for="telefono"> Teléfono </label>
-              <input type="tel" name="telefono" id="telefono" class="form-control 
+              <input type="tel" name="phone" id="telefono" class="form-control 
               <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                <%= hasErrorGetMessage('apellido',errors) ? 'is-invalid' : null %> 
+                <%= hasErrorGetMessage('phone',errors) ? 'is-invalid' : null %> 
               <% } %>
               "
-              value="<%= typeof OldData !== 'undefined' ? OldData.apellido : null %>"
+              value="<%= typeof OldData !== 'undefined' ? OldData.phone : null %>"
               >
             <i class='invalid-feedback'>
               <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                <%= hasErrorGetMessage('apellido',errors) ? hasErrorGetMessage('apellido',errors) : null %> 
+                <%= hasErrorGetMessage('phone',errors) ? hasErrorGetMessage('phone',errors) : null %> 
               <% } %>
             </i>
             </div>
@@ -145,16 +145,16 @@
           <div class="col-md-6">
             <div class='form-group'>
               <label for="nacimiento"> Fecha de nacimiento </label>
-              <input type="date" name="nacimiento" id="nacimiento" class="form-control 
+              <input type="date" name="dob" id="nacimiento" class="form-control 
               <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                <%= hasErrorGetMessage('nacimiento',errors) ? 'is-invalid' : null %> 
+                <%= hasErrorGetMessage('dob',errors) ? 'is-invalid' : null %> 
               <% } %>
               "
-              value="<%= typeof OldData !== 'undefined' ? OldData.nacimiento : null %>"
+              value="<%= typeof OldData !== 'undefined' ? OldData.dob : null %>"
               >
             <i class='invalid-feedback'>
               <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                <%= hasErrorGetMessage('nacimiento',errors) ? hasErrorGetMessage('nacimiento',errors) : null %> 
+                <%= hasErrorGetMessage('dob',errors) ? hasErrorGetMessage('dob',errors) : null %> 
               <% } %>
             </i>
             </div>
@@ -168,16 +168,16 @@
           <div class="col-md-4">
             <div class='form-group'>
               <label for=”calle”> Calle </label>
-              <input type=”text” name="calle" id=”calle” class="form-control 
+              <input type=”text” name="street" id=”calle” class="form-control 
               <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                <%= hasErrorGetMessage('calle',errors) ? 'is-invalid' : null %> 
+                <%= hasErrorGetMessage('street',errors) ? 'is-invalid' : null %> 
               <% } %>
               "
-              value="<%= typeof OldData !== 'undefined' ? OldData.calle : null %>"
+              value="<%= typeof OldData !== 'undefined' ? OldData.street : null %>"
               >
             <i class='invalid-feedback'>
               <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                <%= hasErrorGetMessage('calle',errors) ? hasErrorGetMessage('calle',errors) : null %> 
+                <%= hasErrorGetMessage('street',errors) ? hasErrorGetMessage('street',errors) : null %> 
               <% } %>
             </i>
             </div>
@@ -186,16 +186,16 @@
             <div class="col-md-4">
               <div class='form-group'>
                 <label for=”calleNumero”> Numero </label>
-                <input type=”number” name="calleNumero" id=”calleNumero” class="form-control 
+                <input type=”number” name="address_number" id=”calleNumero” class="form-control 
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                  <%= hasErrorGetMessage('calleNumero',errors) ? 'is-invalid' : null %> 
+                  <%= hasErrorGetMessage('address_number',errors) ? 'is-invalid' : null %> 
                 <% } %>
                 "
-                value="<%= typeof OldData !== 'undefined' ? OldData.calleNumero : null %>"
+                value="<%= typeof OldData !== 'undefined' ? OldData.address_number : null %>"
                 >
               <i class='invalid-feedback'>
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                  <%= hasErrorGetMessage('calleNumero',errors) ? hasErrorGetMessage('calleNumero',errors) : null %> 
+                  <%= hasErrorGetMessage('address_number',errors) ? hasErrorGetMessage('address_number',errors) : null %> 
                 <% } %>
               </i>
               </div>
@@ -204,16 +204,16 @@
             <div class="col-md-4">
               <div class='form-group'>
                 <label for="piso"> Piso-Departamento </label>
-                <input type="text" name="piso" id="piso" class="form-control 
+                <input type="text" name="floor" id="piso" class="form-control 
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                  <%= hasErrorGetMessage('piso',errors) ? 'is-invalid' : null %> 
+                  <%= hasErrorGetMessage('floor',errors) ? 'is-invalid' : null %> 
                 <% } %>
                 "
-                value="<%= typeof OldData !== 'undefined' ? OldData.piso : null %>"
+                value="<%= typeof OldData !== 'undefined' ? OldData.floor : null %>"
                 >
               <i class='invalid-feedback'>
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                  <%= hasErrorGetMessage('piso',errors) ? hasErrorGetMessage('piso',errors) : null %> 
+                  <%= hasErrorGetMessage('floor',errors) ? hasErrorGetMessage('floor',errors) : null %> 
                 <% } %>
               </i>
               </div>
@@ -226,16 +226,16 @@
           <div class="col-md-4">
             <div class='form-group'>
               <label for="postal"> Código Postal </label>
-              <input type="text" name="postal" id="postal" class="form-control 
+              <input type="text" name="zip_code" id="postal" class="form-control 
               <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                <%= hasErrorGetMessage('postal',errors) ? 'is-invalid' : null %> 
+                <%= hasErrorGetMessage('zip_code',errors) ? 'is-invalid' : null %> 
               <% } %>
               "
-              value="<%= typeof OldData !== 'undefined' ? OldData.postal : null %>"
+              value="<%= typeof OldData !== 'undefined' ? OldData.zip_code : null %>"
               >
             <i class='invalid-feedback'>
               <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                <%= hasErrorGetMessage('postal',errors) ? hasErrorGetMessage('postal',errors) : null %> 
+                <%= hasErrorGetMessage('zip_code',errors) ? hasErrorGetMessage('zip_code',errors) : null %> 
               <% } %>
             </i>
             </div>
@@ -244,34 +244,35 @@
             <div class="col-md-4">
               <div class='form-group'>
                 <label for="provincia"> Provincia </label>
-                <input type="text" name="provincia" id="provincia" class="form-control 
+                <input type="text" name="province" id="provincia" class="form-control 
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                  <%= hasErrorGetMessage('provincia',errors) ? 'is-invalid' : null %> 
+                  <%= hasErrorGetMessage('province',errors) ? 'is-invalid' : null %> 
                 <% } %>
                 "
-                value="<%= typeof OldData !== 'undefined' ? OldData.provincia : null %>"
+                value="<%= typeof OldData !== 'undefined' ? OldData.province : null %>"
                 >
               <i class='invalid-feedback'>
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                  <%= hasErrorGetMessage('provincia',errors) ? hasErrorGetMessage('provincia',errors) : null %> 
+                  <%= hasErrorGetMessage('province',errors) ? hasErrorGetMessage('province',errors) : null %> 
                 <% } %>
               </i>
               </div>
             </div>
             <!-- Pais -->
             <div class="col-md-4">
-              <div class='form-group'>
-                <label for="pais"> País </label>
-                <input type="text" name="pais" id="pais" class="form-control 
+              <div class="form-group">
+
+                <label> País </label>
+                <select class="selectpicker form-control" name="countryId">
+                <option selected disabled>Elige un país</option>
+                <% countries.forEach(oneCountry => { %>
+                <option value="<%= oneCountry.id %>"><%= oneCountry.name %></option>
+                <% }) %>
+                </select>
+
+                <i class='invalid-feedback'>
                 <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                  <%= hasErrorGetMessage('pais',errors) ? 'is-invalid' : null %> 
-                <% } %>
-                "
-                value="<%= typeof OldData !== 'undefined' ? OldData.pais : null %>"
-                >
-              <i class='invalid-feedback'>
-                <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
-                  <%= hasErrorGetMessage('pais',errors) ? hasErrorGetMessage('pais',errors) : null %> 
+                  <%= hasErrorGetMessage('countryId',errors) ? hasErrorGetMessage('countryId',errors) : null %> 
                 <% } %>
               </i>
               </div>
@@ -311,7 +312,7 @@
           </div>
        
     </form>
-
+ 
     <br>
     </div>
 

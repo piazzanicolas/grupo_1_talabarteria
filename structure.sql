@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-02-2020 a las 23:12:52
+-- Tiempo de generación: 17-02-2020 a las 01:57:19
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.26
 
@@ -380,7 +380,7 @@ CREATE TABLE `products` (
   `name` varchar(45) NOT NULL,
   `description` longtext DEFAULT NULL,
   `image` longtext DEFAULT NULL,
-  `price` int(11) NOT NULL,
+  `price` decimal(8,2) NOT NULL,
   `category_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -389,11 +389,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `image`, `price`, `category_id`) VALUES
-(1, 'Cartera', 'Nuestra línea de bolsos urbanos, con caída, versátiles, amplios, livianos y funcionales', 'image--030.jpg', 7490, 1),
-(2, 'Bolso', 'Rediseñamos la línea tradicional de bolsos icónicos como el baúl, el bolso vtote, la mochila, la bandolera', 'image--034.jpg', 7990, 1),
-(3, 'Cinturón rústico', 'La colección posee una línea de cinturones con estética vintage, de cueros rústicos especialmente elegidos, herrajes con baños gastados y terminaciones típicas del estilo', 'image--002.jpg', 3990, 1),
-(4, 'Cinturón', 'Nos actualizamos con las corrientes del diseño minimalista para la realización de nuevos productos, simples, funcionales y tecnológicos', 'image--004.jpg', 3490, 1),
-(5, 'Mate', 'Un buen matecito', 'image-1579978305847.jpg', 334, 2);
+(1, 'Cartera', 'Nuestra línea de bolsos urbanos, con caída, versátiles, amplios, livianos y funcionales', 'image--030.jpg', '7490.00', 1),
+(2, 'Bolso', 'Rediseñamos la línea tradicional de bolsos icónicos como el baúl, el bolso vtote, la mochila, la bandolera', 'image--034.jpg', '7990.00', 1),
+(3, 'Cinturón rústico', 'La colección posee una línea de cinturones con estética vintage, de cueros rústicos especialmente elegidos, herrajes con baños gastados y terminaciones típicas del estilo', 'image--002.jpg', '3990.00', 1),
+(4, 'Cinturón', 'Nos actualizamos con las corrientes del diseño minimalista para la realización de nuevos productos, simples, funcionales y tecnológicos', 'image--004.jpg', '3490.00', 1),
+(5, 'Mate', 'Un buen matecito', 'image-1579978305847.jpg', '334.00', 2);
 
 -- --------------------------------------------------------
 
@@ -413,9 +413,10 @@ CREATE TABLE `users` (
   `address_number` int(11) NOT NULL,
   `floor` varchar(10) NOT NULL,
   `zip_code` varchar(10) NOT NULL,
-  `country` int(11) NOT NULL,
+  `countryId` int(11) NOT NULL,
   `province` varchar(50) NOT NULL,
   `avatar` varchar(255) NOT NULL,
+  `isActive` tinyint(1) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -424,9 +425,9 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `phone`, `dob`, `street`, `address_number`, `floor`, `zip_code`, `country`, `province`, `avatar`, `createdAt`, `updatedAt`) VALUES
-(1, 'Filiberto', 'Sampietro', 'fp@dh.com', '$2b$11$tUhc0VILo.VlYoHsOH7M4OZAIviGc0TUgwrEPOpCzUSa7hFWrCB/a', '555-5555', '1980-04-14', 'Alsina', 1414, '1', '1000', 10, 'CABA', 'avatar-1580067574538.jpg', '2020-02-14 21:54:32', '0000-00-00 00:00:00'),
-(2, 'Corina', 'Corales', 'cc@dh.com', '$2b$11$Snhw2zMd7Qaava.Vi7TuNOkgRwU3aJ0lRY2b69dpDA7S48psjtsWe', '555-5551', '1975-12-15', 'Saenz Peña', 1046, '4C', '1111', 10, 'Mendoza', 'avatar-1580067472411.jpg', '2020-02-14 21:54:38', '0000-00-00 00:00:00');
+INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `phone`, `dob`, `street`, `address_number`, `floor`, `zip_code`, `countryId`, `province`, `avatar`, `isActive`, `createdAt`, `updatedAt`) VALUES
+(1, 'Filiberto', 'Sampietro', 'fp@dh.com', '$2b$11$tUhc0VILo.VlYoHsOH7M4OZAIviGc0TUgwrEPOpCzUSa7hFWrCB/a', '555-5555', '1980-04-14', 'Alsina', 1414, '1', '1000', 10, 'CABA', 'avatar-1580067574538.jpg', 1, '2020-02-17 00:29:39', '0000-00-00 00:00:00'),
+(2, 'Corina', 'Corales', 'cc@dh.com', '$2b$11$Snhw2zMd7Qaava.Vi7TuNOkgRwU3aJ0lRY2b69dpDA7S48psjtsWe', '555-5551', '1975-12-15', 'Saenz Peña', 1046, '4C', '1111', 10, 'Mendoza', 'avatar-1580067472411.jpg', 1, '2020-02-17 00:29:42', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -498,7 +499,7 @@ ALTER TABLE `products`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `fk_country` (`country`);
+  ADD KEY `fk_country` (`countryId`);
 
 --
 -- Indices de la tabla `user_permission`
@@ -581,7 +582,7 @@ ALTER TABLE `products`
 -- Filtros para la tabla `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `fk_country` FOREIGN KEY (`country`) REFERENCES `countries` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_country` FOREIGN KEY (`countryId`) REFERENCES `countries` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `user_permission`
