@@ -99,19 +99,21 @@ const controller = {
 	},
 	editarCambios: (req, res) => {	
 		Products
-			.update({
-				...req.body, 
-				image: req.file.filename
-			},{
-				where: {
-					id: req.params.id
-				},
+			.findByPk(req.params.id,{
 				include: ['colors']
 			})
-			.then(product => {
-				product.removeColors(product.colors);
-				product.addColors(req.body.color);
-				return res.redirect('/products')})
+			.then(theProduct => {
+				theProduct
+					.update({
+						...req.body, 
+						image: req.file ? req.file.filename : theProduct.image
+						})
+					.then(product => {
+						product.removeColors(product.colors);
+						product.addColors(req.body.color);
+						return res.redirect('/products')})
+					.catch(error => res.send(error));
+			})
 			.catch(error => res.send(error));
 	}, 
 	borrar: (req, res) => {
