@@ -264,7 +264,7 @@
 
                 <label> País </label>
                 <select class="selectpicker form-control" name="countryId">
-                <option selected disabled>Elige un país</option>
+                <option value="">Elige un país</option>
                 <% countries.forEach(oneCountry => { %>
                 <option value="<%= oneCountry.id %>"><%= oneCountry.name %></option>
                 <% }) %>

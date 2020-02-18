@@ -72,12 +72,15 @@ const controller = {
 
 		let errorsResult = validationResult(req);
 		if (!errorsResult.isEmpty()){
-			return res.render('registro', {errors: errorsResult.array(), hasErrorGetMessage: hasErrorGetMessage, OldData: req.body});
+			Countries.findAll()
+			.then(countries => {
+			return res.render('registro', {errors: errorsResult.array(), hasErrorGetMessage: hasErrorGetMessage, OldData: req.body, countries});
+		})
 		} else {
 			req.body.password = bcrypt.hashSync(req.body.password, 11);
 			delete req.body.re_password;
 			req.body.avatar = req.file.filename;
-			req.body.isActive = true;
+			req.body.isActive = 1;
 			//let user = storeUser(req.body);
 			
 			req.session.user = req.body;
@@ -98,7 +101,12 @@ const controller = {
 		return res.redirect('/');
 	},
 	processLogin: (req, res) => {
-		let user = getUserByEmail(req.body.email);
+		Users.findOne({
+			where: {
+				email: req.body.email
+			}
+		})
+		.then( (user) => {
 		if (user != undefined) {
 			if (bcrypt.compareSync(req.body.password, user.password)){
 				
@@ -115,7 +123,10 @@ const controller = {
 		} else {
 			res.send('Alguno de los datos es incorrecto.')
 		}
-	},
+	})
+	.catch( error => res.send(error))
+	}
+	,
 	profile: (req, res) => {
 		//let userLogged = getUserById(req.session.user.id);
 		res.locals.user = req.session.user;
@@ -124,7 +135,8 @@ const controller = {
 				include: ['country']
 			})
 			.then(user => {
-				return res.render('profile', { userLogged: user });
+				return res.render('profile', { userLogged: res.locals.user });
+				
 			})
 			.catch(error => res.send(error));
 
