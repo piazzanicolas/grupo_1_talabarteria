@@ -108,9 +108,9 @@ const controller = {
 						...req.body, 
 						image: req.file ? req.file.filename : theProduct.image
 						})
-					.then(product => {
-						product.removeColors(product.colors);
-						product.addColors(req.body.color);
+					.then(async product => {
+						await product.removeColors(product.colors);
+						await product.addColors(req.body.color);
 						return res.redirect('/products')})
 					.catch(error => res.send(error));
 			})
@@ -121,9 +121,9 @@ const controller = {
 			.findByPk(req.params.id, {
 				include: ['colors']
 			})
-			.then (product => {
-				product.removeColors(product.colors);
-				product.destroy();
+			.then (async product => {
+				await product.removeColors(product.colors);
+				await product.destroy();
 				return res.redirect('/products');
 		})
 			.catch(error => res.send(error));
