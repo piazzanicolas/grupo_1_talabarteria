@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
       <% if (typeof locals.user !== 'undefined' ) { %>
-        <%= 'Bienvenido ' + locals.user.nombre + '!' %>
+        <%= 'Bienvenido ' + locals.user.firstName + '!' %>
       <% } else {  %>
         <%= 'Hola Invitado!' %>
       <% } %>

@@ -72,19 +72,10 @@ const controller = {
 
 		let errorsResult = validationResult(req);
 		if (!errorsResult.isEmpty()){
-<<<<<<< HEAD
 			Countries.findAll()
 			.then(countries => {
 			return res.render('registro', {errors: errorsResult.array(), hasErrorGetMessage: hasErrorGetMessage, OldData: req.body, countries});
 		})
-=======
-			Countries
-				.findAll()
-				.then(countries => {
-					return res.render('registro', {errors: errorsResult.array(), hasErrorGetMessage: hasErrorGetMessage, OldData: req.body, countries});
-				})
-			
->>>>>>> c262ccced9aab6a9e1ca9087a33fa6d25307fc97
 		} else {
 			req.body.password = bcrypt.hashSync(req.body.password, 11);
 			delete req.body.re_password;

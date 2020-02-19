@@ -263,13 +263,8 @@
               <div class="form-group">
 
                 <label> País </label>
-<<<<<<< HEAD
-                <select class="selectpicker form-control" name="countryId">
-                <option value="">Elige un país</option>
-=======
                 <select class="selectpicker form-control" data-name="Pais" name="countryId">
                 <option selected disabled>Elige un país</option>
->>>>>>> c262ccced9aab6a9e1ca9087a33fa6d25307fc97
                 <% countries.forEach(oneCountry => { %>
                 <option value="<%= oneCountry.id %>"><%= oneCountry.name %></option>
                 <% }) %>
