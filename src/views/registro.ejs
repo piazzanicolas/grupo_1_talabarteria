@@ -9,7 +9,7 @@
     </div>
     <br>
     <!-- Formulario -->
-    <form action="/user/registro" method="POST" enctype="multipart/form-data" class="container" id="registerForm"> 
+    <form action="/user/registro" method="POST" enctype="multipart/form-data" class="container" id="validateForm"> 
 
       <div class="row">
         <h2>Datos inicio de sesión</h2>
@@ -264,7 +264,7 @@
 
                 <label> País </label>
                 <select class="selectpicker form-control" data-name="Pais" name="countryId">
-                <option selected disabled>Elige un país</option>
+                <option selected value="">Elige un país</option>
                 <% countries.forEach(oneCountry => { %>
                 <option value="<%= oneCountry.id %>"><%= oneCountry.name %></option>
                 <% }) %>
@@ -293,7 +293,7 @@
                 <% } %>
                 "
                 >
-                <p></p>
+                <p class="invalid-feedback"></p>
                 <label class="custom-file-label">Elegir archivo...</label>
                 <i class="invalid-feedback">
                   
@@ -321,4 +321,4 @@
 <%- include('partials/footer') %>
 
 <script src="/js/validator.min.js"></script>
-<script src="/js/registerValidate.js"></script>
+<script src="/js/validateForm.js"></script>

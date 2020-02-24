@@ -10,96 +10,88 @@
       </div>
       <br>
     <!-- Formulario -->
-    <form action="/products/carga" method="POST" enctype="multipart/form-data"> 
+    <form action="/products/carga" method="POST" enctype="multipart/form-data" id="validateForm"> 
 
         <!-- Nombre -->
         <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-                <label for="name" class="label-registro"> Nombre </label>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="name"> Nombre </label>
+                    <input type="text" name="name" id="name" class="form-control" data-name="Nombre">
+                    <i class='invalid-feedback'></i>
+                </div>
             </div>
-            <div class="col-9 col-lg-3">
-                <input type="text" name="name" id="name" class="form-control">
-            </div>
-        </div>
-        <br>
         <!-- Categoria -->
-        <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-                 <label for="category_id" class="label-registro"> Categoría </label>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="category_id"> Categoría </label>
+                    <select name="category_id" class="form-control" data-name="Categoría">
+                        <option selected value="">Elige una categoría</option>
+                        <% categories.forEach(category => { %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                        <% }) %>
+                    </select>
+                    <i class='invalid-feedback'></i>
+                </div>
             </div>
-            <div class="col-9 col-lg-3">
-                <select name="category_id" class="form-control">
-                    <% categories.forEach(category => { %>
-                        <option value="<%= category.id %>"><%= category.name %></option>
-                    <% }) %>
-                </select>
-            </div>
-        </div>
-        <br>
         <!-- Precio -->
-        <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-                <label for="price" class="label-registro"> Precio </label>
-            </div>
-            <div class="col-9 col-lg-3">
-                <input type="number" name="price" id="price" class="form-control">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="price"> Precio </label>
+                    <input type="number" name="price" id="price" class="form-control" data-name="Precio">
+                    <i class='invalid-feedback'></i>
+                </div>
             </div>
         </div>
-        <br>
         <!-- Marca -->
         <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-                <label for="brand" class="label-registro"> Marca </label>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="brand"> Marca </label>
+                    <select name="brand_id" class="form-control" data-name="Marca">
+                        <option selected value="">Elige una marca</option>
+                        <% brands.forEach(brand => { %>
+                            <option value="<%= brand.id %>"><%= brand.name %></option>
+                        <% }) %>
+                    </select>
+                    <i class='invalid-feedback'></i>
+                </div>
             </div>
-            <div class="col-9 col-lg-3">
-                <select name="brand_id" class="form-control">
-                    <% brands.forEach(brand => { %>
-                        <option value="<%= brand.id %>"><%= brand.name %></option>
-                    <% }) %>
-                </select>
-            </div>
-        </div>
-        <br>
         <!-- Descripcion -->
-        <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-                <label for="description" class="label-registro" id="description"> Descripción </label>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="description"id="description"> Descripción </label>
+                    <textarea name="description" class="form-control" data-name="Descripción" rows="3"></textarea>
+                    <i class='invalid-feedback'></i>
+                </div>
             </div>
-            <div class="col-9 col-lg-3">
-                <input type="textarea" name="description" class="form-control"></input>
-            </div>
-        </div>
-        <br>
         <!-- Color -->
-        <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-                <label for="color" class="label-registro"> Color </label>
-            </div>
-            <div class="col-9 col-lg-3">
-                <select name="color" class="form-control" multiple>
-                    <% colors.forEach(color => { %>
-                        <option value="<%= color.id %>"><%= color.name %></option>
-                    <% }) %>
-                </select>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="color"> Color </label>
+                    <select name="color" class="form-control" data-name="Color" multiple>
+                        <% colors.forEach(color => { %>
+                            <option value="<%= color.id %>"><%= color.name %></option>
+                        <% }) %>
+                    </select>
+                    <i class='invalid-feedback'></i>
+                </div>
             </div>
         </div>
-        <br>
         <!-- Imagen -->
         <div class="row">
-            <div class="col-0 col-lg-3"></div>
-            <div class="col-3 col-lg-2">
-            <label for="image" class="label-registro">Imagen</label>
-            </div>
-            <div class="col-9 col-lg-5">
-            <input type="file" class="form-control-file" name="image">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Foto de perfil</label>
+                <div class="custom-file">
+                  <input type="file" name="image" data-name="Imagen de perfil" class="custom-file-input">
+                  <i class="invalid-feedback"></i>
+                  <label class="custom-file-label">Elegir archivo...</label>
+                </div>
+              </div>
             </div>
           </div>
+  
         <br>
         <!-- Boton -->
         <div class="row">
@@ -114,3 +106,6 @@
 
     
 <%- include('partials/footer') %>
+
+<script src="/js/validator.min.js"></script>
+<script src="/js/validateForm.js"></script>

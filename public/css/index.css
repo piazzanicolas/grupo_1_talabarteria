@@ -288,18 +288,6 @@ footer{
   }
 
 
-
-/* HTML REGISTRO */
-.label-registro{
-    position: absolute;
-    right: 0px;
-    bottom: -5%;
-  }
-
-#descripcion{
-    top: 0px;
-  }
-
   /* LISTA PRODUCTOS */
 thead tr {
   text-align: center;

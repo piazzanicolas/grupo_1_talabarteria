@@ -67,7 +67,7 @@ const controller = {
 	guardar: (req, res, next) => {
 		Products
 			.create({
-				...req.body, 
+				...req.body,
 				image: req.file.filename
 			})
 			.then (product => {
@@ -105,7 +105,8 @@ const controller = {
 			.then(theProduct => {
 				theProduct
 					.update({
-						...req.body, 
+						...req.body,
+						description: req.body.description.trim(), 
 						image: req.file ? req.file.filename : theProduct.image
 						})
 					.then(async product => {
