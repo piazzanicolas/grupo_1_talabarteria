@@ -9,8 +9,6 @@
       <% } else {  %>
         <%= 'Hola Invitado!' %>
       <% } %>
-
-
     </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/index.css" />
@@ -25,9 +23,7 @@
     <!-- Logo -->
 
       <a class="navbar-brand logo" href="/">El Palenque</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
+
 
       <!-- Buscador -->
       <div class="buscador align-self-center">
@@ -37,31 +33,80 @@
         </form>
       </div>
 
-      <!-- Carrito -->
-      <div class="cart-container align-self-center">
-        <button class="btn btn-secondary cart"  type="button" data-toggle="collapse" data-target="#show-cart">
-          <img src="/images/cart.png" alt="Carrito" />
-        </button>
-        <div class="cart-products collapse" id="show-cart"><!-- hidden-->
-            <div class="cart-product">
-                <img src="https://via.placeholder.com/20" alt="Producto1"  />
-                <div class="cart-product-info">
-                    <span class="cantidad">1</span>
-                    <p>Producto1</p>
-                    <p>$50,00</p>
-                    <p class="cambiar-cantidad">
-                        <button>-</button>
-                        <button>+</button>
-                    </p>
-                    <p class="cart-product-delete">
-                        <button>Eliminar</button>
-                    </p>
+      <% if ( locals.isLogged ) { %>
+        <div class="align-self-center">
+          <a class="btn btn-primary" href="/user/profile" role="button" class="btn-login">Perfil</a>
+        </div>
+        <div class="align-self-center">
+          <a class="btn btn-danger" href="/user/logout" role="button" class="btn-login">Cerrar Sesión</a>
+        </div>
+        
+        <!-- Carrito -->
+        <div class="cart-container align-self-center">
+          <button class="btn btn-secondary cart"  type="button" data-toggle="collapse" data-target="#show-cart">
+            <img src="/images/cart.png" alt="Carrito" />
+          </button>
+          <div class="cart-products collapse" id="show-cart"><!-- hidden-->
+              <div class="cart-product">
+                  <img src="https://via.placeholder.com/20" alt="Producto1"  />
+                  <div class="cart-product-info">
+                      <span class="cantidad">1</span>
+                      <p>Producto1</p>
+                      <p>$50,00</p>
+                      <p class="cambiar-cantidad">
+                          <button>-</button>
+                          <button>+</button>
+                      </p>
+                      <p class="cart-product-delete">
+                          <button>Eliminar</button>
+                      </p>
+                  </div>
+              </div>
+
+          </div>
+        
+        </div>
+
+        <!-- Login -->
+      <% } else { %>
+        <div class="cart-container align-self-center">
+          <button class="btn btn-primary"  type="button" data-toggle="collapse" data-target="#login">Ingresar</button>
+          <div class="cart-products collapse" id="login"><!-- hidden-->
+
+            <div class="row">
+              <div class="card signin cart-product">
+                <div class="card-body">
+                  <form action="/user/login" method="POST">
+                    <div class="col-12 form-group">
+                      <label for="email" class="login-datos">Email</label>
+                      <input type="email" class="form-control" name="email">
+                    </div>
+                    <div class="col-12 form-group">
+                      <label for="password"class="login-datos">Clave</label>
+                      <input type="password" class="form-control" name="password">
+                    </div>
+                      <div class="col-12 form-group">
+                        <label>
+                          <input type="checkbox" name="remember">
+                          Recordarme
+                        </label>
+                      </div>
+                      <button type="submit" class="btn btn-primary" class="btn-login" >Iniciar sesión</button>
+                  </form>
+                  <div id="forgot">
+                    <a href="#" class="olvido">¿Olvidó su clave?</a>
+                  </div>
                 </div>
+              </div>
             </div>
 
+          </div>
         </div>
-      
-      </div>
+        <div class="align-self-center">
+          <a class="btn btn-secondary" href="/user/registro" role="button" class="btn-login">Registrarse</a>
+        </div>
+      <% } %>
+
       </div>
       </div>
     </header>

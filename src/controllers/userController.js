@@ -148,8 +148,7 @@ const controller = {
 		res.locals.user = undefined;
 		res.cookie('userCookie',null,{ maxAge: -1 });
 		return res.redirect('/');
-	}
-
+	},
 };
 
 module.exports = controller

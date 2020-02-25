@@ -218,11 +218,6 @@ a {
   border-radius: 50px;
   padding: 0px 9px;
 }
-.login-datos{
-  color: #444243;
-}
-.olvido{ color: #FEF6F1;
-}
 
 /* Producto */
 
@@ -261,12 +256,14 @@ a {
 #forgot {
   text-align: center;
   margin: 5%;
+  color: black;
 }
 
 .login {
   background-color: #444243;
   color: #FEF6F1;
 }
+
 
 /* Footer */
 
