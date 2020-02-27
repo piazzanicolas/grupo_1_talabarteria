@@ -2,8 +2,8 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 17-02-2020 a las 01:57:19
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-02-2020 a las 22:41:50
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -23,6 +23,7 @@ SET time_zone = "+00:00";
 DROP DATABASE IF EXISTS grupo1;
 CREATE DATABASE grupo1;
 USE grupo1;
+--
 
 -- --------------------------------------------------------
 
@@ -420,6 +421,22 @@ INSERT INTO `products` (`id`, `name`, `description`, `image`, `price`, `category
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `product_user`
+--
+
+CREATE TABLE `product_user` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `price` decimal(8,2) NOT NULL,
+  `purchaseDate` date DEFAULT NULL,
+  `ticket` varchar(100) DEFAULT NULL,
+  `quantity` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -449,7 +466,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `phone`, `dob`, `street`, `address_number`, `floor`, `zip_code`, `countryId`, `province`, `avatar`, `isActive`, `createdAt`, `updatedAt`) VALUES
 (1, 'Filiberto', 'Sampietro', 'fp@dh.com', '$2b$11$tUhc0VILo.VlYoHsOH7M4OZAIviGc0TUgwrEPOpCzUSa7hFWrCB/a', '555-5555', '1980-04-14', 'Alsina', 1414, '1', '1000', 10, 'CABA', 'avatar-1580067574538.jpg', 1, '2020-02-17 00:29:39', '0000-00-00 00:00:00'),
-(2, 'Corina', 'Corales', 'cc@dh.com', '$2b$11$Snhw2zMd7Qaava.Vi7TuNOkgRwU3aJ0lRY2b69dpDA7S48psjtsWe', '555-5551', '1975-12-15', 'Saenz Peña', 1046, '4C', '1111', 10, 'Mendoza', 'avatar-1580067472411.jpg', 1, '2020-02-17 00:29:42', '0000-00-00 00:00:00');
+(2, 'Corina', 'Corales', 'cc@dh.com', '$2b$11$Snhw2zMd7Qaava.Vi7TuNOkgRwU3aJ0lRY2b69dpDA7S48psjtsWe', '555-5551', '1975-12-15', 'Saenz Peña', 1046, '4C', '1111', 10, 'Mendoza', 'avatar-1580067472411.jpg', 1, '2020-02-17 00:29:42', '0000-00-00 00:00:00'),
+(4, 'asd', 'asd', 'a@hotmail.com', '$2b$11$T9.0jWRWZr/QdOO2.UVNZONglSz2G1KiX/6dJPUi8WAgrWE7HrnDq', 'asd', '1920-01-01', '01', 1, '01', '01', 10, '01', 'avatar-1582737685371.jpg', 1, '2020-02-26 17:21:25', '2020-02-26 17:21:25'),
+(5, 'asd', 'asd', 'b@hotmail.com', '$2b$11$OOy4IyADb7AESjEb06XVJOYvSshW6xP68kdUvQo/U6nU63AFckXVy', '01', '1920-02-01', 'asd', 0, 'asd', 'asd', 10, 'asd', 'avatar-1582757736484.jpg', 1, '2020-02-26 22:55:36', '2020-02-26 22:55:36');
 
 -- --------------------------------------------------------
 
@@ -523,6 +542,14 @@ ALTER TABLE `products`
   ADD KEY `fk_brand_product` (`brand_id`);
 
 --
+-- Indices de la tabla `product_user`
+--
+ALTER TABLE `product_user`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cart_user` (`user_id`),
+  ADD KEY `cart_product` (`product_id`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -585,10 +612,16 @@ ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT de la tabla `product_user`
+--
+ALTER TABLE `product_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `user_permission`
@@ -613,6 +646,13 @@ ALTER TABLE `color_product`
 ALTER TABLE `products`
   ADD CONSTRAINT `fk_brand_product` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_category_product` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `product_user`
+--
+ALTER TABLE `product_user`
+  ADD CONSTRAINT `cart_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `cart_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `users`

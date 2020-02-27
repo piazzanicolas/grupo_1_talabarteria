@@ -5,6 +5,8 @@ const {validationResult} = require('express-validator');
 const db = require('../database/models/');
 const Users = db.users;
 const Countries = db.countries;
+const Cart = db.productUser;
+const Products = db.products;
 
 
 const usersPath = path.join(__dirname, `/../db/dbUsuarios.json`);
@@ -149,6 +151,68 @@ const controller = {
 		res.cookie('userCookie',null,{ maxAge: -1 });
 		return res.redirect('/');
 	},
+
+	cartView: (req, res) => {
+		Cart
+			.findAll({
+				where: {
+					user_id: res.locals.user.id,
+					ticket: null
+				},
+				include: ['users', 'products']
+			}) 
+			.then(carrito => res.render('cart', {carrito}))
+			.catch(error => res.send(error));
+	},
+
+	saveProduct: (req, res) => {
+		Products
+			.findByPk(req.params.id)
+			.then(product => {
+				Cart
+					.create({
+						product_id: req.params.id,
+						user_id: req.session.user.id,
+						price: product.price,
+						purchaseDate: new Date(),
+						quantity: req.body.quantity
+					})
+					.then(carrito => res.redirect('/'))
+					.catch(error => res.send(error));
+			})
+			.catch(error => res.send(error))
+	},
+
+	deleteProduct: (req, res) => {
+		Cart
+			.destroy({
+				where: {id: req.params.id}	
+			})
+			.then(carrito => res.redirect('/user/cart'))
+			.catch(error => res.send(error));
+	},
+
+	purchase: (req, res) => {
+		let fechaCompra= new Date()
+		Cart
+			.findAll({
+				where: {
+					user_id: res.locals.user.id,
+					ticket: null
+				},
+			}) 
+			.then(carrito => {
+				carrito.forEach (oneProduct =>{
+					oneProduct
+						.update({
+							ticket: res.locals.user.id.toString() + fechaCompra.getFullYear().toString() + fechaCompra.getMonth().toString() + fechaCompra.getDate().toString() + fechaCompra.getHours().toString() + fechaCompra.getMinutes().toString() + fechaCompra.getSeconds().toString()
+						})
+						.then(compra => res.redirect('/'))
+						.catch(error => res.send(error))
+				})
+			})
+			.catch(error => res.send(error))
+	}
 };
 
 module.exports = controller

@@ -1,0 +1,32 @@
+<%- include('partials/header')  %>
+
+<% let priceFinal = 0; %>
+<% if (carrito.length > 0) { %>
+    <h1>Carrito de <%= carrito[0].users.firstName %> <%= carrito[0].users.lastName %></h1>
+    <% carrito.forEach (oneProduct => { %>
+        <div class='row'>
+            <div class='col-12'>
+                <img src="/images/<%= oneProduct.products.image %>" alt="<%= oneProduct.products.name %>" width="100"/>
+                Nombre: <%= oneProduct.products.name %>
+                Precio: $<%= oneProduct.price %>
+                Cantidad: <%= oneProduct.quantity %>
+                <% priceFinal = priceFinal + (oneProduct.quantity * oneProduct.price); %>
+                <form action="/user/deleteProduct/<%= oneProduct.id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-block delete-button" type="submit">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+        </div>  
+    <% }) %> 
+    Total: $<%= priceFinal %>
+    <form action="/user/purchase" method="POST">
+        <button class="btn btn-primary btn-cart" type="submit">
+            Finalizar compra
+        </button>
+    </form>
+<% } else { %>
+    <h1>Tu carrito está vacío capo</h1>
+<% } %>
+
+<%- include('partials/footer') %>

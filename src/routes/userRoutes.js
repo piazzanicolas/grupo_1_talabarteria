@@ -24,4 +24,16 @@ router.get('/profile', authMiddleware, userController.profile);
 
 router.get('/logout', userController.logout);
 
+/* Vista carrito */
+router.get('/cart', authMiddleware, userController.cartView);
+
+/* Guardado de producto en el carrito */
+router.post('/saveProduct/:id', authMiddleware, userController.saveProduct);
+
+/* Borrado de producto en el carrito */
+router.delete('/deleteProduct/:id', authMiddleware, userController.deleteProduct);
+
+/* Finalizar compra */
+router.post('/purchase', authMiddleware, userController.purchase);
+
 module.exports = router;

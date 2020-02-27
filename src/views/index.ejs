@@ -84,9 +84,27 @@
                 <h5 class="card-title"><%= product.name %></h5>
                 <p class="card-text"><%= product.description %></p>
                 <p class="card-text">$<%= product.price %> / Unidad</p>
-                <button type="button" class="btn btn-primary btn-cart" >
-                  Añadir al carrito
-                </button>
+                <% if ( locals.isLogged ) { %>
+                  <form action="/user/saveProduct/<%=product.id%>" method="POST">
+                    <div class="form-group">
+                      <label for="quantity">Cantidad</label>
+                      <select name="quantity" class="form-control">
+                        <option selected value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </div>
+                    <button class="btn btn-primary btn-cart" type="submit">
+                      Añadir al carrito
+                    </button>
+                  </form>
+                <% } else { %>
+                  <button type="button" class="btn btn-primary btn-cart" >
+                    Añadir al carrito
+                  </button>
+                <% } %>
               </div>
             </div>
           <% }) %>
