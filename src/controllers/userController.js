@@ -74,6 +74,7 @@ const controller = {
 
 		let errorsResult = validationResult(req);
 		if (!errorsResult.isEmpty()){
+			// Vuelvo a hacer la consulta a la base de datos para generar la vista
 			Countries
 				.findAll()
 				.then(countries => {

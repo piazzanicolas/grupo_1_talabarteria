@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const db = require('../database/models');
+const {validationResult} = require('express-validator');
 const Products = db.products;
 const Categories = db.categories;
 const Brands = db.brands;
@@ -48,6 +49,8 @@ const controller = {
 		})
 			.catch(error => res.send(error));
 	},
+
+
 	detalle: (req, res) => {
 		Products
 			.findByPk(req.params.id,{
@@ -56,6 +59,8 @@ const controller = {
 			.then (product => res.render('detalle', {product}))
 			.catch(error => res.send(error));
 	},
+
+
 	listado: (req, res) => {
 		Products
 			.findAll({
@@ -64,18 +69,53 @@ const controller = {
 			.then (products => res.render('lista-productos', {products}))
 			.catch(error => res.send(error));
 	},
+
+
 	guardar: (req, res, next) => {
-		Products
-			.create({
-				...req.body,
-				image: req.file.filename
-			})
-			.then (product => {
-				product.addColors(req.body.color);
-				res.redirect('/')
-			})
-			.catch(error => res.send(error));	
+		const hasErrorGetMessage = (field, errorsView) => {
+			for (const oneError of errorsView) {
+				if (oneError.param == field) {
+					return oneError.msg;
+				}
+			}
+			return false;
+		}
+
+		let errorsResult = validationResult(req);
+		if (!errorsResult.isEmpty()){
+			// Vuelvo a hacer la consulta a la base de datos para generar la vista
+			Categories
+			.findAll()
+			.then(categories => {
+				Brands
+					.findAll()
+					.then(brands => {
+						Colors
+							.findAll()
+							.then(colors => {
+								return res.render('carga', {categories, brands, colors, errors: errorsResult.array(), hasErrorGetMessage: hasErrorGetMessage});
+							})
+							.catch(error => res.send(error));	
+					})
+					.catch(error => res.send(error));			
+		})
+			.catch(error => res.send(error));
+			
+		} else {
+			Products
+				.create({
+					...req.body,
+					image: req.file.filename
+				})
+				.then (product => {
+					product.addColors(req.body.color);
+					res.redirect('/')
+				})
+				.catch(error => res.send(error));
+			}
 	},
+
+
 	editar: (req, res) => {
 		Products
 			.findByPk(req.params.id)
@@ -97,26 +137,63 @@ const controller = {
 				})
 			.catch(error => res.send(error));
 	},
+
+
 	editarCambios: (req, res) => {	
-		Products
-			.findByPk(req.params.id,{
-				include: ['colors']
-			})
-			.then(theProduct => {
-				theProduct
-					.update({
-						...req.body,
-						description: req.body.description.trim(), 
-						image: req.file ? req.file.filename : theProduct.image
-						})
-					.then(async product => {
-						await product.removeColors(product.colors);
-						await product.addColors(req.body.color);
-						return res.redirect('/products')})
+		const hasErrorGetMessage = (field, errorsView) => {
+			for (const oneError of errorsView) {
+				if (oneError.param == field) {
+					return oneError.msg;
+				}
+			}
+			return false;
+		}
+
+		let errorsResult = validationResult(req);
+		if (!errorsResult.isEmpty()){
+			// Vuelvo a hacer la consulta a la base de datos para generar la vista
+			Products
+			.findByPk(req.params.id)
+			.then (product => {
+				Categories
+					.findAll()
+					.then (categories => {
+						Brands
+							.findAll()
+							.then (brands => {
+								Colors
+									.findAll()
+									.then (colors => res.render('editar-producto', {product, categories, brands, colors, errors: errorsResult.array(), hasErrorGetMessage: hasErrorGetMessage}) )
+									.catch(error => res.send(error));
+							})
+							.catch(error => res.send(error));
+					})
 					.catch(error => res.send(error));
-			})
+				})
 			.catch(error => res.send(error));
+		} else {
+			Products
+				.findByPk(req.params.id,{
+					include: ['colors']
+				})
+				.then(theProduct => {
+					theProduct
+						.update({
+							...req.body,
+							description: req.body.description.trim(), 
+							image: req.file ? req.file.filename : theProduct.image
+							})
+						.then(async product => {
+							await product.removeColors(product.colors);
+							await product.addColors(req.body.color);
+							return res.redirect('/products')})
+						.catch(error => res.send(error));
+				})
+				.catch(error => res.send(error));
+		}
 	}, 
+
+
 	borrar: (req, res) => {
 		Products
 			.findByPk(req.params.id, {

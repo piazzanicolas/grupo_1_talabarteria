@@ -17,29 +17,53 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="name"> Nombre </label>
-                    <input type="text" name="name" id="name" class="form-control" data-name="Nombre">
-                    <i class='invalid-feedback'></i>
+                    <input type="text" name="name" id="name" class="form-control 
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                        <%= hasErrorGetMessage('name',errors) ? 'is-invalid' : null %> 
+                    <% } %>
+                    " data-name="Nombre">
+                    <i class='invalid-feedback'>
+                        <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                            <%= hasErrorGetMessage('name',errors) ? hasErrorGetMessage('name',errors) : null %> 
+                        <% } %>
+                    </i>
                 </div>
             </div>
         <!-- Categoria -->
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="category_id"> Categoría </label>
-                    <select name="category_id" class="form-control" data-name="Categoría">
+                    <select name="category_id" class="form-control 
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                        <%= hasErrorGetMessage('category_id',errors) ? 'is-invalid' : null %> 
+                    <% } %>
+                    " data-name="Categoría">
                         <option selected value="">Elige una categoría</option>
                         <% categories.forEach(category => { %>
                             <option value="<%= category.id %>"><%= category.name %></option>
                         <% }) %>
                     </select>
-                    <i class='invalid-feedback'></i>
+                    <i class='invalid-feedback'>
+                        <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                            <%= hasErrorGetMessage('category_id',errors) ? hasErrorGetMessage('category_id',errors) : null %> 
+                        <% } %>
+                    </i>
                 </div>
             </div>
         <!-- Precio -->
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="price"> Precio </label>
-                    <input type="number" name="price" id="price" class="form-control" data-name="Precio">
-                    <i class='invalid-feedback'></i>
+                    <input type="number" name="price" id="price" class="form-control 
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                        <%= hasErrorGetMessage('price',errors) ? 'is-invalid' : null %> 
+                    <% } %>
+                    " data-name="Precio">
+                    <i class='invalid-feedback'>
+                        <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                            <%= hasErrorGetMessage('price',errors) ? hasErrorGetMessage('price',errors) : null %> 
+                        <% } %>
+                    </i>
                 </div>
             </div>
         </div>
@@ -48,33 +72,57 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="brand"> Marca </label>
-                    <select name="brand_id" class="form-control" data-name="Marca">
+                    <select name="brand_id" class="form-control 
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                        <%= hasErrorGetMessage('brand_id',errors) ? 'is-invalid' : null %> 
+                    <% } %>
+                    " data-name="Marca">
                         <option selected value="">Elige una marca</option>
                         <% brands.forEach(brand => { %>
                             <option value="<%= brand.id %>"><%= brand.name %></option>
                         <% }) %>
                     </select>
-                    <i class='invalid-feedback'></i>
+                    <i class='invalid-feedback'>
+                        <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                            <%= hasErrorGetMessage('brand_id',errors) ? hasErrorGetMessage('brand_id',errors) : null %> 
+                        <% } %>
+                    </i>
                 </div>
             </div>
         <!-- Descripcion -->
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="description"id="description"> Descripción </label>
-                    <textarea name="description" class="form-control" data-name="Descripción" rows="3"></textarea>
-                    <i class='invalid-feedback'></i>
+                    <textarea name="description" class="form-control 
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                        <%= hasErrorGetMessage('description',errors) ? 'is-invalid' : null %> 
+                    <% } %>
+                    " data-name="Descripción" rows="3"></textarea>
+                    <i class='invalid-feedback'>
+                        <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                            <%= hasErrorGetMessage('description',errors) ? hasErrorGetMessage('description',errors) : null %> 
+                        <% } %>
+                    </i>
                 </div>
             </div>
         <!-- Color -->
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="color"> Color </label>
-                    <select name="color" class="form-control" data-name="Color" multiple>
+                    <select name="color" class="form-control 
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                        <%= hasErrorGetMessage('color',errors) ? 'is-invalid' : null %> 
+                    <% } %>
+                    " data-name="Color" multiple>
                         <% colors.forEach(color => { %>
                             <option value="<%= color.id %>"><%= color.name %></option>
                         <% }) %>
                     </select>
-                    <i class='invalid-feedback'></i>
+                    <i class='invalid-feedback'>
+                        <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                            <%= hasErrorGetMessage('color',errors) ? hasErrorGetMessage('color',errors) : null %> 
+                        <% } %>
+                    </i>
                 </div>
             </div>
         </div>
@@ -84,8 +132,16 @@
               <div class="form-group">
                 <label>Foto</label>
                 <div class="custom-file">
-                  <input type="file" name="image" data-name="Foto" class="custom-file-input">
-                  <i class="invalid-feedback"></i>
+                  <input type="file" name="image" data-name="Foto" class="custom-file-input 
+                  <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                      <%= hasErrorGetMessage('image',errors) ? 'is-invalid' : null %> 
+                  <% } %>
+                  ">
+                  <i class="invalid-feedback">
+                    <% if (typeof hasErrorGetMessage !== 'undefined') { %> 
+                        <%= hasErrorGetMessage('image',errors) ? hasErrorGetMessage('image',errors) : null %> 
+                    <% } %>
+                  </i>
                   <label class="custom-file-label">Elegir archivo...</label>
                 </div>
               </div>

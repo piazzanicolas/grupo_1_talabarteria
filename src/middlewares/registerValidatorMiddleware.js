@@ -36,8 +36,8 @@ module.exports = [
             }
         }),
 
-    check('firstName','El nombre es necesario')
-        .notEmpty().bail()
+    check('firstName')
+        .notEmpty().withMessage('El nombre es necesario').bail()
         .isLength({min:2}).withMessage('El nombre debe tener más de 2 caracteres'),
 
     check('dob')
