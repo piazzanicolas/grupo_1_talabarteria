@@ -1,6 +1,6 @@
 window.onload = function () {
 	// Capturamos el formulario
-	let form = document.querySelector('#validateForm');
+	let form = document.querySelector('#validateFormCarga');
 	// Del formulario traemos todos los campos en formato Array
 	let formInputs = Array.from(form.elements);
 	// Sacamos al botón del array de campos
@@ -40,72 +40,29 @@ window.onload = function () {
 			}
 		});
 
-		if (oneInput.name == "email") {
+		if (oneInput.name == "name") {
 			oneInput.addEventListener('blur', function () {
 				let inputValue = oneInput.value;
-				if (!validator.isEmail(inputValue)) {
+				if (!validator.isLength(inputValue, {min:5})) {
 					this.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = `El campo ${this.dataset.name} tiene que ser un Email`;
+					this.nextElementSibling.innerHTML = `El nombre debe tener al menos 5 caracteres`;
 					errores[this.name] = true;
 				}
 			})
 		}
 
-		if (oneInput.name == "re_password") {
-			let password = document.querySelector("#password")
+		if (oneInput.name == "description") {
 			oneInput.addEventListener('blur', function () {
 				let inputValue = oneInput.value;
-				if (inputValue != password.value) {
+				if (!validator.isLength(inputValue, {min:20})) {
 					this.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = `La contraseña debe ser igual en ambos campos`;
-					errores[this.name] = true;
-				}
-			})
-			oneInput.addEventListener('change', function () {
-				let inputValue = oneInput.value;
-				if (inputValue == password.value) {
-					this.classList.remove('is-invalid');
-					this.classList.add('is-valid');
+					this.nextElementSibling.innerHTML = `La descripcion debe tener al menos 20 caracteres`;
 					errores[this.name] = true;
 				}
 			})
 		}
 
-		if (oneInput.name == "firstName") {
-			oneInput.addEventListener('blur', function () {
-				let inputValue = oneInput.value;
-				if (!validator.isLength(inputValue, {min:2})) {
-					this.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = `El apellido debe tener al menos 2 caracteres`;
-					errores[this.name] = true;
-				}
-			})
-		}
-
-		if (oneInput.name == "lastName") {
-			oneInput.addEventListener('blur', function () {
-				let inputValue = oneInput.value;
-				if (!validator.isLength(inputValue, {min:2})) {
-					this.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = `El apellido debe tener al menos 2 caracteres`;
-					errores[this.name] = true;
-				}
-			})
-		}
-
-		if (oneInput.name == "password") {
-			oneInput.addEventListener('blur', function () {
-				let inputValue = oneInput.value;
-				let passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*?])(?=.*[a-z])(?=.*[A-Z]).{8,}$/
-				if (!inputValue.match(passwordRegex)){
-					this.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial !@#$%^&*?';
-					errores[this.name] = true;
-				}
-			})
-		}
-
-		if (oneInput.name == "avatar") {
+		if (oneInput.name == "image") {
 			oneInput.addEventListener('blur', function () {
 				let acceptedExtensions = ['jpg', 'jpeg', 'png'];
 				let fileExtension = this.value.split('.').pop();

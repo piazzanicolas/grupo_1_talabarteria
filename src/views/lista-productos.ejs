@@ -3,10 +3,11 @@
 <div class="card border-primary mb-3">
     <div class="card-body text-primary">
       <h5 class="card-title">Listado de Productos</h5>
-  
-      <div class="my-2 text-left">
-        <a class="btn btn-rounded btn-primary" role="button" href="/products/carga/">Crear Producto</a>
-      </div>
+      <% if ( locals.isLogged ) { %>
+        <div class="my-2 text-left">
+          <a class="btn btn-rounded btn-primary" role="button" href="/products/carga/">Crear Producto</a>
+        </div>
+      <% } %>
   
       <table class="table table-bordered table-striped">  
         <thead>
@@ -19,7 +20,9 @@
             <th>Categoría</th>
             <th>Color</th>
             <th>Marca</th>
-            <th>Acción</th>
+            <% if ( locals.isLogged ) { %>
+              <th>Acción</th>
+            <% } %>
           </tr>
         </thead>
   
@@ -41,22 +44,25 @@
               <% }) %>
             </td>
             <td><%= product.brand.name %></td>
-            <td style="text-align: center;">
-          
-                <form action="/products/<%= product.id %>/edit">
-                  <button class="btn btn-block edit-button">
-                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                  </button>  
-                </form> 
-                
-                <form action="/products/<%= product.id %>/delete?_method=DELETE" method="POST">
-                  <button class="btn btn-block delete-button" type="submit" 
-                    onclick="return confirm('¿Está seguro que quiere eliminar el producto?');">
-                  <i class="fa fa-trash-o" aria-hidden="true"></i>
-                  </button>
-                </form>
 
-            </td>
+            <% if ( locals.isLogged ) { %>
+              <td style="text-align: center;">
+            
+                  <form action="/products/<%= product.id %>/edit">
+                    <button class="btn btn-block edit-button">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </button>  
+                  </form> 
+                  
+                  <form action="/products/<%= product.id %>/delete?_method=DELETE" method="POST">
+                    <button class="btn btn-block delete-button" type="submit" 
+                      onclick="return confirm('¿Está seguro que quiere eliminar el producto?');">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </button>
+                  </form>
+
+              </td>
+            <% } %>
           </tr>
           <% }) %>
         </tbody>

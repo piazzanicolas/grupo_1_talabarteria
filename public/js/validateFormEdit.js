@@ -1,6 +1,6 @@
 window.onload = function () {
 	// Capturamos el formulario
-	let form = document.querySelector('#validateForm');
+	let form = document.querySelector('#validateFormEdit');
 	// Del formulario traemos todos los campos en formato Array
 	let formInputs = Array.from(form.elements);
 	// Sacamos al botón del array de campos
@@ -41,56 +41,24 @@ window.onload = function () {
 			}
 		});
 
-		if (oneInput.name == "email") {
+		if (oneInput.name == "name") {
 			oneInput.addEventListener('blur', function () {
 				let inputValue = oneInput.value;
-				if (!validator.isEmail(inputValue)) {
+				if (!validator.isLength(inputValue, {min:5})) {
 					this.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = `El campo ${this.dataset.name} tiene que ser un Email`;
+					this.nextElementSibling.innerHTML = `El nombre debe tener al menos 5 caracteres`;
+					errores[this.name] = true;
 				}
 			})
 		}
 
-		if (oneInput.name == "password") {
-			let repassword = document.querySelector("#re_password")
+		if (oneInput.name == "description") {
 			oneInput.addEventListener('blur', function () {
 				let inputValue = oneInput.value;
-				if (inputValue != repassword.value) {
+				if (!validator.isLength(inputValue, {min:20})) {
 					this.classList.add('is-invalid');
-					repassword.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = `La contraseña debe ser igual en ambos campos`;
-					repassword.nextElementSibling.innerHTML = `La contraseña debe ser igual en ambos campos`;
-				}
-			})
-			oneInput.addEventListener('change', function () {
-				let inputValue = oneInput.value;
-				if (inputValue == repassword.value) {
-					repassword.classList.remove('is-invalid');
-					repassword.classList.add('is-valid');
-					this.classList.remove('is-invalid');
-					this.classList.add('is-valid');
-				}
-			})
-		}
-
-		if (oneInput.name == "re_password") {
-			let password = document.querySelector("#password")
-			oneInput.addEventListener('blur', function () {
-				let inputValue = oneInput.value;
-				if (inputValue != password.value) {
-					this.classList.add('is-invalid');
-					password.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = `La contraseña debe ser igual en ambos campos`;
-					password.nextElementSibling.innerHTML = `La contraseña debe ser igual en ambos campos`;
-				}
-			})
-			oneInput.addEventListener('change', function () {
-				let inputValue = oneInput.value;
-				if (inputValue == password.value) {
-					password.classList.remove('is-invalid');
-					password.classList.add('is-valid');
-					this.classList.remove('is-invalid');
-					this.classList.add('is-valid');
+					this.nextElementSibling.innerHTML = `La descripcion debe tener al menos 20 caracteres`;
+					errores[this.name] = true;
 				}
 			})
 		}
