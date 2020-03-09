@@ -19,6 +19,14 @@ const controller = {
 			.then (products => res.render('index', {products}))
 			.catch(error => res.send(error));
 	},
+
+	contact: (req, res) => {
+		return res.render('contacto')
+	},
+
+	faq: (req, res) => {
+		return res.render('faq')
+	},
 	
 };
 
