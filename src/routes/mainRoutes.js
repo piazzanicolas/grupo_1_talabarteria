@@ -15,6 +15,8 @@ router.get('/contact', mainController.contact);
 /* GET - Preguntas frecuentes. */
 router.get('/faq', mainController.faq);
 
+/* GET - Buscador. */
+//router.get('/search', mainController.search);
 
 module.exports = router;
 

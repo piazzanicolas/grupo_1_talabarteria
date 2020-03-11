@@ -31,7 +31,9 @@
           <tr>
             <td><%= product.id %></td>
             <td>
-                <img src="/images/<%= product.image %>" alt="<%= product.name %>" width="100">
+              <a href="/products/detalle/<%=product.id%>">
+                <img src="/images/<%= product.image %>" alt="<%= product.name %>" width="100"/>
+              </a>
             </td>
             <td><%= product.name %></td>
             <td><%= product.description %></td>

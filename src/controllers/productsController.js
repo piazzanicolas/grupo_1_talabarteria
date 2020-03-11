@@ -30,6 +30,19 @@ const generateId = () => {
 	return lastProduct.id + 1;
 }
 
+
+function OrderbyRating(req) {
+	if (req.query){
+	//if (req.query.order_rating){
+		//return ['rating','DESC']
+	} else {
+		return ['name']
+	}
+}
+
+
+
+
 const controller = {
 	cargaProducto: (req, res) => {
 		Categories

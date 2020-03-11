@@ -24,7 +24,24 @@
     <figure class="medios-de-pago">
       <img src="/images/medios-de-pago.png" alt="Medios de Pago" width=300 height="auto">
     </figure>
-    <button class="btn btn-primary">Comprar</button>
+    <% if ( locals.isLogged ) { %>
+      <form action="/user/saveProduct/<%=product.id%>" method="POST">
+        <div class="form-group">
+          <label for="quantity">Cantidad</label>
+          <select name="quantity" class="form-control">
+            <option selected value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <button class="btn btn-primary btn-cart" type="submit">
+          Comprar
+        </button>
+    <% } else { %>
+      <button class="btn btn-primary">Comprar</button>
+    <% } %>
     
   </div>
 
