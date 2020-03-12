@@ -14,25 +14,39 @@ const Op = db.Sequelize.Op;
 //}
 
 function filterCategory(req) {
-	if (req.query.mustad) {
-		return 2
+	if (req.query.lamartina && req.query.mustad) {
+		return [1,2]
 	} else if (req.query.lamartina) {
-		return 1
-	} else if (req.query.lamartina == on && req.query.mustad == on) {
-		return 2 //retornar todo
+		return [1]
+	} else if (req.query.mustad) {
+		return [2]
 	} else {
-		return 1 //retornar todo
+		return [1,2]
 	}
 }
 
+function filterPrice(req) {
+	if (req.query.rango1 && req.query.rango2) {
+		return {[Op.gt]: 0, [Op.lt]: 5000 }
+	} else if (req.query.rango1) {
+		return {[Op.gt]: 0, [Op.lte]: 1000 }
+	} else if (req.query.rango2) {
+		return {[Op.gt]: 1000, [Op.lt]: 5000 }
+	} else {
+		return {[Op.gt]: 0 }
+	}
+}
+
+
 const controller = {
 	root: (req, res) => {
-		if (req.query.search || req.query.mustad || req.query.lamartina) { //el req.query no funciona en todos los casos
+		if (req.query.search || req.query.mustad || req.query.lamartina || req.query.rango1 || req.query.rango2) { //el req.query no funciona en todos los casos
 			Products
 				.findAll({
 					where: {
 						name: {[Op.like]: `%${req.query.search}%`},
-						category_id: filterCategory(req)
+						category_id: {[Op.or]: filterCategory(req)},
+						price: filterPrice(req)
 					}
 				})
 				.then(products => res.render('index', {products}))
