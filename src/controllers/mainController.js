@@ -13,7 +13,7 @@ const Op = db.Sequelize.Op;
 //	return JSON.parse(fs.readFileSync(url, {encoding: 'utf-8'}));
 //}
 
-function filterCategory(req) {
+function filterBrand(req) {
 	if (req.query.lamartina && req.query.mustad) {
 		return [1,2]
 	} else if (req.query.lamartina) {
@@ -37,16 +37,29 @@ function filterPrice(req) {
 	}
 }
 
+function filterCategory(req) {
+	if (req.query.marroquineria && req.query.talabarteria) {
+		return [1,2]
+	} else if (req.query.marroquineria) {
+		return [1]
+	} else if (req.query.talabarteria) {
+		return [2]
+	} else {
+		return [1,2]
+	}
+}
+
 
 const controller = {
 	root: (req, res) => {
-		if (req.query.search || req.query.mustad || req.query.lamartina || req.query.rango1 || req.query.rango2) { //el req.query no funciona en todos los casos
+		if (req.query.search || req.query.mustad || req.query.lamartina || req.query.rango1 || req.query.rango2 || req.query.marroquineria || req.query.talabarteria) { //el req.query no funciona en todos los casos
 			Products
 				.findAll({
 					where: {
 						name: {[Op.like]: `%${req.query.search}%`},
-						category_id: {[Op.or]: filterCategory(req)},
-						price: filterPrice(req)
+						brand_id: {[Op.or]: filterBrand(req)},
+						price: filterPrice(req),
+						category_id: {[Op.or]: filterCategory(req)}
 					}
 				})
 				.then(products => res.render('index', {products}))

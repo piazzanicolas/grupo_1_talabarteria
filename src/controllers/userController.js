@@ -50,15 +50,7 @@ function getUserById(id){
 // Controller Methods
 const controller = {
 	registroForm: (req, res) => {
-		Countries.findAll()
-			.then(countries => {
-				return res.render('registro', {
-					countries
-				}
-				);
-			})
-			.catch(error => res.send(error));
-
+		return res.render('registro');
 	},
 
 	saveUser: (req,res) => {
@@ -135,17 +127,16 @@ const controller = {
 	profile: (req, res) => {
 		//let userLogged = getUserById(req.session.user.id);
 		res.locals.user = req.session.user;
-		Users
-			.findByPk(req.session.user.id, {
-				include: ['country']
-			})
-			.then(user => {
-				return res.render('profile', { userLogged: res.locals.user });
-				
-			})
-			.catch(error => res.send(error));
-
+		Cart
+			.findAll({
+				where: {user_id: req.session.user.id},
+				include: ['products', 'users']
+				})
+			.then(result => 
+				res.render('profile', {result, userLogged: res.locals.user }))
+			.catch(error => res.send(error))
 	},
+
 	logout: (req, res) => {
 		req.session.destroy();
 		res.locals.user = undefined;

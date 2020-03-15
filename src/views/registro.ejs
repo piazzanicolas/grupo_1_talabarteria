@@ -264,10 +264,7 @@
 
                 <label> País </label>
                 <select class="selectpicker form-control" data-name="Pais" name="countryId">
-                <option selected value="">Elige un país</option>
-                <% countries.forEach(oneCountry => { %>
-                <option value="<%= oneCountry.id %>"><%= oneCountry.name %></option>
-                <% }) %>
+                  <option selected value="">Elige un país</option>
                 </select>
 
                 <i class='invalid-feedback'>
@@ -320,5 +317,7 @@
 
 <%- include('partials/footer') %>
 
+<!-- Api países -->
+<script src="/js/apiPaises.js"></script>
 <script src="/js/validator.min.js"></script>
 <script src="/js/validateForm.js"></script>

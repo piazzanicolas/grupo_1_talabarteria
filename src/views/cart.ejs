@@ -1,73 +1,71 @@
 <%- include('partials/header')  %>
 
 <% let priceFinal = 0; %>
-<% if (carrito.length > 0) { %>
-    <div class="container">
+<div class="container">
+    <% if (carrito.length > 0) { %>
         <h1>Carrito de <%= carrito[0].users.firstName %> <%= carrito[0].users.lastName %></h1>
-
-        <div class="row border-bottom py-2">
-            <div class="col-1">
-                <p>Imagen</p>
-            </div>
-            <div class="col-3">
-                <p>Nombre</p>
-            </div>
-            <div class="col-3">
-                <p>Cantidad</p>
-            </div>
-            <div class="col-3">
-                <p>Precio</p>
-            </div>
-            <div class="col-2">
-                <p>Acciones</p>
-            </div>
-        </div>
-        
-        <% carrito.forEach ((oneProduct, i) => { %>
-            <div class='row border-bottom py-2 <%= i % 2 == 0 ? "bg-light" : null %>'>
-                <div class='col-1'>
-                    <img src="/images/<%= oneProduct.products.image %>" alt="<%= oneProduct.products.name %>" width="100%"/>
+            <div class="row border-bottom py-2">
+                <div class="col-1">
+                    <p>Imagen</p>
                 </div>
                 <div class="col-3">
-                    <%= oneProduct.products.name %>
+                    <p>Nombre</p>
                 </div>
                 <div class="col-3">
-                    <input type="number" class="form-control" min="<%= oneProduct.quantity %>" value="<%= oneProduct.quantity %>">
+                    <p>Cantidad</p>
                 </div>
                 <div class="col-3">
-                    $<%= oneProduct.price %>
-                </div>                
+                    <p>Precio</p>
+                </div>
                 <div class="col-2">
-                    <% priceFinal = priceFinal + (oneProduct.quantity * oneProduct.price); %>
-                    <form action="/user/deleteProduct/<%= oneProduct.id %>?_method=DELETE" method="POST">
-                        <button class="btn btn-block delete-button" type="submit">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <p>Acciones</p>
+                </div>
+            </div>
+            
+            <% carrito.forEach ((oneProduct, i) => { %>
+                <div class='row border-bottom py-2 <%= i % 2 == 0 ? "bg-light" : null %>'>
+                    <div class='col-1'>
+                        <img src="/images/<%= oneProduct.products.image %>" alt="<%= oneProduct.products.name %>" width="100%"/>
+                    </div>
+                    <div class="col-3">
+                        <%= oneProduct.products.name %>
+                    </div>
+                    <div class="col-3">
+                        <input type="number" class="form-control" min="<%= oneProduct.quantity %>" value="<%= oneProduct.quantity %>">
+                    </div>
+                    <div class="col-3">
+                        $<%= oneProduct.price %>
+                    </div>                
+                    <div class="col-2">
+                        <% priceFinal = priceFinal + (oneProduct.quantity * oneProduct.price); %>
+                        <form action="/user/deleteProduct/<%= oneProduct.id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-block delete-button" type="submit">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div> 
+            <% }) %>
+        
+            <div class="row border-bottom py-2">
+                <div class="col-3 offset-7">
+                    Total: $<%= priceFinal %>
+                </div>
+            </div>
+
+            <div class="row pt-2">
+                <div class="col-2 offset-10">
+                    <form action="/user/purchase" method="POST">
+                        <button class="btn btn-primary btn-cart" type="submit">
+                            Finalizar compra
                         </button>
                     </form>
                 </div>
-            </div> 
-        <% }) %>
-      
-        <div class="row border-bottom py-2">
-            <div class="col-3 offset-7">
-                Total: $<%= priceFinal %>
             </div>
-        </div>
-
-        <div class="row pt-2">
-            <div class="col-2 offset-10">
-                <form action="/user/purchase" method="POST">
-                    <button class="btn btn-primary btn-cart" type="submit">
-                        Finalizar compra
-                    </button>
-                </form>
-            </div>
-        </div>
-       
-        
-    </div>
-<% } else { %>
-    <h1>Tu carrito está vacío capo</h1>
-<% } %>
-
+    <% } else { %>
+        <br>
+        <h3 style="text-align: center;">No has agregado productos en tu carrito todavía</h3>
+        <br>
+    <% } %>
+</div>
 <%- include('partials/footer') %>
