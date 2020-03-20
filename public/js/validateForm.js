@@ -15,7 +15,7 @@ window.onload = function () {
 		// A cada campo le asignamos el evento blur
 		oneInput.addEventListener('blur', function () {
 			// Capturo el valor del campo
-			let inputValue = this.value;
+			let inputValue = this.value.trim();
 			// Si el campo está vacío
 			if (validator.isEmpty(inputValue, { ignore_whitespace: true })) {
 				// Aplicamos la clase de error "is-invalid"
@@ -42,12 +42,24 @@ window.onload = function () {
 
 		if (oneInput.name == "email") {
 			oneInput.addEventListener('blur', function () {
-				let inputValue = oneInput.value;
+				let inputValue = oneInput.value.trim();
 				if (!validator.isEmail(inputValue)) {
 					this.classList.add('is-invalid');
 					this.nextElementSibling.innerHTML = `El campo ${this.dataset.name} tiene que ser un Email`;
 					errores[this.name] = true;
 				}
+
+				fetch(`http://localhost:3000/api/users/email/${inputValue}`)
+					.then(response => response.json())
+					.then(info => {
+						if(info.userFound === true){
+							this.classList.add('is-invalid');
+							this.classList.remove('is-valid');
+							this.nextElementSibling.innerHTML = `El email ${inputValue} ya se encuentra registrado`;
+							errores[this.name] = true;
+						}
+					})
+					.catch(error => console.log(error))
 			})
 		}
 
@@ -62,7 +74,7 @@ window.onload = function () {
 				}
 			})
 			oneInput.addEventListener('change', function () {
-				let inputValue = oneInput.value;
+				let inputValue = oneInput.value.trim();
 				if (inputValue == password.value) {
 					this.classList.remove('is-invalid');
 					this.classList.add('is-valid');
@@ -73,7 +85,7 @@ window.onload = function () {
 
 		if (oneInput.name == "firstName") {
 			oneInput.addEventListener('blur', function () {
-				let inputValue = oneInput.value;
+				let inputValue = oneInput.value.trim();
 				if (!validator.isLength(inputValue, {min:2})) {
 					this.classList.add('is-invalid');
 					this.nextElementSibling.innerHTML = `El apellido debe tener al menos 2 caracteres`;
@@ -84,7 +96,7 @@ window.onload = function () {
 
 		if (oneInput.name == "lastName") {
 			oneInput.addEventListener('blur', function () {
-				let inputValue = oneInput.value;
+				let inputValue = oneInput.value.trim();
 				if (!validator.isLength(inputValue, {min:2})) {
 					this.classList.add('is-invalid');
 					this.nextElementSibling.innerHTML = `El apellido debe tener al menos 2 caracteres`;
@@ -95,7 +107,7 @@ window.onload = function () {
 
 		if (oneInput.name == "password") {
 			oneInput.addEventListener('blur', function () {
-				let inputValue = oneInput.value;
+				let inputValue = oneInput.value.trim();
 				let passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*?])(?=.*[a-z])(?=.*[A-Z]).{8,}$/
 				if (!inputValue.match(passwordRegex)){
 					this.classList.add('is-invalid');

@@ -49,7 +49,8 @@ const productsRouter = require('./routes/productsRoutes');
 app.use('/products', productsRouter);
 const userRouter = require('./routes/userRoutes');
 app.use('/user', userRouter);
-
+const apiRouter = require('./routes/apiRoutes');
+app.use('/api', apiRouter);
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************
