@@ -59,14 +59,42 @@ const controller = {
         Products
             .findAll({
                 attributes: ["id", "name", "description"],
-                raw: true
+                include: ["brand", "category"],
+                raw: true,
+                nest: true
             })
             .then(products => {
+                // Inicializar contandores de marcas y categorias //
+                let countBrand1=0;
+                let countBrand2=0;
+                let countCategory1=0;
+                let countCategory2=0;
+
                 products.map((oneProduct) => {
                     oneProduct.detail = `http://localhost:3000/api/products/${oneProduct.id}`
+                    
+                    // Cuento cada marca y categoria //
+                    if (oneProduct.brand.id == 1) {
+                        countBrand1++;
+                    } else if (oneProduct.brand.id == 2) {
+                        countBrand2++;
+                    } else {
+                        null
+                    }
+
+                    if (oneProduct.category.id == 1) {
+                        countCategory1++;
+                    } else if (oneProduct.category.id == 2) {
+                        countCategory2++;
+                    } else {
+                        null
+                    }
                 })
+
                 return res.status(200).json({
                     total_results: products.length,
+                    countByCategory: {Marroquineria: countCategory1 , Talabarteria: countCategory2},
+                    countByBrand: {LaMartina: countBrand1, Mustad: countBrand2},
                     products: products
                 });
             })
@@ -75,7 +103,7 @@ const controller = {
     
     
     showOneProduct: async (req, res) => {
-        let product = await Products.findOne({where: {id: req.params.id}, attributes: ["id","name", "description", "price", "category_id", "brand_id", "image"]});
+        let product = await Products.findOne({where: {id: req.params.id}, include: ["brand", "category", "colors"], attributes: ["id","name", "description", "price", "image"]});
         if(product) {
             product.image = `http://localhost:3000/api/images/${product.image}`
 			return res.status(302).json({
@@ -90,8 +118,8 @@ const controller = {
 
 
     showImage: (req, res) => {
-        let route = path.join(__dirname, '../../public/images', req.params.name);
-        return res.send(route)
+        let route = path.join(__dirname, '../../public/images', `/${req.params.name}`);
+        return res.sendFile(route)
     }
 };
 
