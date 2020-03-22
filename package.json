@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./src/bin/www"
+    "client": "cd src && cd dashboard && npm start",
+    "server": "nodemon ./src/bin/www",
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
     "axios": "^0.19.0",
     "bcrypt": "3.0.6",
+    "concurrently": "^5.1.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "^2.6.2",
