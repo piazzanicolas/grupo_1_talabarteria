@@ -5,6 +5,9 @@ const router = express.Router();
 // ************ Controller Require ************
 const apiController = require('../controllers/apiController');
 
+/* GET - Main */
+router.get('/', apiController.main);
+
 /* GET - All Users */
 router.get('/users', apiController.showAllUsers);
 

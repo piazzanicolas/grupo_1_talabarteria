@@ -6,10 +6,18 @@ const Products = db.products;
 
 // Controller Methods
 const controller = {
+    main: (req, res) => {
+        return res.status(200).json({
+            products: `http://localhost:3000/api/products/`,
+            users: `http://localhost:3000/api/users/`
+        });
+    },
+
+
 	showAllUsers: (req, res) => {
         Users
             .findAll({
-                attributes: ["id","firstName", "lastName","email"],
+                attributes: ["id", "email"],
                 raw: true
             })
             .then(users => {
@@ -25,7 +33,7 @@ const controller = {
     },
     
     showOneUser: async (req, res) => {
-        let user = await Users.findOne({where: {id: req.params.id}, attributes: ["id","firstName","lastName","email","avatar","isActive"]});
+        let user = await Users.findOne({where: {id: req.params.id}, attributes: ["id","firstName","lastName","email","avatar"]});
         if(user) {
             user.avatar = `http://localhost:3000/api/images/${user.avatar}`
 			return res.status(302).json({
@@ -58,7 +66,7 @@ const controller = {
     showAllProducts: (req, res) => {
         Products
             .findAll({
-                attributes: ["id", "name", "description"],
+                attributes: ["id", "name"],
                 include: ["brand", "category"],
                 raw: true,
                 nest: true
