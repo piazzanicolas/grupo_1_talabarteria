@@ -12,7 +12,7 @@ const apiCall = (endpoint, callback) => {
 const setCountries = function (countries) {
 	if (countries.length > 0) {
 		countries.forEach((oneCountry, i) => {
-            selectCountries.innerHTML += `<option value="${i}">${oneCountry.name}</option>`;
+            selectCountries.innerHTML += `<option value="${i+1}">${oneCountry.name}</option>`;
             i++;
 		});
 	} else {

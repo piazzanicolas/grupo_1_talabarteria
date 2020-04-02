@@ -3,72 +3,113 @@
 <div class="card border-primary mb-3">
     <div class="card-body text-primary">
       <h5 class="card-title">Listado de Productos</h5>
-      <% if ( locals.isLogged ) { %>
-        <div class="my-2 text-left">
-          <a class="btn btn-rounded btn-primary" role="button" href="/products/carga/">Crear Producto</a>
-        </div>
-      <% } %>
-  
-      <table class="table table-bordered table-striped">  
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Categoría</th>
-            <th>Color</th>
-            <th>Marca</th>
-            <% if ( locals.isLogged ) { %>
-              <th>Acción</th>
-            <% } %>
-          </tr>
-        </thead>
-  
-        <tbody>
-            <% products.forEach( product => { %>
-          <tr>
-            <td><%= product.id %></td>
-            <td>
-              <a href="/products/detalle/<%=product.id%>">
-                <img src="/images/<%= product.image %>" alt="<%= product.name %>" width="100"/>
-              </a>
-            </td>
-            <td><%= product.name %></td>
-            <td><%= product.description %></td>
-            <td><%= product.price %></td>
-            <td><%= product.category.name %></td>
-            <td>
-              <% product.colors.forEach(color => { %>
-                <%= color.name %>
-                <br>
-              <% }) %>
-            </td>
-            <td><%= product.brand.name %></td>
-
-            <% if ( locals.isLogged ) { %>
-              <td style="text-align: center;">
-            
-                  <form action="/products/<%= product.id %>/edit">
-                    <button class="btn btn-block edit-button">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                    </button>  
-                  </form> 
-                  
-                  <form action="/products/<%= product.id %>/delete?_method=DELETE" method="POST">
-                    <button class="btn btn-block delete-button" type="submit" 
-                      onclick="return confirm('¿Está seguro que quiere eliminar el producto?');">
-                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                    </button>
-                  </form>
-
+      <% if ( locals.isLogged) { %>
+        <% if ( locals.user.admin == 1 ) { %>
+          <div class="my-2 text-left">
+            <a class="btn btn-rounded btn-primary" role="button" href="/products/carga/">Crear Producto</a>
+          </div>
+        <% } %>
+    
+        <table class="table table-bordered table-striped">  
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Precio</th>
+              <th>Categoría</th>
+              <th>Color</th>
+              <th>Marca</th>
+              <% if ( locals.user.admin == 1 ) { %>
+                <th>Acción</th>
+              <% } %>
+            </tr>
+          </thead>
+    
+          <tbody>
+              <% products.forEach( product => { %>
+            <tr>
+              <td><%= product.id %></td>
+              <td>
+                <a href="/products/detalle/<%=product.id%>">
+                  <img src="/images/<%= product.image %>" alt="<%= product.name %>" width="100"/>
+                </a>
               </td>
-            <% } %>
-          </tr>
-          <% }) %>
-        </tbody>
-      </table>
+              <td><%= product.name %></td>
+              <td><%= product.description %></td>
+              <td><%= product.price %></td>
+              <td><%= product.category.name %></td>
+              <td>
+                <% product.colors.forEach(color => { %>
+                  <%= color.name %>
+                  <br>
+                <% }) %>
+              </td>
+              <td><%= product.brand.name %></td>
+
+              <% if ( locals.user.admin == 1 ) { %>
+                <td style="text-align: center;">
+              
+                    <form action="/products/<%= product.id %>/edit">
+                      <button class="btn btn-block edit-button">
+                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      </button>  
+                    </form> 
+                    
+                    <form action="/products/<%= product.id %>/delete?_method=DELETE" method="POST">
+                      <button class="btn btn-block delete-button" type="submit" 
+                        onclick="return confirm('¿Está seguro que quiere eliminar el producto?');">
+                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      </button>
+                    </form>
+
+                </td>
+              <% } %>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <% } else { %>
+          <table class="table table-bordered table-striped">  
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+                <th>Color</th>
+                <th>Marca</th>
+              </tr>
+            </thead>
+      
+            <tbody>
+                <% products.forEach( product => { %>
+              <tr>
+                <td><%= product.id %></td>
+                <td>
+                  <a href="/products/detalle/<%=product.id%>">
+                    <img src="/images/<%= product.image %>" alt="<%= product.name %>" width="100"/>
+                  </a>
+                </td>
+                <td><%= product.name %></td>
+                <td><%= product.description %></td>
+                <td><%= product.price %></td>
+                <td><%= product.category.name %></td>
+                <td>
+                  <% product.colors.forEach(color => { %>
+                    <%= color.name %>
+                    <br>
+                  <% }) %>
+                </td>
+                <td><%= product.brand.name %></td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+      <% } %>
     </div>
   </div>
 
