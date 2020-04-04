@@ -16,6 +16,7 @@
         <table class="table table-bordered table-striped">  
             <thead>
             <tr>
+                <th>Fecha</th>
                 <th>Producto</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
@@ -26,6 +27,7 @@
             <tbody>
                 <% result.forEach(product => { %>
                     <tr>
+                        <td style="text-align: center;"><%= product.purchaseDate %></td>
                         <td style="text-align: center;"><%= product.products.name %></td>
                         <td style="text-align: center;">$<%= product.price %></td>
                         <td style="text-align: center;"><%= product.quantity %></td>

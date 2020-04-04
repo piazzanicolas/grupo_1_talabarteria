@@ -77,23 +77,24 @@ const controller = {
 			req.body.password = bcrypt.hashSync(req.body.password, 11);
 			delete req.body.re_password;
 			req.body.avatar = req.file.filename;
-			req.body.isActive = 1;
+			req.body.admin = 0;
 			//let user = storeUser(req.body);
 			
-			req.session.user = req.body;
-			res.locals.user = req.body;
-			res.cookie('userCookie', req.body.id, { maxAge: 60000 * 60 });
+			//req.session.user = req.body;
+			//res.locals.user = req.body;
+			//res.cookie('userCookie', req.body.id, { maxAge: 60000 * 60 });
 			
 			Users.create(req.body)
 				.then(user => {
+					req.session.user = user;
+					res.locals.user = user;
+					res.cookie('userCookie', user.id, { maxAge: 60000 * 60 });
 					return res.redirect('/user/profile');
-
 				})
 				.catch(error => res.send(error));
 
 		
-		}}
-	,
+		}},
 	login: (req, res) => {
 		return res.redirect('/');
 	},
@@ -132,8 +133,9 @@ const controller = {
 				where: {user_id: req.session.user.id},
 				include: ['products', 'users']
 				})
-			.then(result => 
-				res.render('profile', {result, userLogged: res.locals.user }))
+			.then(result => {
+				console.log(result)
+				return res.render('profile', {result, userLogged: res.locals.user })})
 			.catch(error => res.send(error))
 	},
 

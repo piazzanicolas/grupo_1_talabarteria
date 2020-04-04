@@ -108,10 +108,34 @@ window.onload = function () {
 		if (oneInput.name == "password") {
 			oneInput.addEventListener('blur', function () {
 				let inputValue = oneInput.value.trim();
-				let passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*?])(?=.*[a-z])(?=.*[A-Z]).{8,}$/
-				if (!inputValue.match(passwordRegex)){
+				let passwordRegex1 = /^.{8,}$/
+				let passwordRegex2 = /(?=.*[A-Z])/
+				let passwordRegex3 = /(?=.*[a-z])/
+				let passwordRegex4 = /(?=.*[!@#$%^&*?])/
+				let passwordRegex5 =/(?=.*\d)/
+				if (!inputValue.match(passwordRegex1)){
 					this.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial !@#$%^&*?';
+					this.nextElementSibling.innerHTML = 'La contraseña debe tener al menos 8 caracteres' + '<br>';
+					errores[this.name] = true;
+				} 
+				if (!inputValue.match(passwordRegex2)){
+					this.classList.add('is-invalid');
+					this.nextElementSibling.innerHTML += 'La contraseña debe tener una mayúscula' + '<br>';
+					errores[this.name] = true;
+				} 
+				if (!inputValue.match(passwordRegex3)){
+					this.classList.add('is-invalid');
+					this.nextElementSibling.innerHTML += 'La contraseña debe tener una minúscula' + '<br>';
+					errores[this.name] = true;
+				} 
+				if (!inputValue.match(passwordRegex4)){
+					this.classList.add('is-invalid');
+					this.nextElementSibling.innerHTML += 'La contraseña debe tener un caracter especial !@#$%^&*?' + '<br>';
+					errores[this.name] = true;
+				} 
+				if (!inputValue.match(passwordRegex5)){
+					this.classList.add('is-invalid');
+					this.nextElementSibling.innerHTML += 'La contraseña debe tener un número';
 					errores[this.name] = true;
 				}
 			})

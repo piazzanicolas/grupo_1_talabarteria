@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         countryId: DataTypes.INTEGER,
         province: DataTypes.STRING(50),
         avatar: DataTypes.STRING,
-        isActive: DataTypes.INTEGER
+        admin: DataTypes.INTEGER
     };
 
 

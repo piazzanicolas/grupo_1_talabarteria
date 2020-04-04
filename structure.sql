@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-02-2020 a las 22:41:50
+-- Tiempo de generación: 02-04-2020 a las 15:04:57
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -101,11 +101,14 @@ CREATE TABLE `color_product` (
 --
 
 INSERT INTO `color_product` (`id`, `color_id`, `product_id`) VALUES
-(2, 2, 1),
 (3, 3, 2),
 (4, 4, 3),
 (5, 1, 4),
-(6, 1, 5);
+(6, 1, 5),
+(10, 1, 1),
+(11, 2, 1),
+(12, 3, 1),
+(13, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -374,26 +377,6 @@ INSERT INTO `countries` (`id`, `code`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permissions`
---
-
-CREATE TABLE `permissions` (
-  `id` int(11) NOT NULL,
-  `name` varchar(25) NOT NULL,
-  `description` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `permissions`
---
-
-INSERT INTO `permissions` (`id`, `name`, `description`) VALUES
-(1, 'admin', 'Administrador de la BD.'),
-(2, 'customer', 'Permisos de cliente.');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `products`
 --
 
@@ -412,7 +395,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `image`, `price`, `category_id`, `brand_id`) VALUES
-(1, 'Cartera', 'Nuestra línea de bolsos urbanos, con caída, versátiles, amplios, livianos y funcionales', 'image--030.jpg', '7490.00', 1, 1),
+(1, 'Cartera', 'Nuestra línea de bolsos urbanos, con caída, versátiles, amplios, livianos y funcionales', 'image--030.jpg', '7490.00', 2, 2),
 (2, 'Bolso', 'Rediseñamos la línea tradicional de bolsos icónicos como el baúl, el bolso vtote, la mochila, la bandolera', 'image--034.jpg', '7990.00', 1, 1),
 (3, 'Cinturón rústico', 'La colección posee una línea de cinturones con estética vintage, de cueros rústicos especialmente elegidos, herrajes con baños gastados y terminaciones típicas del estilo', 'image--002.jpg', '3990.00', 1, 1),
 (4, 'Cinturón', 'Nos actualizamos con las corrientes del diseño minimalista para la realización de nuevos productos, simples, funcionales y tecnológicos', 'image--004.jpg', '3490.00', 1, 1),
@@ -455,41 +438,19 @@ CREATE TABLE `users` (
   `countryId` int(11) NOT NULL,
   `province` varchar(50) NOT NULL,
   `avatar` varchar(255) NOT NULL,
-  `isActive` tinyint(1) NOT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `admin` tinyint(1) NOT NULL DEFAULT 0,
+  `createdAt` timestamp NULL DEFAULT NULL,
+  `updatedAt` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `phone`, `dob`, `street`, `address_number`, `floor`, `zip_code`, `countryId`, `province`, `avatar`, `isActive`, `createdAt`, `updatedAt`) VALUES
-(1, 'Filiberto', 'Sampietro', 'fp@dh.com', '$2b$11$tUhc0VILo.VlYoHsOH7M4OZAIviGc0TUgwrEPOpCzUSa7hFWrCB/a', '555-5555', '1980-04-14', 'Alsina', 1414, '1', '1000', 10, 'CABA', 'avatar-1580067574538.jpg', 1, '2020-02-17 00:29:39', '0000-00-00 00:00:00'),
-(2, 'Corina', 'Corales', 'cc@dh.com', '$2b$11$Snhw2zMd7Qaava.Vi7TuNOkgRwU3aJ0lRY2b69dpDA7S48psjtsWe', '555-5551', '1975-12-15', 'Saenz Peña', 1046, '4C', '1111', 10, 'Mendoza', 'avatar-1580067472411.jpg', 1, '2020-02-17 00:29:42', '0000-00-00 00:00:00'),
-(4, 'asd', 'asd', 'a@hotmail.com', '$2b$11$T9.0jWRWZr/QdOO2.UVNZONglSz2G1KiX/6dJPUi8WAgrWE7HrnDq', 'asd', '1920-01-01', '01', 1, '01', '01', 10, '01', 'avatar-1582737685371.jpg', 1, '2020-02-26 17:21:25', '2020-02-26 17:21:25'),
-(5, 'asd', 'asd', 'b@hotmail.com', '$2b$11$OOy4IyADb7AESjEb06XVJOYvSshW6xP68kdUvQo/U6nU63AFckXVy', '01', '1920-02-01', 'asd', 0, 'asd', 'asd', 10, 'asd', 'avatar-1582757736484.jpg', 1, '2020-02-26 22:55:36', '2020-02-26 22:55:36');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `user_permission`
---
-
-CREATE TABLE `user_permission` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `user_permission`
---
-
-INSERT INTO `user_permission` (`id`, `user_id`, `permission_id`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(4, 2, 2);
+INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `phone`, `dob`, `street`, `address_number`, `floor`, `zip_code`, `countryId`, `province`, `avatar`, `admin`, `createdAt`, `updatedAt`) VALUES
+(4, 'asd', 'asd', 'a@hotmail.com', '$2b$11$T9.0jWRWZr/QdOO2.UVNZONglSz2G1KiX/6dJPUi8WAgrWE7HrnDq', 'asd', '1920-01-01', '01', 1, '01', '01', 10, '01', 'avatar-1582737685371.jpg', 1, NULL, NULL),
+(5, 'asd', 'asd', 'b@hotmail.com', '$2b$11$OOy4IyADb7AESjEb06XVJOYvSshW6xP68kdUvQo/U6nU63AFckXVy', '01', '1920-02-01', 'asd', 0, 'asd', 'asd', 10, 'asd', 'avatar-1582757736484.jpg', 1, NULL, NULL),
+(11, 'sad', 'asd', 'c@hotmail.com', '$2b$11$bneKDdVQwd5punYZXOpazuaI/wMk/xwdlUNfc53GyK8ZUGn4tncEi', 'asdas', '1951-01-01', 'sad', 0, 'asd', 'asd', 3, 'asd', 'avatar-1585831546870.jpg', 0, '2020-04-02 12:45:47', '2020-04-02 12:45:47');
 
 --
 -- Índices para tablas volcadas
@@ -528,12 +489,6 @@ ALTER TABLE `countries`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `permissions`
---
-ALTER TABLE `permissions`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `products`
 --
 ALTER TABLE `products`
@@ -556,14 +511,6 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD KEY `fk_country` (`countryId`);
-
---
--- Indices de la tabla `user_permission`
---
-ALTER TABLE `user_permission`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user` (`user_id`),
-  ADD KEY `fk_permission` (`permission_id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -591,19 +538,13 @@ ALTER TABLE `colors`
 -- AUTO_INCREMENT de la tabla `color_product`
 --
 ALTER TABLE `color_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `countries`
 --
 ALTER TABLE `countries`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
-
---
--- AUTO_INCREMENT de la tabla `permissions`
---
-ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
@@ -615,19 +556,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `product_user`
 --
 ALTER TABLE `product_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `user_permission`
---
-ALTER TABLE `user_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
@@ -659,13 +594,6 @@ ALTER TABLE `product_user`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_country` FOREIGN KEY (`countryId`) REFERENCES `countries` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `user_permission`
---
-ALTER TABLE `user_permission`
-  ADD CONSTRAINT `fk_permission` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
