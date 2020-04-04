@@ -115,25 +115,29 @@ window.onload = function () {
 				let passwordRegex5 =/(?=.*\d)/
 				if (!inputValue.match(passwordRegex1)){
 					this.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = 'La contraseña debe tener al menos 8 caracteres';
-					errores[this.name] = true;
-				} else if (!inputValue.match(passwordRegex2)){
-					this.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = 'La contraseña debe tener una mayúscula';
-					errores[this.name] = true;
-				} else if (!inputValue.match(passwordRegex3)){
-					this.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = 'La contraseña debe tener una minúscula';
-					errores[this.name] = true;
-				} else if (!inputValue.match(passwordRegex4)){
-					this.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = 'La contraseña debe tener un caracter especial !@#$%^&*?';
-					errores[this.name] = true;
-				} else if (!inputValue.match(passwordRegex5)){
-					this.classList.add('is-invalid');
-					this.nextElementSibling.innerHTML = 'La contraseña debe tener un número';
+					this.nextElementSibling.innerHTML = 'La contraseña debe tener al menos 8 caracteres' + '<br>';
 					errores[this.name] = true;
 				} 
+				if (!inputValue.match(passwordRegex2)){
+					this.classList.add('is-invalid');
+					this.nextElementSibling.innerHTML += 'La contraseña debe tener una mayúscula' + '<br>';
+					errores[this.name] = true;
+				} 
+				if (!inputValue.match(passwordRegex3)){
+					this.classList.add('is-invalid');
+					this.nextElementSibling.innerHTML += 'La contraseña debe tener una minúscula' + '<br>';
+					errores[this.name] = true;
+				} 
+				if (!inputValue.match(passwordRegex4)){
+					this.classList.add('is-invalid');
+					this.nextElementSibling.innerHTML += 'La contraseña debe tener un caracter especial !@#$%^&*?' + '<br>';
+					errores[this.name] = true;
+				} 
+				if (!inputValue.match(passwordRegex5)){
+					this.classList.add('is-invalid');
+					this.nextElementSibling.innerHTML += 'La contraseña debe tener un número';
+					errores[this.name] = true;
+				}
 			})
 		}
 
