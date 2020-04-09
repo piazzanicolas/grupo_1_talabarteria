@@ -8,6 +8,7 @@ const Products = db.products;
 const controller = {
     main: (req, res) => {
         return res.status(200).json({
+            status:200,
             products: `http://localhost:3000/api/products/`,
             users: `http://localhost:3000/api/users/`
         });
@@ -25,6 +26,7 @@ const controller = {
                     oneUser.detail = `http://localhost:3000/api/users/${oneUser.id}`
                 })
                 return res.status(200).json({
+                    status:200,
                     count: users.length,
                     users: users,
                 });
@@ -36,11 +38,13 @@ const controller = {
         let user = await Users.findOne({where: {id: req.params.id}, attributes: ["id","firstName","lastName","email","avatar"]});
         if(user) {
             user.avatar = `http://localhost:3000/api/images/${user.avatar}`
-			return res.status(302).json({
+			return res.status(200).json({
+            status: 200,
             user: user
         });
 		} else {
             return res.status(404).json({
+            status:404,
             msg: "No hay un usuario con ese ID"
             });
         }
@@ -51,14 +55,16 @@ const controller = {
         let user = await Users.findOne({where: {email: req.params.email}, attributes: ["email"]});
         if(user) {
 			return res.status(302).json({
-            userFound: true,
+            status:200,
             msg: "Email registrado",
+            userFound: true,
             data: user
         });
 		} else {
             return res.status(404).json({
+            status:404,
+            msg: "Email NO registrado",
             userFound: false,
-            msg: "Email NO registrado"
             });
         }
     },
@@ -100,6 +106,7 @@ const controller = {
                 })
 
                 return res.status(200).json({
+                    status:200,
                     total_results: products.length,
                     countByCategory: {Marroquineria: countCategory1 , Talabarteria: countCategory2},
                     countByBrand: {LaMartina: countBrand1, Mustad: countBrand2},
@@ -114,11 +121,13 @@ const controller = {
         let product = await Products.findOne({where: {id: req.params.id}, include: ["brand", "category", "colors"], attributes: ["id","name", "description", "price", "image"]});
         if(product) {
             product.image = `http://localhost:3000/api/images/${product.image}`
-			return res.status(302).json({
+			return res.status(200).json({
+            status:200,
             product: product
         });
 		} else {
             return res.status(404).json({
+            status: 404,
             msg: "No hay un producto con ese ID"
             });
         }
