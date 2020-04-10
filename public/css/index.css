@@ -102,14 +102,16 @@ a {
 
 /* Carousel */
 
+/*
 #carousel-promociones {
   height: 20vh;
-  
 }
+*/
+
 .list-promociones {
   height: 100%;
-  z-index: -1;
 }
+
 .carousel-item {
   height: 100%;
   /* background-repeat: no-repeat;

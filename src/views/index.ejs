@@ -2,22 +2,10 @@
 
 <!-- Carousel-->
 <div id="carousel-promociones" class="carousel slide" data-ride="carousel" data-pause="hover">
-        <div class="carousel-inner list-promociones">
-          <div class="carousel-item active">
-            <h2>ESTA ES LA PROMO #1</h2>
-            <!-- <img src="..." class="d-block w-100" alt="..."> -->
-            <em>oferta del mes</em>
-          </div>
-          <div class="carousel-item">
-              <h2>ESTA ES LA PROMO #2</h2>
-              <!-- <img src="..." class="d-block w-100" alt="..."> -->
-              <em>oferta del mes</em>
-          </div>
-          <div class="carousel-item">
-              <h2>ESTA ES LA PROMO #3</h2>
-              <!-- <img src="..." class="d-block w-100" alt="..."> -->
-              <em>oferta del mes</em>
-          </div>
+        <div class="carousel-inner list-promociones" name="carousel">
+          <div class="carousel-item active"> </div>
+          <div class="carousel-item"></div>
+          <div class="carousel-item"></div>
         </div>
         <a class="carousel-control-prev" href="#carousel-promociones" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -30,7 +18,7 @@
 </div>
 <!-- Fin Carousel-->
 
-<div class="container">
+<div class="container index">
   <div class="row">
 
     <!-- Filtros -->
@@ -126,3 +114,5 @@
 <!-- Fin Central-->
 
 <%- include('partials/footer') %>
+
+<script src="/js/apiCarousel.js"></script>
