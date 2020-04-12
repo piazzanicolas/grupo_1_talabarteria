@@ -20,10 +20,18 @@ router.get('/users/email/:email', apiController.userByEmail);
 /* GET - All Products */
 router.get('/products', apiController.showAllProducts);
 
+/* GET - Last Product*/
+router.get('/products/last', apiController.lastProduct);
+
 /* GET - Product detail*/
 router.get('/products/:id', apiController.showOneProduct);
 
 /* GET - Images*/
 router.get('/images/:name', apiController.showImage);
+
+router.get('/categories', apiController.categories);
+
+router.get('/metrics', apiController.metrics);
+
 
 module.exports = router;

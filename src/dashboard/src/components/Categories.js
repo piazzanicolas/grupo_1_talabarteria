@@ -1,10 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from '../config/axios';
 // Component
 import Category from './Category';
+import Spinner from './Spinner';
 // Data
-import categories from '../data/categories';
+//import categories from '../data/categories';
 
 const Categories = () => {
+
+	const [categories, setCategories] = useState([]);
+
+    const reqAPI = async () => {
+        try {
+			const reqCats = await axios.get('/api/categories');
+            setCategories(reqCats.data);
+        } catch (error) {
+            console.log(error);
+        }
+	};
+	
+    useEffect( () => {
+        reqAPI();
+	}, []);
+	
+	if (!categories.length) return <Spinner />
+
 	return (
 		<div className="col-lg-6 mb-4">
 			<div className="card shadow mb-4">
@@ -13,7 +33,13 @@ const Categories = () => {
 				</div>
 				<div className="card-body">
 					<div className="row">
-						{categories.map(oneCategory => <Category name={oneCategory} />)}
+						{categories.map( item => (
+						<Category
+						 key={item.id}
+						 name={item.name}
+						 qty={item.qty}
+						/>
+						 ))}
 					</div>
 				</div>
 			</div>

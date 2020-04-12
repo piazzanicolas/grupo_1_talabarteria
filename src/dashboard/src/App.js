@@ -1,15 +1,37 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from './config/axios';
 // Components
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import Metric from './components/Metric';
 import LastProduct from './components/LastProduct';
 import Categories from './components/Categories';
+import Products from './components/Products';
+import Spinner from './components/Spinner';
 // Data
-import data from './data/data';
+//import data from './data/data';
 
 
 function App () {
+
+	const [metrics, setMetrics] = useState([]);
+
+	const reqAPI = async () => {
+        try {
+			const reqMetrics = await axios.get('/api/metrics');
+            setMetrics(reqMetrics.data);
+        } catch (error) {
+            console.log(error);
+        }
+	};
+	
+    useEffect( () => {
+        reqAPI();
+	}, []);
+	
+	if (!metrics.length) return <Spinner />
+
+
 	return (
 		<div id="wrapper">
 			{/* Componente Sidebar */}
@@ -30,7 +52,7 @@ function App () {
 						<div className="row">
 							{/* Componente Metric */}
 							{
-								data.map((unDato, i) => {
+								metrics.map((unDato, i) => {
 									return (
 										<Metric
 											key={i}
@@ -44,12 +66,19 @@ function App () {
 							}
 						</div>
 						
-						<div className="row">
+						<div className="row" >	
+
+								{/* Lista de Productos */}
+								<Products />
+			
+							{/* Categorías */}
+							<Categories/>
+
+						
+
 							{/* Último Producto */}
 							<LastProduct/>
 
-							{/* Categorías */}
-							<Categories/>
 						</div>
 					</div>
 				</div>
