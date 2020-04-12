@@ -24,14 +24,8 @@ const controller = {
           oneUser.detail = `http://localhost:3000/api/users/${oneUser.id}`;
         });
         return res.status(200).json({
-<<<<<<< HEAD
           count: users.length,
           users: users,
-=======
-            status:200,
-            products: `http://localhost:3000/api/products/`,
-            users: `http://localhost:3000/api/users/`
->>>>>>> dc95dde9f538f81c41c715947261bf68fd7324a0
         });
       })
       .catch((error) => res.send(error));
@@ -54,7 +48,6 @@ const controller = {
     }
   },
 
-<<<<<<< HEAD
   userByEmail: async (req, res) => {
     let user = await Users.findOne({
       where: { email: req.params.email },
@@ -108,42 +101,6 @@ const controller = {
             null;
           }
         });
-=======
-	showAllUsers: (req, res) => {
-        Users
-            .findAll({
-                attributes: ["id", "email"],
-                raw: true
-            })
-            .then(users => {
-                users.map((oneUser) => {
-                    oneUser.detail = `http://localhost:3000/api/users/${oneUser.id}`
-                })
-                return res.status(200).json({
-                    status:200,
-                    count: users.length,
-                    users: users,
-                });
-            })
-            .catch(error => res.send(error))
-    },
-    
-    showOneUser: async (req, res) => {
-        let user = await Users.findOne({where: {id: req.params.id}, attributes: ["id","firstName","lastName","email","avatar"]});
-        if(user) {
-            user.avatar = `http://localhost:3000/api/images/${user.avatar}`
-			return res.status(200).json({
-            status: 200,
-            user: user
-        });
-		} else {
-            return res.status(404).json({
-            status:404,
-            msg: "No hay un usuario con ese ID"
-            });
-        }
-    },
->>>>>>> dc95dde9f538f81c41c715947261bf68fd7324a0
 
         return res.status(200).json({
           total_results: products.length,
@@ -210,7 +167,6 @@ metrics: (req, res, next) => {
     Products.count().then( count => {
       data[0].value = count;
 
-<<<<<<< HEAD
       Products.sum('price').then( amount => {
         data[1].value = amount;
 
@@ -235,40 +191,12 @@ metrics: (req, res, next) => {
             
             Products.count({
                 where: {category_id: cats[0].dataValues.id}
-=======
-    userByEmail: async (req, res) => {
-        let user = await Users.findOne({where: {email: req.params.email}, attributes: ["email"]});
-        if(user) {
-			return res.status(302).json({
-            status:200,
-            msg: "Email registrado",
-            userFound: true,
-            data: user
-        });
-		} else {
-            return res.status(404).json({
-            status:404,
-            msg: "Email NO registrado",
-            userFound: false,
-            });
-        }
-    },
-
-    showAllProducts: (req, res) => {
-        Products
-            .findAll({
-                attributes: ["id", "name","image"],
-                include: ["brand", "category"],
-                raw: true,
-                nest: true
->>>>>>> dc95dde9f538f81c41c715947261bf68fd7324a0
             })
             .then(count => {
                 cats[0].dataValues.qty = count;
                 Products.count({
                     where: {category_id: cats[1].dataValues.id}
                 })
-<<<<<<< HEAD
                 .then(count => {
                     cats[1].dataValues.qty = count;
             
@@ -280,33 +208,6 @@ metrics: (req, res, next) => {
         .catch(error => 
             { 	res.send(error);
                 next();
-=======
-
-                return res.status(200).json({
-                    status:200,
-                    total_results: products.length,
-                    countByCategory: {Marroquineria: countCategory1 , Talabarteria: countCategory2},
-                    countByBrand: {LaMartina: countBrand1, Mustad: countBrand2},
-                    products: products
-                });
-            })
-            .catch(error => res.send(error))
-    },
-    
-    
-    showOneProduct: async (req, res) => {
-        let product = await Products.findOne({where: {id: req.params.id}, include: ["brand", "category", "colors"], attributes: ["id","name", "description", "price", "image"]});
-        if(product) {
-            product.image = `http://localhost:3000/api/images/${product.image}`
-			return res.status(200).json({
-            status:200,
-            product: product
-        });
-		} else {
-            return res.status(404).json({
-            status: 404,
-            msg: "No hay un producto con ese ID"
->>>>>>> dc95dde9f538f81c41c715947261bf68fd7324a0
             });
 },
 
