@@ -3,6 +3,7 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const {validationResult} = require('express-validator');
 const db = require('../database/models/');
+const Op = db.Sequelize.Op;
 const Users = db.users;
 const Countries = db.countries;
 const Cart = db.productUser;
@@ -130,7 +131,10 @@ const controller = {
 		res.locals.user = req.session.user;
 		Cart
 			.findAll({
-				where: {user_id: req.session.user.id},
+				where: {
+					user_id: req.session.user.id,
+					ticket: {[Op.not]: null}
+				},
 				include: ['products', 'users']
 				})
 			.then(result => {
@@ -159,22 +163,37 @@ const controller = {
 			.catch(error => res.send(error));
 	},
 
-	saveProduct: (req, res) => {
-		Products
-			.findByPk(req.params.id)
-			.then(product => {
-				Cart
-					.create({
-						product_id: req.params.id,
-						user_id: req.session.user.id,
-						price: product.price,
-						purchaseDate: new Date(),
-						quantity: req.body.quantity
-					})
-					.then(carrito => res.redirect('/'))
-					.catch(error => res.send(error));
-			})
-			.catch(error => res.send(error))
+	saveProduct: async (req, res) => {
+		let product = await Products.findOne({where: {id: req.params.id}, attributes: ["id","price"]});
+		let carritoAnterior = await Cart.findAll({where:{product_id: product.id, user_id: res.locals.user.id, ticket: null}})
+
+        if(carritoAnterior.length >= 1 ) {
+			let cantidadNueva = Number(req.body.quantity);
+			let cantidadVieja = carritoAnterior[0].quantity;
+			let cantidadFinal = cantidadNueva + cantidadVieja;
+
+			Cart
+				.findOne({where:{product_id: product.id, user_id: res.locals.user.id, ticket: null}})
+				.then(carrito => 
+					carrito
+						.update({ quantity: cantidadFinal })
+						.then( product => {return res.redirect('/')})
+						.catch(error => res.send(error))
+				)
+				.catch(error => res.send(error))
+				
+		} else {
+			Cart
+				.create({
+					product_id: product.id,
+					user_id: req.session.user.id,
+					price: product.price,
+					purchaseDate: new Date(),
+					quantity: req.body.quantity
+				})
+				.then(carrito => {return res.redirect('/')})
+				.catch(error => res.send(error));
+        }
 	},
 
 	deleteProduct: (req, res) => {
