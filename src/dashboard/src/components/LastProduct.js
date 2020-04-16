@@ -36,7 +36,7 @@ const LastProduct = () => {
 						<img 
 						className="img-fluid px-3 px-sm-4 mt-3 mb-4" 
 						style={{ maxWidth: "200px" }} 
-						src={`http://localhost:3000/images/${lastProduct.image}`}
+						src={`http://localhost:3000/api/images/${lastProduct.image}`}
 						alt={lastProduct.name} />
 					</div>
 					<p>{lastProduct.description}</p>

@@ -69,7 +69,7 @@ const controller = {
 
   showAllProducts: (req, res) => {
     Products.findAll({
-      attributes: ["id", "name"],
+      attributes: ["id", "name", "image"],
       include: ["brand", "category"],
       raw: true,
       nest: true,

@@ -52,6 +52,7 @@ function filterCategory(req) {
 
 const controller = {
 	root: (req, res) => {
+		//Consulto en la url si se encuentra alguno de los parámetros
 		if (req.query.search || req.query.mustad || req.query.lamartina || req.query.rango1 || req.query.rango2 || req.query.marroquineria || req.query.talabarteria) { //el req.query no funciona en todos los casos
 			Products
 				.findAll({
@@ -64,7 +65,7 @@ const controller = {
 				})
 				.then(products => res.render('index', {products}))
 				.catch(error => res.send(error));
-		} else {
+		} else { //Si el usuario da a buscar sin poner nada o sin filtros trae todo
 			Products
 				.findAll()
 				.then (products => res.render('index', {products}))

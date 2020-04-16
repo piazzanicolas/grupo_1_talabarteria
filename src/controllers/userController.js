@@ -164,10 +164,12 @@ const controller = {
 	},
 
 	saveProduct: async (req, res) => {
+		//Busco el producto que está queriendo agregar el usuario al carrito
 		let product = await Products.findOne({where: {id: req.params.id}, attributes: ["id","price"]});
+		//Busco si el usuario ya agregó el producto al carrito anteriormente
 		let carritoAnterior = await Cart.findAll({where:{product_id: product.id, user_id: res.locals.user.id, ticket: null}})
 
-        if(carritoAnterior.length >= 1 ) {
+        if(carritoAnterior.length >= 1 ) { //Si ya lo tiene agregado actualizo la cantidad
 			let cantidadNueva = Number(req.body.quantity);
 			let cantidadVieja = carritoAnterior[0].quantity;
 			let cantidadFinal = cantidadNueva + cantidadVieja;
@@ -182,7 +184,7 @@ const controller = {
 				)
 				.catch(error => res.send(error))
 				
-		} else {
+		} else { //Si no fue agregado anteriormente
 			Cart
 				.create({
 					product_id: product.id,
@@ -206,7 +208,9 @@ const controller = {
 	},
 
 	purchase: (req, res) => {
+		//Genero la fecha en la que el usuario da click al botón a comprar
 		let fechaCompra= new Date()
+		//Busco el carrito generado por el usuario
 		Cart
 			.findAll({
 				where: {
@@ -215,6 +219,7 @@ const controller = {
 				},
 			}) 
 			.then(carrito => {
+				//Agregó a cada producto del carrito el número de ticket de compra
 				carrito.forEach (oneProduct =>{
 					oneProduct
 						.update({

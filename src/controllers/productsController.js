@@ -163,7 +163,7 @@ const controller = {
 		}
 
 		let errorsResult = validationResult(req);
-		if (!errorsResult.isEmpty()){
+		if (!errorsResult.isEmpty()){ //Si hay errores vuelvo a renderizar la vista con los errores
 			// Vuelvo a hacer la consulta a la base de datos para generar la vista
 			Products
 			.findByPk(req.params.id)
@@ -184,7 +184,7 @@ const controller = {
 					.catch(error => res.send(error));
 				})
 			.catch(error => res.send(error));
-		} else {
+		} else { //Si no hay errores hago el update
 			Products
 				.findByPk(req.params.id,{
 					include: ['colors']
@@ -194,7 +194,7 @@ const controller = {
 						.update({
 							...req.body,
 							description: req.body.description.trim(), 
-							image: req.file ? req.file.filename : theProduct.image
+							image: req.file ? req.file.filename : theProduct.image // Si no cargo imagen se mantiene la misma
 							})
 						.then(async product => {
 							await product.removeColors(product.colors);
