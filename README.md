@@ -1,8 +1,8 @@
 Trabajo integrador realizado para el curso de programación Fullstack de Digital House
 
 Descripcion: Market de una talabarteria
-Nuestro sitio comercializar�a productos de cuero como billeteras, cinturones, carteras y bolsos.
-La audiencia objetivo ser�an las personas que buscan productos de alta calidad, realizados con un material noble como es el cuero que tiene una gran importancia en las tradiciones de nuestro pa�s.
+Nuestro sitio comercializará productos de cuero como billeteras, cinturones, carteras y bolsos.
+La audiencia objetivo serán las personas que buscan productos de alta calidad, realizados con un material noble como es el cuero que tiene una gran importancia en las tradiciones de nuestro país.
 
 
 
